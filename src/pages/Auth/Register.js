@@ -22,10 +22,14 @@ function Register() {
     e.preventDefault();
     // console.log(name, email, password, phone, uniqueId);
     try {
-      const res = await axios.post(
-        `${process.env.REACT_APP_API}/auth/register`,
-        { name, email, password, phone, uniqueId, answer }
-      );
+      const res = await axios.post(`http://localhost:8080/auth/register`, {
+        name,
+        email,
+        password,
+        phone,
+        uniqueId,
+        answer,
+      });
       if (res.data.success) {
         toast.success(res.data.message);
         navigate("/login");

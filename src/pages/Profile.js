@@ -18,14 +18,11 @@ function Profile() {
           return navigate("/login");
         }
 
-        const response = await axios.get(
-          `${process.env.REACT_APP_API}/auth/private`,
-          {
-            headers: {
-              Authorization: token,
-            },
-          }
-        );
+        const response = await axios.get(`http://localhost:8080/auth/private`, {
+          headers: {
+            Authorization: token,
+          },
+        });
 
         setUserData(response.data.user);
         setLoading(false);
