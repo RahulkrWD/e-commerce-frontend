@@ -22,14 +22,17 @@ function Register() {
     e.preventDefault();
     // console.log(name, email, password, phone, uniqueId);
     try {
-      const res = await axios.post(`http://localhost:8080/auth/register`, {
-        name,
-        email,
-        password,
-        phone,
-        uniqueId,
-        answer,
-      });
+      const res = await axios.post(
+        `https://e-commerce-604e.onrender.com/auth/register`,
+        {
+          name,
+          email,
+          password,
+          phone,
+          uniqueId,
+          answer,
+        }
+      );
       if (res.data.success) {
         toast.success(res.data.message);
         navigate("/login");

@@ -15,7 +15,7 @@ function ForgetPassword() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `http://localhost:8080/auth/forget-password`,
+        `https://e-commerce-604e.onrender.com/auth/forget-password`,
         { email, answer, newPassword }
       );
       if (res.data.success) {

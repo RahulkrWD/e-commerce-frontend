@@ -18,11 +18,14 @@ function Profile() {
           return navigate("/login");
         }
 
-        const response = await axios.get(`http://localhost:8080/auth/private`, {
-          headers: {
-            Authorization: token,
-          },
-        });
+        const response = await axios.get(
+          `https://e-commerce-604e.onrender.com/auth/private`,
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
 
         setUserData(response.data.user);
         setLoading(false);

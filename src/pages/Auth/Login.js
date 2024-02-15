@@ -14,10 +14,13 @@ function Login() {
     e.preventDefault();
     // console.log(name, email, password, phone, uniqueId);
     try {
-      const res = await axios.post(`http://localhost:8080/auth/login`, {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        `https://e-commerce-604e.onrender.com/auth/login`,
+        {
+          email,
+          password,
+        }
+      );
       if (res.data.success) {
         toast.success(res.data.message);
         const user = res.data.user;
