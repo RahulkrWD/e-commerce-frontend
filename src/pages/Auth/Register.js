@@ -23,7 +23,7 @@ function Register() {
     // console.log(name, email, password, phone, uniqueId);
     try {
       const res = await axios.post(
-        `https://e-commerce-604e.onrender.com/auth/register`,
+        `${process.env.REACT_APP_API}/auth/register`,
         {
           name,
           email,

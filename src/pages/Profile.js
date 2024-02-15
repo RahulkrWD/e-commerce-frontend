@@ -19,7 +19,7 @@ function Profile() {
         }
 
         const response = await axios.get(
-          `https://e-commerce-604e.onrender.com/auth/private`,
+          `${process.env.REACT_APP_API}/auth/private`,
           {
             headers: {
               Authorization: token,

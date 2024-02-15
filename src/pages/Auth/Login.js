@@ -8,19 +8,15 @@ import TextField from "@mui/material/TextField";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
   async function handlelogin(e) {
     e.preventDefault();
     // console.log(name, email, password, phone, uniqueId);
     try {
-      const res = await axios.post(
-        `https://e-commerce-604e.onrender.com/auth/login`,
-        {
-          email,
-          password,
-        }
-      );
+      const res = await axios.post(`${process.env.REACT_APP_API}/auth/login`, {
+        email,
+        password,
+      });
       if (res.data.success) {
         toast.success(res.data.message);
         const user = res.data.user;
