@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Layout from "../components/layout/Layout";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 
 function Profile() {
   const [loading, setLoading] = useState(true);
@@ -43,8 +45,20 @@ function Profile() {
   return (
     <Layout title={"my-profile e-commerce"}>
       <p>Welcome, {userData?.username || auth}!</p>
-
       <Outlet />
+      <Tabs>
+        <TabList>
+          <Tab>Title 1</Tab>
+          <Tab>Title 2</Tab>
+        </TabList>
+
+        <TabPanel>
+          <h2>Any content 1</h2>
+        </TabPanel>
+        <TabPanel>
+          <h2>Any content 2</h2>
+        </TabPanel>
+      </Tabs>
     </Layout>
   );
 }

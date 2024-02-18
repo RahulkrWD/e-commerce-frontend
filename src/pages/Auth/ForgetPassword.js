@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
+import styles from "./Auth.module.css";
 
 function ForgetPassword() {
   const [email, setEmail] = useState("");
@@ -32,40 +33,53 @@ function ForgetPassword() {
   return (
     <Layout title={"forget-password e-commerce"}>
       <center>
-        <div className="login-page m-2 container border">
-          <h2>Forget password</h2>
-          <form onSubmit={handleSubmit}>
-            <TextField
-              className="m-2"
-              label="Email Address"
-              variant="outlined"
-              type="email"
-              value={email}
-              fullWidth
-              onChange={(e) => setEmail(e.target.value)}
-            />
-
-            <TextField
-              className="m-2"
-              label="Enter your favorite game."
-              type="text"
-              value={answer}
-              fullWidth
-              onChange={(e) => setAnswer(e.target.value)}
-            />
-            <TextField
-              className="m-2"
-              label="Enter your new Password"
-              type="password"
-              value={newPassword}
-              fullWidth
-              onChange={(e) => setNewPassword(e.target.value)}
-            />
-
-            <button type="submit" className="btn btn-primary m-2 p-2 fw-bold">
-              Submit
-            </button>
-          </form>
+        <div className={`${styles.forgetpassword}`}>
+          <center>
+            <h2>Forget password</h2>
+            <form onSubmit={handleSubmit}>
+              <div className="row">
+                <div className="col">
+                  <TextField
+                    className="m-2"
+                    label="Email Address"
+                    variant="outlined"
+                    type="email"
+                    value={email}
+                    fullWidth
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="col">
+                  <TextField
+                    className="m-2"
+                    label="Enter your favorite game."
+                    type="text"
+                    value={answer}
+                    fullWidth
+                    onChange={(e) => setAnswer(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="col">
+                <TextField
+                  className="m-2"
+                  label="Enter your new Password"
+                  type="password"
+                  value={newPassword}
+                  fullWidth
+                  onChange={(e) => setNewPassword(e.target.value)}
+                />
+              </div>
+              <div className="row w-75">
+                <button
+                  type="submit"
+                  className="btn btn-primary m-2 p-2 fw-bold"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </center>
         </div>
       </center>
     </Layout>
