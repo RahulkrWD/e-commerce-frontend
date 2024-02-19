@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import styles from "./HomePage.module.css";
 import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
 
 function Category() {
   const [category, setCategory] = useState();
@@ -26,7 +27,7 @@ function Category() {
 
   return (
     <>
-      <div className={`d-flex p-4 gap-4 ${styles.container}`}>
+      <div className={`d-flex p-3 gap-4 ${styles.container}`}>
         {loading ? (
           <h4>Loading data..</h4>
         ) : (
@@ -34,7 +35,7 @@ function Category() {
             <Link key={index} to={`category/${data.CategoryName}?${data.id}`}>
               <img className={styles.categoryImage} src={data.img} alt="" />
 
-              <p className={styles.categoryName}>{data.CategoryName}</p>
+              <h5 className={styles.categoryName}>{data.CategoryName}</h5>
             </Link>
           ))
         )}

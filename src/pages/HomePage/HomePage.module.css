@@ -6,10 +6,10 @@
   display: none;
 }
 .categoryImage {
-  width: 65px;
-  aspect-ratio: 3/4;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
-  border-radius: 7px;
+  border-radius: 50%;
   margin: 7px;
   box-shadow: 1px 1px 4px black;
   transition: all 0.2s ease;
@@ -21,9 +21,9 @@
 .categoryName {
   text-align: center;
   font-size: 12px;
-  font-weight: 600;
   color: black;
   text-transform: uppercase;
+  font-weight: bold;
 }
 /* Carousel.js */
 .carouselImage {
@@ -70,7 +70,8 @@
 }
 @media (max-width: 550px) {
   .categoryImage {
-    width: 40px;
+    width: 65px;
+    height: 65px;
   }
   .categoryName {
     font-size: 10px;
