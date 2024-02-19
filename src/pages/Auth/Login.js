@@ -40,49 +40,52 @@ function Login() {
     <Layout title={"login e-commerce"}>
       <div className={`${styles.loginPage}`}>
         <center>
-          <h2>Login</h2>
           <form onSubmit={handlelogin}>
-            <div className="row">
+            <div className={styles.textField}>
+              <h2>Login</h2>
               <TextField
-                className="m-2"
+                className="w-100  mt-3"
                 label="Email Address"
                 variant="outlined"
                 type="email"
                 value={email}
-                fullWidth
                 onChange={(e) => setEmail(e.target.value)}
               />
-            </div>
-            <div className="row">
+              <br />
               <TextField
-                className="m-2"
+                className="w-100 mt-3"
                 label="Password"
                 type="password"
                 value={password}
-                fullWidth
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </div>
-            <div className="row">
-              <button type="submit" className="btn btn-primary m-2 p-2 fw-bold">
+              <br />
+              <button
+                type="submit"
+                className="btn btn-primary w-100 p-2 mt-3 fw-bold"
+              >
                 Login
               </button>
               <Link
                 to={"/forget-password"}
-                className="btn btn-dark fw-bold m-2 p-2"
+                className="btn btn-dark fw-bold w-100 mt-3 p-2"
               >
                 Forget Password
               </Link>
+
+              <div className="m-3">
+                <GoogleOAuthProvider clientId={process.env.REACT_APP_Clint_id}>
+                  <GoogleLogin />
+                </GoogleOAuthProvider>
+              </div>
+              <Link
+                to={"/register"}
+                className="text-decoration-none text-dark m-3"
+              >
+                Don't have an Account <strong>Register</strong>
+              </Link>
             </div>
           </form>
-          <div className="m-3">
-            <GoogleOAuthProvider clientId={process.env.REACT_APP_Clint_id}>
-              <GoogleLogin />
-            </GoogleOAuthProvider>
-          </div>
-          <Link to={"/register"} className="text-decoration-none text-dark">
-            Don't have an Account <strong>Register</strong>
-          </Link>
         </center>
       </div>
     </Layout>

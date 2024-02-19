@@ -1,0 +1,15 @@
+import React from "react";
+import Layout from "../../components/layout/Layout";
+import Category from "./Category";
+import Carousel from "./Carousel";
+
+function HomePage() {
+  return (
+    <Layout title={"All products e-commerce"}>
+      <Category />
+      <Carousel />
+    </Layout>
+  );
+}
+
+export default HomePage;

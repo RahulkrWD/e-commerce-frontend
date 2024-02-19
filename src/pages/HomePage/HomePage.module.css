@@ -1,0 +1,46 @@
+.container {
+  border-radius: 5px;
+  box-shadow: 2px 2px 7px gray, -2px -2px 7px gray;
+
+  overflow-x: scroll;
+}
+.container::-webkit-scrollbar {
+  display: none;
+}
+.categoryImage {
+  width: 65px;
+  aspect-ratio: 3/4;
+  object-fit: contain;
+  border-radius: 7px;
+  margin: 7px;
+  box-shadow: 1px 1px 4px black;
+  transition: all 0.2s ease;
+}
+.categoryImage:hover,
+.carouselImage:active {
+  box-shadow: 3px 3px 10px black;
+}
+.card {
+  display: flex;
+  justify-content: space-between;
+}
+.categoryName {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: black;
+  text-transform: uppercase;
+}
+/* Carousel.js */
+.carouselImage {
+  width: 100%;
+  height: 200px;
+}
+@media (max-width: 550px) {
+  .categoryImage {
+    width: 40px;
+  }
+  .categoryName {
+    font-size: 10px;
+  }
+}

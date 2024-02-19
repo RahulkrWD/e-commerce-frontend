@@ -10,21 +10,21 @@ function Navbar() {
   const user = localStorage.getItem("auth");
 
   return (
-    <nav className="navbar bg-primary-subtle">
+    <nav className={`navbar bg-primary-subtle ${styles.navbarFix}`}>
       <div className="container">
         <div className="title d-flex justify-content-center align-items-center gap-2">
           <Darwer />
-          <h5 className={`${styles.titleName}`}>
+          <Link to={"/"} className={`${styles.titleName} nav-link`}>
             DeP<span className={styles.brandName}>.com</span>
-          </h5>
+          </Link>
         </div>
-        <ul className="nav">
+        <ul className={`${styles.listItems}`}>
           {user ? (
             <>
               <li className="nav-item mt-2">
                 <Link
                   to={"/offers"}
-                  className="nav-link text-dark fw-bold"
+                  className={`nav-link fw-bold text-dark ${styles.offers}`}
                   aria-current="page"
                 >
                   Offers
@@ -38,7 +38,7 @@ function Navbar() {
               <li className="nav-item mt-2">
                 <Link
                   to={"/login"}
-                  className="nav-link text-dark fw-bold"
+                  className="nav-link fw-bold text-dark"
                   aria-current="page"
                 >
                   Login
@@ -47,7 +47,7 @@ function Navbar() {
               <li className="nav-item mt-2">
                 <Link
                   to={"/register"}
-                  className="nav-link text-dark fw-bold"
+                  className={`nav-link fw-bold text-dark ${styles.register}`}
                   aria-current="page"
                 >
                   Register
@@ -56,7 +56,7 @@ function Navbar() {
             </>
           )}
           <li className="nav-item">
-            <Link to={"/cart"} className="nav-link" aria-current="page">
+            <Link to={"/cart"} aria-current="page">
               <Cart />
             </Link>
           </li>

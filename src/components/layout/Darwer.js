@@ -1,19 +1,22 @@
 import React from "react";
 import { TfiMenuAlt } from "react-icons/tfi";
+import styles from "./Navbar.module.css";
+import { Link } from "react-router-dom";
+import { ImCross } from "react-icons/im";
 
 function Darwer() {
+  const user = localStorage.getItem("auth");
   return (
     <>
       <div>
-        <button
-          className="btn btn-primary"
-          type="button"
+        <span
+          className={`text-bg-primary p-2 ${styles.drowerBtn}`}
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasWithBothOptions"
           aria-controls="offcanvasWithBothOptions"
         >
           <TfiMenuAlt />
-        </button>
+        </span>
         <div
           className="offcanvas offcanvas-start "
           style={{ width: "250px" }}
@@ -24,14 +27,18 @@ function Darwer() {
         >
           <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="offcanvasWithBothOptionsLabel">
-              {/* Backdrop with scrolling */}
+              {user ? (
+                user
+              ) : (
+                <>
+                  <Link to={"/login"}>Login</Link> /
+                  <Link to={"/register"}> Register</Link>
+                </>
+              )}
             </h5>
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            />
+            <Link data-bs-dismiss="offcanvas">
+              <ImCross />
+            </Link>
           </div>
           <div className="offcanvas-body">
             {/* <p>

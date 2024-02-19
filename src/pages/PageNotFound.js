@@ -6,8 +6,8 @@ function PageNotFound() {
   return (
     <Layout title={"page not found go back"}>
       <center className="container p-3">
-        <h1 className="fw-bolder">404</h1>
-        <h2 className="fw-bolder">Oops ! Page Not Found</h2>
+        <h1 className="fw-bolder">Coders are works</h1>
+        <h2 className="fw-bolder">-coming soon-</h2>
         <Link to={"/"} className="btn text-bg-warning fw-bold">
           Go Back
         </Link>

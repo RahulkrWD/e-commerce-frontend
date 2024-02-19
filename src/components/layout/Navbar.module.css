@@ -1,12 +1,43 @@
 /* Navbar.js */
+.navbarFix {
+  box-shadow: 2px 2px 4px gray;
+  position: sticky;
+  top: 0;
+}
 .brandName {
   font-size: 12px;
   color: blueviolet;
 }
 .titleName {
-  margin-top: 10px;
+  font-size: 25px;
   font-weight: bold;
   color: chocolate;
 }
-
-/* Darwer.js */
+.drowerBtn {
+  border-radius: 7px;
+  cursor: pointer;
+}
+.listItems {
+  position: relative;
+  top: 10px;
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+@media (max-width: 400px) {
+  .brandName {
+    font-size: 10px;
+  }
+  .listItems {
+    gap: 10px;
+  }
+}
+@media (max-width: 350px) {
+  .register,
+  .offers {
+    display: none;
+  }
+  .listItems {
+    gap: 5px;
+  }
+}
