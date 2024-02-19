@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
 import Menu from "@mui/material/Menu";
+import { Link } from "react-router-dom";
 
 export default function BasicMenu() {
   const user = localStorage.getItem("auth");
@@ -9,7 +9,9 @@ export default function BasicMenu() {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   // logout function
   function handleLogout() {
     localStorage.removeItem("auth");
@@ -28,7 +30,15 @@ export default function BasicMenu() {
         <strong className="text-danger">Hi</strong>
         <strong> {user.split(" ")[0]}</strong>
       </Link>
-      <Menu anchorEl={anchorEl} open={open}>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
         <Link to={"/order"} className="nav-link text-center text-dark fw-bold">
           Order
         </Link>
