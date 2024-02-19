@@ -26,9 +26,7 @@ function Category() {
 
   return (
     <>
-      <div
-        className={`d-flex justify-content-center p-2 gap-4 m-4 ${styles.container}`}
-      >
+      <div className={`d-flex p-2 gap-4 m-2 ${styles.container}`}>
         {loading ? (
           <h4>Loading data..</h4>
         ) : (

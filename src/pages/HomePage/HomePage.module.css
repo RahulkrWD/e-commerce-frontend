@@ -1,7 +1,5 @@
 .container {
-  border-radius: 5px;
-  box-shadow: 2px 2px 7px gray, -2px -2px 7px gray;
-
+  justify-content: center;
   overflow-x: scroll;
 }
 .container::-webkit-scrollbar {
@@ -20,10 +18,6 @@
 .carouselImage:active {
   box-shadow: 3px 3px 10px black;
 }
-.card {
-  display: flex;
-  justify-content: space-between;
-}
 .categoryName {
   text-align: center;
   font-size: 12px;
@@ -34,7 +28,12 @@
 /* Carousel.js */
 .carouselImage {
   width: 100%;
-  height: 200px;
+  height: 180px;
+}
+@media (max-width: 950px) {
+  .container {
+    justify-content: start;
+  }
 }
 @media (max-width: 550px) {
   .categoryImage {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import styles from "./HomePage.module.css";
+import { Link } from "react-router-dom";
 
 function AutomaticImageCarousel() {
   const [index, setIndex] = useState(0);
@@ -13,10 +14,6 @@ function AutomaticImageCarousel() {
     "/image/scroll(6).jpg",
   ];
 
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
-
   useEffect(() => {
     const id = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -26,14 +23,16 @@ function AutomaticImageCarousel() {
   }, [images.length]);
 
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect}>
+    <Carousel activeIndex={index} style={{ zIndex: "-1" }}>
       {images.map((imageUrl, idx) => (
         <Carousel.Item key={idx}>
-          <img
-            className={styles.carouselImage}
-            src={imageUrl}
-            alt={`Slide ${idx + 1}`}
-          />
+          <Link to={"/offers"}>
+            <img
+              className={`${styles.carouselImage} d-block w-100`}
+              src={imageUrl}
+              alt={`Slide ${idx + 1}`}
+            />
+          </Link>
         </Carousel.Item>
       ))}
     </Carousel>
