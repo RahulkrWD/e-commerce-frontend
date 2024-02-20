@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import styles from "./HomePage.module.css";
 import { Link } from "react-router-dom";
-import Card from "react-bootstrap/Card";
 
 function Category() {
   const [category, setCategory] = useState();

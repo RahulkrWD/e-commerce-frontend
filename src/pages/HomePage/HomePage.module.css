@@ -2,9 +2,12 @@
   justify-content: center;
   overflow-x: scroll;
 }
-.container::-webkit-scrollbar {
+.container::-webkit-scrollbar,
+.MensDeals::-webkit-scrollbar,
+.WomensDeals::-webkit-scrollbar {
   display: none;
 }
+
 .categoryImage {
   width: 100px;
   height: 100px;
@@ -17,6 +20,7 @@
 .categoryImage:hover,
 .carouselImage:active {
   box-shadow: 3px 3px 10px black;
+  transform: scale(1.1, 1.1);
 }
 .categoryName {
   text-align: center;
@@ -45,12 +49,40 @@
   border-radius: 10px;
   box-shadow: 5px 5px 10px darkgrey;
   padding: 5px;
+  transition: all 0.2s ease-in-out;
 }
-.cardImage:hover {
+.cardImage:hover,
+.cardImage:active {
   box-shadow: 7px 7px 15px #191919;
+  transform: scale(0.9, 0.9);
 }
 .cardTitle {
   margin-top: 10px;
+}
+
+/* means offers */
+.MensDeals,
+.WomensDeals {
+  display: flex;
+  padding: 15px;
+  overflow-x: scroll;
+  gap: 40px;
+  text-align: center;
+}
+
+.offersImage {
+  width: 300px;
+  height: 350px;
+  border-radius: 15px;
+  padding: 5px;
+  box-shadow: 3px 3px 5px gray;
+  transition: all 0.2s ease;
+  margin-bottom: 10px;
+}
+.offersImage:hover,
+.offersImage:active {
+  box-shadow: 7px 7px 9px gray;
+  transform: scale(0.9, 0.9);
 }
 @media (max-width: 800px) {
   .cardImage {
@@ -60,6 +92,10 @@
   .container {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem;
+  }
+  .offersImage {
+    width: 270px;
+    height: 320px;
   }
 }
 
@@ -79,9 +115,15 @@
   .cardImage {
     width: 200px;
     height: 200px;
+    padding: 2px;
   }
   .container {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  .offersImage {
+    width: 240px;
+    height: 290px;
+    padding: 2px;
   }
 }
 @media (max-width: 450px) {
@@ -94,5 +136,9 @@
   }
   .cardTitle {
     font-size: 17px;
+  }
+  .offersImage {
+    width: 210px;
+    height: 260px;
   }
 }
