@@ -1,5 +1,5 @@
 .container {
-  justify-content: center;
+  justify-content: start;
   overflow-x: scroll;
 }
 .container::-webkit-scrollbar,

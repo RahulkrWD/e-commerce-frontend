@@ -5,7 +5,6 @@ import Carousel from "./Carousel";
 import QuickSearch from "./QuickSearch";
 import MensDeals from "./MensDeals";
 import WomensDeals from "./WomensDeals";
-import styles from "./HomePage.module.css";
 
 function HomePage() {
   return (
