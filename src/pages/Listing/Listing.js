@@ -2,6 +2,7 @@ import React from "react";
 import Mobile from "./Mobile";
 import Layout from "../../components/layout/Layout";
 import { useLocation } from "react-router-dom";
+import Shoes from "./Shoes";
 
 function Listing() {
   const { search } = useLocation();
@@ -10,6 +11,7 @@ function Listing() {
   return (
     <Layout title={`${title} e-commerce`}>
       <Mobile />
+      <Shoes />
     </Layout>
   );
 }

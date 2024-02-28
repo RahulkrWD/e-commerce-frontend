@@ -24,7 +24,7 @@ function QuickSearch() {
     fetchQuickSearch();
   });
   return (
-    <div className={`container mt-4 ${styles.container}`}>
+    <div className={`container mt-4 ${styles.quickSearchContainer}`}>
       {loading ? (
         <h5>Loading ...</h5>
       ) : (

@@ -32,11 +32,11 @@
 /* Carousel.js */
 .carouselImage {
   width: 100%;
-  height: 180px;
+  height: 200px;
 }
 
 /* Quickseach.js */
-.container {
+.quickSearchContainer {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

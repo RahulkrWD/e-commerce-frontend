@@ -6,37 +6,37 @@ import styles from "./Lising.module.css";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import { FaStar } from "react-icons/fa6";
-function Mobile() {
-  const [mobile, setMobile] = useState();
+function Shoes() {
+  const [shoes, setShoes] = useState();
   const { search } = useLocation();
   const id = search.split("=")[1];
 
   useEffect(() => {
-    async function fetchMobile() {
+    async function fetchShoes() {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/product/mobile/${id}`
+          `${process.env.REACT_APP_API}/product/shoes/${id}`
         );
-        setMobile(response.data);
+        setShoes(response.data);
       } catch (err) {
         toast.error("server error");
       }
     }
-    fetchMobile();
+    fetchShoes();
   });
 
   return (
     <div className={`container ${styles.displayProduct}`}>
-      {mobile
-        ? mobile.map((data, index) => (
+      {shoes
+        ? shoes.map((data, index) => (
             <Card style={{ margin: "7px" }}>
               <Link
                 to={`/${data.brand}`}
-                className={styles.displayMobile}
+                className={styles.displayShoes}
                 style={{ color: "black", textDecoration: "none" }}
               >
                 <img
-                  className={styles.mobileImage}
+                  className={styles.shoesImage}
                   key={index}
                   src={data.image}
                   alt=""
@@ -68,4 +68,4 @@ function Mobile() {
   );
 }
 
-export default Mobile;
+export default Shoes;
