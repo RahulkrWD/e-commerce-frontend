@@ -3,7 +3,7 @@ import Layout from "../../components/layout/Layout";
 import { useLocation } from "react-router-dom";
 import FilterItems from "./FilterItems";
 import axios from "axios";
-import Others from "./Others";
+import Products from "./Products";
 
 function Listing() {
   const [products, setProducts] = useState();
@@ -21,14 +21,14 @@ function Listing() {
     fetchData();
   }, [value]);
   return (
-    <Layout title={`${value} e-commerce`}>
+    <Layout title={`${value} DeP.com`}>
       <div className=" pt-5 d-flex">
         <div style={{ paddingLeft: "7%" }}>
           <FilterItems filter={setProducts} />
         </div>
 
-        <div className="w-75 container">
-          <Others product={products} />
+        <div className="w-75">
+          <Products product={products} />
         </div>
       </div>
     </Layout>
