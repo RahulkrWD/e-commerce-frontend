@@ -2,6 +2,7 @@
   justify-content: start;
   overflow-x: scroll;
 }
+
 .container::-webkit-scrollbar,
 .MensDeals::-webkit-scrollbar,
 .WomensDeals::-webkit-scrollbar {
@@ -84,6 +85,7 @@
   box-shadow: 7px 7px 9px gray;
   transform: scale(0.9, 0.9);
 }
+
 @media (max-width: 800px) {
   .cardImage {
     width: 210px;

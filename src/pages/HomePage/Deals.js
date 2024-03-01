@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import styles from "./HomePage.module.css";
@@ -12,12 +11,12 @@ function QuickSearch() {
     async function fetchQuickSearch() {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/product/quicksearch/1`
+          `${process.env.REACT_APP_API}/product/deals`
         );
         setQuicksearch(response.data);
         setLoading(false);
       } catch (err) {
-        toast.error("server not connction");
+        console.log(err);
         setLoading(false);
       }
     }
@@ -32,7 +31,7 @@ function QuickSearch() {
           {quicksearch.map((data, index) => (
             <Link
               key={index}
-              to={`${data.CategoryName}/${data.id}`}
+              to={`category?${data.CategoryName}=${data.id}`}
               className="text-decoration-none"
             >
               <Card.Img

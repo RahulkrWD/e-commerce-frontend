@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
 import styles from "./HomePage.module.css";
 import { Link } from "react-router-dom";
 import Skeleton from "@mui/material/Skeleton";
@@ -19,7 +18,7 @@ function Category() {
         setCategory(response.data);
         setLoading(false);
       } catch (err) {
-        toast.error("server error please after some time");
+        setCategory("");
         setLoading(false);
       }
     }
@@ -35,17 +34,19 @@ function Category() {
             <Skeleton animation="wave" />
             <Skeleton animation={false} />
           </Box>
-        ) : (
+        ) : category ? (
           category.map((data, index) => (
             <Link
               key={index}
-              to={`category?${data.CategoryName}=${data.CategoryId}`}
+              to={`category?${data.categoryName}=${data.categoryId}`}
+              style={{ textDecoration: "none" }}
             >
-              <img className={styles.categoryImage} src={data.img} alt="" />
-
-              <h5 className={styles.categoryName}>{data.CategoryName}</h5>
+              <img className={styles.categoryImage} src={data.image} alt="" />
+              <h5 className={styles.categoryName}>{data.categoryName}</h5>
             </Link>
           ))
+        ) : (
+          ""
         )}
       </div>
     </>

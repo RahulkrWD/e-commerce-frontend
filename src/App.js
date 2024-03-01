@@ -11,6 +11,7 @@ import Profile from "./pages/Profile";
 import ForgetPassword from "./pages/Auth/ForgetPassword";
 import Listing from "./pages/Listing/Listing";
 import Loading from "./components/layout/Loading";
+import Details from "./pages/Details/Details";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
       <Route path="/forget-password" element={<ForgetPassword />} />
       <Route path="/category" element={<Listing />}></Route>
       <Route path="/loading" element={<Loading />} />
+      <Route path="/:details" element={<Details />} />
     </Routes>
   );
 }
