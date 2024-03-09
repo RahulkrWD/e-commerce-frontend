@@ -27,7 +27,7 @@ function App() {
       <Route path="/forget-password" element={<ForgetPassword />} />
       <Route path="/category" element={<Listing />}></Route>
       <Route path="/loading" element={<Loading />} />
-      <Route path="/:details" element={<Details />} />
+      <Route path="/details/:product" element={<Details />} />
     </Routes>
   );
 }

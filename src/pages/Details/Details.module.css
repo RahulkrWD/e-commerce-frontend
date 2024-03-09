@@ -1,0 +1,9 @@
+.main_image {
+  width: 200px;
+  height: 200px;
+}
+.gallery {
+  width: 80px;
+  margin: 10px;
+  cursor: pointer;
+}

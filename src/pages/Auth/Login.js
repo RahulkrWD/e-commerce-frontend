@@ -12,9 +12,10 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
   async function handlelogin(e) {
     e.preventDefault();
-    // console.log(name, email, password, phone, uniqueId);
+
     try {
       const res = await axios.post(`${process.env.REACT_APP_API}/auth/login`, {
         email,
