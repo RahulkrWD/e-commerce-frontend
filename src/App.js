@@ -12,11 +12,13 @@ import ForgetPassword from "./pages/Auth/ForgetPassword";
 import Listing from "./pages/Listing/Listing";
 import Loading from "./components/layout/Loading";
 import Details from "./pages/Details/Details";
+import PopUp from "./pages/PopUp";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<PopUp />} />
+      <Route path="/home" element={<HomePage />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/policy" element={<Policy />} />
       <Route path="/about" element={<About />} />

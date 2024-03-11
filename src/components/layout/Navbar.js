@@ -14,7 +14,7 @@ function Navbar() {
       <div className="container">
         <div className="title d-flex justify-content-center align-items-center gap-2">
           <Darwer />
-          <Link to={"/"} className={`${styles.titleName}`}>
+          <Link to={"/home"} className={`${styles.titleName}`}>
             DeP<span className={styles.brandName}>.com</span>
           </Link>
         </div>

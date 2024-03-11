@@ -38,7 +38,7 @@ function Category() {
           category.map((data, index) => (
             <Link
               key={index}
-              to={`category?${data.categoryName}=${data.categoryId}`}
+              to={`/category?${data.categoryName}=${data.categoryId}`}
               style={{ textDecoration: "none" }}
             >
               <img className={styles.categoryImage} src={data.image} alt="" />

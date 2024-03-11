@@ -3,3 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+body::-webkit-scrollbar {
+  width: 0.4rem;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: skyblue;
+}
