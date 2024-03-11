@@ -16,14 +16,16 @@ function Others({ product }) {
             <Link
               to={`/details/${value}?${data.type}=${data.productId}`}
               key={index}
-              className={`card text-decoration-none text-dark ${styles.card}`}
+              className={`text-decoration-none text-dark ${styles.card}`}
             >
               <div className="image">
                 <img className={styles.images} src={data.image} alt="" />
               </div>
               <div className="details p-2 ">
-                <div style={{ fontSize: "14px" }}>{data.productName}</div>
-                <h5 className=" fw-bold">{data.type}</h5>
+                <p style={{ fontSize: "14px", color: "#192f60" }}>
+                  {data.productName}
+                </p>
+                <h6 className="fw-bold text-success">{data.type}</h6>
                 &#8377; {data.cost}{" "}
                 <del className="m-2" style={{ color: "gray" }}>
                   &#8377; {data.cost + 230}
