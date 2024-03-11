@@ -31,24 +31,27 @@ function Details() {
 
   return (
     <Layout>
-      <div>
+      <div className="container pt-4 ">
         {items ? (
           items.map((data, index) => (
-            <div key={index}>
-              {data.gallery.map((image, idx) => (
-                <img
-                  className={styles.gallery}
-                  key={idx}
-                  src={image}
-                  onMouseEnter={() => setSelectImage(image)}
-                  alt=""
-                />
-              ))}
+            <div key={index} className={styles.details_container}>
               {!selectImage ? (
                 <img className={styles.main_image} src={data.image} alt="" />
               ) : (
                 <img className={styles.main_image} src={selectImage} alt="" />
               )}
+              <div className="product details p-2 m-1">
+                <p>{data.productName}</p>
+                {data.gallery.map((image, idx) => (
+                  <img
+                    className={styles.gallery}
+                    key={idx}
+                    src={image}
+                    onMouseEnter={() => setSelectImage(image)}
+                    alt=""
+                  />
+                ))}
+              </div>
             </div>
           ))
         ) : (
@@ -56,7 +59,8 @@ function Details() {
             <Loading />
           </center>
         )}
-
+        <button className="btn text-bg-danger m-2 fw-bold">Add to Cart</button>
+        <button className="btn text-bg-warning fw-bold">Buy Now</button>
         <WhatsApp />
       </div>
     </Layout>

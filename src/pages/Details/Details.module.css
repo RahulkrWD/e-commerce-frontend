@@ -1,6 +1,9 @@
+.details_container {
+  display: flex;
+}
 .main_image {
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 400px;
 }
 .gallery {
   width: 80px;

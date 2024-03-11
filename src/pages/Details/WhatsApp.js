@@ -6,7 +6,11 @@ const WhatsApp = () => {
   const whatsappLink = `whatsapp://send?phone=${phoneNumber}`;
 
   return (
-    <Link to={whatsappLink} target="_blank">
+    <Link
+      to={whatsappLink}
+      className="text-decoration-none btn m-2 text-bg-success fw-bold"
+      target="_blank"
+    >
       Contact Me on WhatsApp
     </Link>
   );
