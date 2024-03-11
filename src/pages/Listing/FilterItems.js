@@ -89,7 +89,7 @@ function FilterItems({ filter }) {
           Filter / Sort
         </button>
         <div
-          className="offcanvas offcanvas-end"
+          className={`offcanvas offcanvas-end ${styles.rightOffcanvas}`}
           style={{ width: "250px" }}
           tabIndex={-1}
           id="offcanvasRight"

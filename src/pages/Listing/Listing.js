@@ -23,12 +23,12 @@ function Listing() {
   }, [value]);
   return (
     <Layout title={`${value} DeP.com`}>
-      <div className={`${styles.listing}`}>
-        <div style={{ paddingLeft: "7px" }}>
+      <div className={` ${styles.listing}`}>
+        <div className={styles.filter_area}>
           <FilterItems filter={setProducts} />
         </div>
 
-        <div className="w-75">
+        <div className={`w-75 ${styles.product_area}`}>
           <Products product={products} />
         </div>
       </div>
