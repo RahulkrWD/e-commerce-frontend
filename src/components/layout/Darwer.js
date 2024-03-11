@@ -40,9 +40,82 @@ function Darwer() {
           </Link>
         </div>
         <div className="offcanvas-body">
-          {/* <p>
-              Try scrolling the rest of the page to see this option in action.
-            </p> */}
+          <ul>
+            <Link
+              to={"/Coin-zone"}
+              className="p-2 text-danger-emphasis text-decoration-none fs-5 d-block"
+            >
+              <i className="fa-solid fa-coins"></i> Coins Zone
+            </Link>
+            <Link
+              to={"/offer-zone"}
+              className="p-2 text-danger-emphasis text-decoration-none fs-5 d-block"
+            >
+              <i className="fa-solid fa-gift"></i> Offer Zone
+            </Link>
+            <Link
+              to={"/game-zone"}
+              className="p-2 text-danger-emphasis text-decoration-none fs-5 d-block"
+            >
+              <i className="fa-solid fa-gamepad"></i> Game Zone
+            </Link>
+            <Link
+              to={"/seller-on-dep"}
+              className="p-2 text-danger-emphasis text-decoration-none fs-5 d-block"
+            >
+              <i className="fa-solid fa-store"></i> Seller on Dep
+            </Link>
+            <hr />
+            <Link
+              to={"/my-order"}
+              className="p-2 text-danger-emphasis text-decoration-none fs-5 d-block"
+            >
+              <i className="fa-solid fa-box-open"></i> My Order
+            </Link>
+            <Link
+              to={"/coupons"}
+              className="p-2 text-danger-emphasis text-decoration-none fs-5 d-block"
+            >
+              <i className="fa-solid fa-ticket"></i> Coupons
+            </Link>
+            <Link
+              to={"/my-cart"}
+              className="p-2 text-danger-emphasis text-decoration-none fs-5 d-block"
+            >
+              <i className="fa-solid fa-cart-plus"></i> My Cart
+            </Link>
+            <Link
+              to={"/my-wishlist"}
+              className="p-2 text-danger-emphasis text-decoration-none fs-5 d-block"
+            >
+              <i className="fa-solid fa-clipboard-list"></i> My Wishlist
+            </Link>
+            <Link
+              to={"/myprofile"}
+              className="p-2 text-danger-emphasis text-decoration-none fs-5 d-block"
+            >
+              <i className="fa-solid fa-user"></i> My Profile
+            </Link>
+            <hr />
+            <Link
+              to={"/help-centre"}
+              className="p-2 text-danger-emphasis text-decoration-none fs-5 d-block"
+            >
+              <i className="fa-solid fa-circle-question"></i> Help Centre
+            </Link>
+            <Link
+              to={"/settings"}
+              className="p-2 text-danger-emphasis text-decoration-none fs-5 d-block"
+            >
+              <i className="fa-solid fa-gear"></i> Settings
+            </Link>
+            <Link
+              to={"/logout"}
+              className="p-2 text-danger-emphasis text-decoration-none fs-5 d-block"
+            >
+              <i className="fa-solid fa-right-from-bracket"></i> Log Out
+            </Link>
+          </ul>
         </div>
       </div>
     </>
