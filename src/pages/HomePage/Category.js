@@ -4,6 +4,7 @@ import styles from "./HomePage.module.css";
 import { Link } from "react-router-dom";
 import Skeleton from "@mui/material/Skeleton";
 import Box from "@mui/material/Box";
+import Loading from "../../components/layout/Loading";
 
 function Category() {
   const [category, setCategory] = useState();
@@ -46,7 +47,9 @@ function Category() {
             </Link>
           ))
         ) : (
-          ""
+          <center className="p-5">
+            <Loading />
+          </center>
         )}
       </div>
     </>

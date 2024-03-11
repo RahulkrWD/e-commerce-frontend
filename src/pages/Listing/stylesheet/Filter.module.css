@@ -13,10 +13,24 @@
   margin-top: 10px;
 }
 @media (max-width: 860px) {
+  .responsiveFilterContainer {
+    width: 50%;
+  }
   .filterContainer {
     display: none;
   }
   .responsiveFilterContainer {
     display: block;
+  }
+}
+@media (max-width: 630px) {
+  .responsiveFilterContainer {
+    width: 350px;
+  }
+}
+
+@media (max-width: 400px) {
+  .responsiveFilterContainer {
+    width: 320px;
   }
 }

@@ -4,6 +4,7 @@ import axios from "axios";
 import Layout from "../../components/layout/Layout";
 import styles from "./Details.module.css";
 import WhatsApp from "./WhatsApp";
+import Loading from "../../components/layout/Loading";
 
 function Details() {
   const [items, setItems] = useState([]);
@@ -31,26 +32,30 @@ function Details() {
   return (
     <Layout>
       <div>
-        {items
-          ? items.map((data, index) => (
-              <div key={index}>
-                {data.gallery.map((image, idx) => (
-                  <img
-                    className={styles.gallery}
-                    key={idx}
-                    src={image}
-                    onMouseEnter={() => setSelectImage(image)}
-                    alt=""
-                  />
-                ))}
-                {!selectImage ? (
-                  <img className={styles.main_image} src={data.image} alt="" />
-                ) : (
-                  <img className={styles.main_image} src={selectImage} alt="" />
-                )}
-              </div>
-            ))
-          : "Loading"}
+        {items ? (
+          items.map((data, index) => (
+            <div key={index}>
+              {data.gallery.map((image, idx) => (
+                <img
+                  className={styles.gallery}
+                  key={idx}
+                  src={image}
+                  onMouseEnter={() => setSelectImage(image)}
+                  alt=""
+                />
+              ))}
+              {!selectImage ? (
+                <img className={styles.main_image} src={data.image} alt="" />
+              ) : (
+                <img className={styles.main_image} src={selectImage} alt="" />
+              )}
+            </div>
+          ))
+        ) : (
+          <center className="p-5">
+            <Loading />
+          </center>
+        )}
 
         <WhatsApp />
       </div>

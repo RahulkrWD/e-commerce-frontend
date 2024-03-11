@@ -24,7 +24,7 @@ function Listing() {
   return (
     <Layout title={`${value} DeP.com`}>
       <div className={`${styles.listing}`}>
-        <div style={{ paddingLeft: "7%" }}>
+        <div style={{ paddingLeft: "7px" }}>
           <FilterItems filter={setProducts} />
         </div>
 

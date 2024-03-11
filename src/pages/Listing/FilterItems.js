@@ -80,30 +80,29 @@ function FilterItems({ filter }) {
       </div>
       <div>
         <button
-          className={`${styles.responsiveFilterContainer}`}
+          className={`${styles.responsiveFilterContainer} btn text-bg-dark fw-bold`}
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasRight"
           aria-controls="offcanvasRight"
         >
-          Toggle right offcanvas
+          Filter / Sort
         </button>
         <div
           className="offcanvas offcanvas-end"
+          style={{ width: "250px" }}
           tabIndex={-1}
           id="offcanvasRight"
           aria-labelledby="offcanvasRightLabel"
         >
           <div className="offcanvas-header">
-            <h5 className="offcanvas-title" id="offcanvasRightLabel">
-              Offcanvas right
+            <h5
+              className="offcanvas-title"
+              id="offcanvasRightLabel"
+              style={{ borderBottom: "2px solid gray" }}
+            >
+              Filter
             </h5>
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            />
           </div>
           <div className="offcanvas-body">
             <div>
@@ -169,6 +168,13 @@ function FilterItems({ filter }) {
               </div>
             </div>
           </div>
+          <button
+            className="p-2 m-3 btn text-bg-success fw-bold"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          >
+            Apply
+          </button>
         </div>
       </div>
     </>

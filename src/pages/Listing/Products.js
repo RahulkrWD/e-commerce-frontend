@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import styles from "./stylesheet/Products.module.css";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
+import Loading from "../../components/layout/Loading";
 
 function Others({ product }) {
   const { search } = useLocation();
@@ -31,7 +32,7 @@ function Others({ product }) {
                   &#8377; {data.cost + 230}
                 </del>
                 <Rating
-                  style={{ fontSize: "17px", float: "right" }}
+                  style={{ fontSize: "14px", float: "right" }}
                   name="text-feedback"
                   readOnly
                   precision={0.5}
@@ -45,7 +46,9 @@ function Others({ product }) {
           ))}
         </>
       ) : (
-        ""
+        <center className="p-5">
+          <Loading />
+        </center>
       )}
     </div>
   );
