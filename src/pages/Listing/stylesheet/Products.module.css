@@ -2,7 +2,7 @@
   max-width: 1500px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 7px;
+  /* gap: 7px; */
   transition: all 0.6s ease;
 }
 .card {
@@ -27,7 +27,7 @@
 .likeButton {
   font-size: 20px;
 }
-@media (max-width: 800px) {
+@media (max-width: 850px) {
   .card {
     width: 240px;
     height: 300px;
@@ -39,7 +39,7 @@
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 }
-@media (max-width: 700px) {
+@media (max-width: 750px) {
   .card {
     width: 220px;
     height: 280px;
@@ -51,7 +51,7 @@
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   }
 }
-@media (max-width: 630px) {
+@media (max-width: 680px) {
   .images {
     width: 150px;
     height: fit-content;
