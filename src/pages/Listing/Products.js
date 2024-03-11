@@ -9,30 +9,23 @@ function Others({ product }) {
   const value = search.split("?")[1].split("=")[0].toLowerCase();
 
   return (
-    <div className={`d-flex flex-wrap justify-content-evenly`}>
+    <div className={` ${styles.container}`}>
       {product ? (
         <>
           {product.map((data, index) => (
             <Link
               to={`/details/${value}?${data.type}=${data.productId}`}
               key={index}
-              className={`text-decoration-none text-dark ${styles.card}`}
+              className={`card text-decoration-none text-dark ${styles.card}`}
             >
               <div className="image">
                 <img className={styles.images} src={data.image} alt="" />
               </div>
-              <div className="details p-3 ">
+              <div className="details p-2 ">
                 <div style={{ fontSize: "14px" }}>{data.productName}</div>
-                <div className="d-flex justify-content-between mt-1">
-                  <h5 className=" fw-bolder">{data.type}</h5>
-                  <p>
-                    <i
-                      className={`fa-regular fa-heart ${styles.likeButton}`}
-                    ></i>
-                  </p>
-                </div>
+                <h5 className=" fw-bold">{data.type}</h5>
                 &#8377; {data.cost}{" "}
-                <del className="m-3" style={{ color: "gray" }}>
+                <del className="m-2" style={{ color: "gray" }}>
                   &#8377; {data.cost + 230}
                 </del>
                 <Rating

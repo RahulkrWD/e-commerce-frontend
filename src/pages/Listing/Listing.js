@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import FilterItems from "./FilterItems";
 import axios from "axios";
 import Products from "./Products";
+import styles from "./stylesheet/Listing.module.css";
 
 function Listing() {
   const [products, setProducts] = useState();
@@ -22,7 +23,7 @@ function Listing() {
   }, [value]);
   return (
     <Layout title={`${value} DeP.com`}>
-      <div className=" pt-5 d-flex">
+      <div className={`${styles.listing}`}>
         <div style={{ paddingLeft: "7%" }}>
           <FilterItems filter={setProducts} />
         </div>
