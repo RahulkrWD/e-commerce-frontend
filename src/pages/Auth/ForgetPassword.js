@@ -8,20 +8,19 @@ import styles from "./Auth.module.css";
 
 function ForgetPassword() {
   const [email, setEmail] = useState("");
-  const [answer, setAnswer] = useState("");
+  const [otp, setOtp] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const navigate = useNavigate();
 
-  async function handleSubmit(e) {
+  async function handleSubmitEmail(e) {
     e.preventDefault();
     try {
       const res = await axios.post(
         `${process.env.REACT_APP_API}/auth/forget-password`,
-        { email, answer, newPassword }
+        { email }
       );
       if (res.data.success) {
         toast.success(res.data.message);
-        navigate("/login");
       } else {
         toast.error(res.data.message);
       }
@@ -30,47 +29,57 @@ function ForgetPassword() {
       toast.error("Something went wrong");
     }
   }
+  async function handleSubmitPassword(e) {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_API}/auth/reset-password`,
+        { email, newPassword, otp }
+      );
+      if (response.data.success) {
+        toast.success(response.data.message);
+        navigate("/login");
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return (
     <Layout title={"forget-password e-commerce"}>
       <div className={`${styles.forgetpassword}`}>
         <center>
           <div className={styles.textField}>
             <h2>Forget password</h2>
-            <form onSubmit={handleSubmit}>
-              <TextField
-                className="w-100 mt-3"
-                label="Email Address"
-                variant="outlined"
+            <form onSubmit={handleSubmitEmail}>
+              <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                required
               />
-              <br />
-
-              <TextField
-                className="w-100  mt-3"
-                label="Enter your favorite game."
+              <button type="submit">Send OTP</button>
+            </form>
+            <form>
+              <input
                 type="text"
-                value={answer}
-                onChange={(e) => setAnswer(e.target.value)}
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+                placeholder="Enter OTP"
+                required
               />
-              <br />
-
-              <TextField
-                className="w-100  mt-3"
-                label="Enter your new Password"
+            </form>
+            <form onSubmit={handleSubmitPassword}>
+              <input
                 type="password"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
+                placeholder="Enter new password"
+                required
               />
-              <br />
-
-              <button
-                type="submit"
-                className="btn btn-primary w-100 p-2 mt-3 fw-bold"
-              >
-                Submit
-              </button>
+              <button type="submit">Reset Password</button>
             </form>
           </div>
         </center>

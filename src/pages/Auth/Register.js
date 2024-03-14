@@ -13,7 +13,7 @@ function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [answer, setAnswer] = useState("");
+  const [otp, setOtp] = useState("");
 
   // generate uniqueId
   const uniqueId = Math.floor(Math.random() * 70000 + 100000);
@@ -26,22 +26,35 @@ function Register() {
       const res = await axios.post(
         `${process.env.REACT_APP_API}/auth/register`,
         {
-          name,
           email,
-          password,
-          uniqueId,
-          answer,
         }
       );
       if (res.data.success) {
         toast.success(res.data.message);
-        navigate("/login");
       } else {
         toast.error(res.data.message);
       }
     } catch (err) {
       console.log(err);
       toast.error("Something went wrong");
+    }
+  }
+
+  async function verifyOtp(e) {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_API}/auth/verify-user`,
+        { name, password, uniqueId, email, otp }
+      );
+      if (response.data.success) {
+        toast.success(response.data.message);
+        navigate("/login");
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (err) {
+      console.log(err);
     }
   }
 
@@ -52,56 +65,47 @@ function Register() {
           <div className={styles.textField}>
             <h2>Register</h2>
             <form onSubmit={handleSubmit}>
-              <div className="row">
-                <div className="col">
-                  <TextField
-                    className="w-100  mt-3"
-                    label="Name"
-                    variant="outlined"
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
-                <div className="col">
-                  <TextField
-                    className="w-100  mt-3"
-                    label="Email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-              </div>
-              <div className="row flex-wrap">
-                <div className="col">
-                  <TextField
-                    className="w-100  mt-3"
-                    label="Password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
-                <div className="col">
-                  <TextField
-                    className="w-100  mt-3"
-                    label="favorite game"
-                    type="text"
-                    value={answer}
-                    onChange={(e) => setAnswer(e.target.value)}
-                  />
-                </div>
-              </div>
-
-              <button type="submit" className="btn btn-primary w-50 m-3">
-                Submit
-              </button>
-              <br />
-              <Link to={"/forget-password"} className="btn btn-dark w-50  m-3">
-                forget Password
-              </Link>
+              <TextField
+                className="w-100  mt-3"
+                label="Email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <button type="submit">Send OTP</button>
             </form>
+
+            <form onSubmit={verifyOtp}>
+              <TextField
+                className="w-100  mt-3"
+                label="Otp"
+                type="text"
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+              />
+              <TextField
+                className="w-100  mt-3"
+                label="Name"
+                variant="outlined"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <TextField
+                className="w-100  mt-3"
+                label="Password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+
+              <button type="submit">Verify OTP</button>
+            </form>
+
+            <Link to={"/forget-password"} className="btn btn-dark  w-100  mt-3">
+              forget Password
+            </Link>
+
             <div className="m-3">
               <GoogleOAuthProvider clientId={process.env.REACT_APP_Clint_id}>
                 <GoogleRegister />
