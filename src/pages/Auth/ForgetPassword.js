@@ -51,36 +51,49 @@ function ForgetPassword() {
       <div className={`${styles.forgetpassword}`}>
         <center>
           <div className={styles.textField}>
-            <h2>Forget password</h2>
-            <form onSubmit={handleSubmitEmail}>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                required
-              />
-              <button type="submit">Send OTP</button>
-            </form>
-            <form>
-              <input
-                type="text"
-                value={otp}
-                onChange={(e) => setOtp(e.target.value)}
-                placeholder="Enter OTP"
-                required
-              />
-            </form>
-            <form onSubmit={handleSubmitPassword}>
-              <input
-                type="password"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-                placeholder="Enter new password"
-                required
-              />
-              <button type="submit">Reset Password</button>
-            </form>
+            <h3 className={styles.title}>Forget password</h3>
+            <TextField
+              className=" w-100  mt-3"
+              label="Email Address"
+              variant="outlined"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <br />
+            <TextField
+              className=" w-100 mt-3"
+              label="Verify OTP"
+              variant="outlined"
+              type="text"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
+            />
+
+            <br />
+            <TextField
+              className="w-100  mt-3"
+              label="Enter New Password"
+              variant="outlined"
+              type="password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+            />
+            <br />
+            <button
+              className=" mt-3 fw-bold w-100 btn text-bg-danger"
+              onClick={handleSubmitEmail}
+              type="submit"
+            >
+              Send OTP
+            </button>
+            <button
+              className="btn fw-bold text-bg-success mt-3 w-100"
+              onClick={handleSubmitPassword}
+              type="submit"
+            >
+              Reset Password
+            </button>
           </div>
         </center>
       </div>

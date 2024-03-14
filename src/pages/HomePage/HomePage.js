@@ -5,7 +5,7 @@ import Carousel from "./Carousel";
 
 function HomePage() {
   return (
-    <Layout title={"All products e-commerce"}>
+    <Layout title={"All products DeP.com"}>
       <div className="container  bg-gradient border">
         <Category />
         <hr />

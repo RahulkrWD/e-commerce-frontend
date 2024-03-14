@@ -63,46 +63,62 @@ function Register() {
       <div className={`${styles.registerPage}`}>
         <center>
           <div className={styles.textField}>
-            <h2>Register</h2>
-            <form onSubmit={handleSubmit}>
-              <TextField
-                className="w-100  mt-3"
-                label="Email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <button type="submit">Send OTP</button>
-            </form>
+            <h3 className={styles.title}>Register</h3>
+            <TextField
+              className="w-100  mt-3"
+              label="Name"
+              variant="outlined"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <br />
+            <TextField
+              className="w-100  mt-3"
+              label="Email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <br />
 
-            <form onSubmit={verifyOtp}>
-              <TextField
-                className="w-100  mt-3"
-                label="Otp"
-                type="text"
-                value={otp}
-                onChange={(e) => setOtp(e.target.value)}
-              />
-              <TextField
-                className="w-100  mt-3"
-                label="Name"
-                variant="outlined"
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <TextField
-                className="w-100  mt-3"
-                label="Password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+            <TextField
+              className="w-100  mt-3"
+              label="Enter OTP"
+              type="password"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
+            />
+            <br />
 
-              <button type="submit">Verify OTP</button>
-            </form>
+            <TextField
+              className="w-100  mt-3"
+              label="Password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <br />
+            <button
+              className="btn w-100 mt-3 text-bg-danger fw-bold"
+              onClick={handleSubmit}
+              type="submit"
+            >
+              Send OTP
+            </button>
 
-            <Link to={"/forget-password"} className="btn btn-dark  w-100  mt-3">
+            <button
+              className="btn w-100 text-bg-success mt-3 fw-bold"
+              onClick={verifyOtp}
+              type="submit"
+            >
+              submit
+            </button>
+
+            <Link
+              to={"/forget-password"}
+              className=" text-decoration-none fw-bold"
+            >
               forget Password
             </Link>
 

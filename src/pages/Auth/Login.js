@@ -43,7 +43,7 @@ function Login() {
         <center>
           <form onSubmit={handlelogin}>
             <div className={styles.textField}>
-              <h2>Login</h2>
+              <h3 className={styles.title}>Login</h3>
               <TextField
                 className="w-100  mt-3"
                 label="Email Address"
