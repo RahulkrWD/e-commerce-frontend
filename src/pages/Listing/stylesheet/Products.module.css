@@ -19,6 +19,11 @@
   opacity: 0.7;
   transform: scale(0.9);
 }
+.product_name {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 .images {
   padding: 5px;
   width: 100%;
@@ -52,6 +57,9 @@
   }
 }
 @media (max-width: 680px) {
+  .product_name {
+    width: 140px;
+  }
   .images {
     width: 150px;
     height: fit-content;

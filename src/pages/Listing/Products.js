@@ -23,7 +23,10 @@ function Others({ product }) {
                 <img className={styles.images} src={data.image} alt="" />
               </div>
               <div className="details p-2 ">
-                <p style={{ fontSize: "14px", color: "#192f60" }}>
+                <p
+                  className={styles.product_name}
+                  style={{ fontSize: "14px", color: "#192f60" }}
+                >
                   {data.productName}
                 </p>
                 <h6 className="fw-bold text-success">{data.type}</h6>

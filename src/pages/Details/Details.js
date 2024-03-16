@@ -5,6 +5,7 @@ import Layout from "../../components/layout/Layout";
 import styles from "./Details.module.css";
 import WhatsApp from "./WhatsApp";
 import Loading from "../../components/layout/Loading";
+import Tabs from "./Tabs";
 
 function Details() {
   const [items, setItems] = useState([]);
@@ -62,6 +63,10 @@ function Details() {
         <button className="btn text-bg-danger m-2 fw-bold">Add to Cart</button>
         <button className="btn text-bg-warning fw-bold">Buy Now</button>
         <WhatsApp />
+
+        <div className="tabs">
+          <Tabs />
+        </div>
       </div>
     </Layout>
   );
