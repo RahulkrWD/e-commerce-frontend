@@ -7,10 +7,10 @@ import Loading from "../../components/layout/Loading";
 
 function Others({ product }) {
   const { search } = useLocation();
-  const value = search.split("?")[1].split("=")[0].toLowerCase();
+  const value = search.split("?")[1].toLowerCase();
 
   return (
-    <div className={` ${styles.container}`}>
+    <div className={`${styles.container}`}>
       {product ? (
         <>
           {product.map((data, index) => (

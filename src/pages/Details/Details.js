@@ -11,6 +11,7 @@ function Details() {
   const [items, setItems] = useState([]);
   const { product } = useParams();
   const { search } = useLocation();
+  const categoryId = product.split("=")[1];
   const id = search.split("=")[1];
   const [selectImage, setSelectImage] = useState(null);
 
@@ -18,7 +19,7 @@ function Details() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/product/${product}?id=${id}`
+          `${process.env.REACT_APP_API}/product/product?category=${categoryId}&id=${id}`
         );
         setItems(response.data);
       } catch (err) {

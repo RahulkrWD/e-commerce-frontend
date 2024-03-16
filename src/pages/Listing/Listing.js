@@ -9,12 +9,12 @@ import styles from "./stylesheet/Listing.module.css";
 function Listing() {
   const [products, setProducts] = useState();
   const { search } = useLocation();
-  const value = search.split("?")[1].split("=")[0].toLowerCase();
+  const value = search.split("=")[1];
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/product/${value}`
+          `${process.env.REACT_APP_API}/product/product?category=${value}`
         );
         setProducts(response.data);
       } catch (err) {}
