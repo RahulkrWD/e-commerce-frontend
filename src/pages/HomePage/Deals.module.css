@@ -1,0 +1,41 @@
+.heading {
+  border-bottom: 2px solid red;
+  width: max-content;
+}
+.mens_deals,
+.womens_deals {
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
+  gap: 20px;
+}
+.card {
+  padding: 5px;
+  border: 1px solid gainsboro;
+  text-decoration: none;
+  color: chocolate;
+}
+.card:hover {
+  opacity: 0.7;
+}
+.image {
+  width: 250px;
+  height: 300px;
+  transition: all 1s ease;
+}
+.mens_deals::-webkit-scrollbar,
+.womens_deals::-webkit-scrollbar {
+  display: none;
+}
+@media (max-width: 700px) {
+  .image {
+    width: 200px;
+    height: 250px;
+  }
+}
+@media (max-width: 500px) {
+  .image {
+    width: 160px;
+    height: 200px;
+  }
+}

@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../../components/layout/Layout";
 import Category from "./Category";
 import Carousel from "./Carousel";
+import Deal99 from "./Deal99";
 
 function HomePage() {
   return (
@@ -11,6 +12,7 @@ function HomePage() {
         <hr />
         <Carousel />
         <hr />
+        <Deal99 />
       </div>
     </Layout>
   );
