@@ -9,20 +9,29 @@
   overflow-x: scroll;
   gap: 20px;
 }
+.coupons {
+  display: flex;
+  flex-wrap: wrap;
+}
 .card {
   padding: 5px;
   border: 1px solid gainsboro;
   text-decoration: none;
   color: chocolate;
 }
+
 .card:hover {
   opacity: 0.7;
 }
 .image {
   width: 250px;
   height: 300px;
-  transition: all 1s ease;
+  transition: all 0.6s ease;
 }
+.kitchen_image {
+  width: 15vw;
+}
+
 .mens_deals::-webkit-scrollbar,
 .womens_deals::-webkit-scrollbar {
   display: none;
@@ -31,6 +40,9 @@
   .image {
     width: 200px;
     height: 250px;
+  }
+  .kitchen_image {
+    width: 15vh;
   }
 }
 @media (max-width: 500px) {

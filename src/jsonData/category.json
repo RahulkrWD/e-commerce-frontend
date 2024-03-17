@@ -1,0 +1,56 @@
+[
+    {
+        "categoryId": 101,
+        "categoryName": "Others",
+        "image": "https://i.ibb.co/bPtq4tr/others.webp"
+
+    },
+    {
+        "categoryId": 202,
+        "categoryName": "Footwears",
+        "image": "https://i.ibb.co/3TX294p/scampus782.webp"
+
+    },
+    {
+        "categoryId": 303,
+        "categoryName": "Bracelet",
+        "image": "https://i.ibb.co/YpJM01V/bracelet-for-women.webp"
+
+    },
+    {
+        "categoryId": 404,
+        "categoryName": "Kitchen",
+        "image": "https://i.ibb.co/NNVbjM7/kitchen.webp"
+
+    },
+    {
+        "categoryId": 505,
+        "categoryName": "Shampoo",
+        "image": "https://i.ibb.co/WvdSvBP/skin.webp"
+
+    },
+    {
+        "categoryId": 606,
+        "categoryName": "Wallets",
+        "image": "https://i.ibb.co/nCgn6v6/volet-for-women-200.webp"
+
+    },
+    {
+        "categoryId": 707,
+        "categoryName": "Highlighter",
+        "image": "https://i.ibb.co/zst35tz/women-makeup-product.webp"
+
+    },
+    {
+        "categoryId": 808,
+        "categoryName": "Kids",
+        "image": "https://i.ibb.co/hfWwg6j/kids.webp"
+
+    },
+    {
+        "categoryId": 909,
+        "categoryName": "Bags",
+        "image": "https://i.ibb.co/1229dk3/bags.webp"
+
+    }
+]
