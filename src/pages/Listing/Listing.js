@@ -10,12 +10,16 @@ function Listing() {
   const [products, setProducts] = useState();
   const { search } = useLocation();
   const value = search.split("=")[1];
+  const type = search.split("&")[1];
+
+  const url = `${process.env.REACT_APP_API}/product/product?category=${value}${
+    type ? `&type=${type}` : ""
+  }`;
+
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_API}/product/product?category=${value}`
-        );
+        const response = await axios.get(url);
         setProducts(response.data);
       } catch (err) {}
     }

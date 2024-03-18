@@ -29,30 +29,42 @@ function Details() {
     };
 
     fetchData();
-  }, [product, id]);
+  });
 
   return (
     <Layout>
-      <div className="container pt-4 ">
+      <div className=" p-4 ">
         {items ? (
           items.map((data, index) => (
             <div key={index} className={styles.details_container}>
-              {!selectImage ? (
-                <img className={styles.main_image} src={data.image} alt="" />
-              ) : (
-                <img className={styles.main_image} src={selectImage} alt="" />
-              )}
-              <div className="product details p-2 m-1">
-                <p>{data.productName}</p>
+              <div className="product details m-2">
                 {data.gallery.map((image, idx) => (
-                  <img
-                    className={styles.gallery}
-                    key={idx}
-                    src={image}
-                    onMouseEnter={() => setSelectImage(image)}
-                    alt=""
-                  />
+                  <div key={idx}>
+                    <img
+                      className={styles.gallery}
+                      src={image}
+                      onMouseEnter={() => setSelectImage(image)}
+                      alt=""
+                    />
+                  </div>
                 ))}
+              </div>
+              {!selectImage ? (
+                <img
+                  className={` m-2 ${styles.main_image}`}
+                  src={data.image}
+                  alt=""
+                />
+              ) : (
+                <img
+                  className={` m-2 ${styles.main_image}`}
+                  src={selectImage}
+                  alt=""
+                />
+              )}
+              <div className="p-4">
+                <span className=" ">{data.productName}</span>
+                <h1 className="">{data.type}</h1>
               </div>
             </div>
           ))
@@ -61,12 +73,16 @@ function Details() {
             <Loading />
           </center>
         )}
-        <button className="btn text-bg-danger m-2 fw-bold">Add to Cart</button>
-        <button className="btn text-bg-warning fw-bold">Buy Now</button>
-        <WhatsApp />
+        <div className="container">
+          <button className="btn text-bg-danger m-2 fw-bold">
+            Add to Cart
+          </button>
+          <button className="btn text-bg-warning fw-bold">Buy Now</button>
+          <WhatsApp />
+        </div>
 
-        <div className="tabs">
-          <Tabs />
+        <div className="container p-2">
+          <Tabs item={items} />
         </div>
       </div>
     </Layout>

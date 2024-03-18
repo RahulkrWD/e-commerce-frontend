@@ -2,11 +2,23 @@
   display: flex;
 }
 .main_image {
-  width: 400px;
-  height: 400px;
+  width: 430px;
+  height: 500px;
+  border-radius: 7px;
+  box-shadow: 3px 3px 10px #00000091, 3px 3px 10px #00000090;
+}
+.main_image:hover {
+  opacity: 0.9;
 }
 .gallery {
-  width: 80px;
-  margin: 10px;
+  width: 90px;
+  height: 90px;
+  margin-bottom: 10px;
   cursor: pointer;
+  box-shadow: 2px 2px 7px gray;
+  transition: all 0.3s ease;
+}
+.gallery:hover {
+  opacity: 0.7;
+  transform: scaleX(1.2);
 }

@@ -5,13 +5,17 @@ import { useLocation } from "react-router-dom";
 function FilterItems({ filter }) {
   const { search } = useLocation();
   let value = search.split("=")[1];
+  const type = search.split("&")[1];
 
   async function filterData(event) {
+    let sort = event.target.value;
+    const url = `${
+      process.env.REACT_APP_API
+    }/product/product?category=${value}${
+      type ? `&type=${type}` : ""
+    }&sort=${sort}`;
     try {
-      let sort = event.target.value;
-      const response = await axios.get(
-        `${process.env.REACT_APP_API}/product/product?category=${value}&sort=${sort}`
-      );
+      const response = await axios.get(url);
       filter(response.data);
     } catch (err) {
       filter([]);

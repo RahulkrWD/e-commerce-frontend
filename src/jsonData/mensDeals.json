@@ -1,41 +1,49 @@
 [
     {
+        "categoryId": 202,
         "categoryName": "Footwears",
         "type": "Slipper",
         "image": "https://i.ibb.co/9rzbZ9c/sl-1.webp",
         "rating": 4
     },
     {
+        "categoryId": 202,
         "categoryName": "Footwears",
         "type": "Slide",
         "image": "https://i.ibb.co/s9tjf91/sd-1.webp",
         "rating": 3.5
     }, {
+        "categoryId": 101,
         "categoryName": "Others",
         "type": "Cap",
         "image": "https://i.ibb.co/DWXFJfz/c-1.webp",
         "rating": 4.5
     }, {
+        "categoryId": 303,
         "categoryName": "Bracelet",
         "type": "Ring",
         "image": "https://i.ibb.co/NV967Xt/br-7.webp",
         "rating": 3.5
     }, {
+        "categoryId": 101,
         "categoryName": "Others",
         "type": "Belts",
         "image": "https://i.ibb.co/qY8WWxt/b-1.webp",
         "rating": 5
     }, {
+        "categoryId": 101,
         "categoryName": "Others",
         "type": "Sunglasses",
         "image": "https://i.ibb.co/5n5qMpW/s-3.webp",
         "rating": 3.5
     }, {
+        "categoryId": 606,
         "categoryName": "Wallets",
         "type": "Wallets",
         "image": "https://i.ibb.co/nDqJDBV/w-1.webp",
         "rating": 4.4
     }, {
+        "categoryId": 202,
         "categoryName": "Footwears",
         "type": "Socks",
         "image": "https://i.ibb.co/pxBKwZ5/shokes-mens.webp",

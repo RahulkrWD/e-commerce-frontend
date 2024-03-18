@@ -9,14 +9,14 @@ import { Link } from "react-router-dom";
 function Deal99() {
   return (
     <div>
-      <h5 className={`fw-bold p-1 ${styles.heading}`}> Deals 99 Only</h5>
+      <h5 className={`fw-bold p-1 ${styles.heading}`}> Deals 99</h5>
       <h6>Mens Deals</h6>
       <div className={styles.mens_deals}>
         {mensDeals.map((items, index) => (
           <Link
             key={index}
             className={styles.card}
-            to={`/category?${items.categoryName}=${items.categoryId}`}
+            to={`/category?${items.categoryName}=${items.categoryId}&${items.type}`}
           >
             <img src={items.image} className={` ${styles.image}`} alt="" />
             <div className="details">
@@ -41,7 +41,7 @@ function Deal99() {
           <Link
             key={index}
             className={styles.card}
-            to={`/category?${items.categoryName}=${items.categoryId}`}
+            to={`/category?${items.categoryName}=${items.categoryId}&${items.type}`}
           >
             <img src={items.image} className={` ${styles.image}`} alt="" />
             <div className="details">
@@ -63,7 +63,11 @@ function Deal99() {
       <div className={styles.coupons}>
         <div className="col d-flex flex-wrap">
           {Kitchen.map((items, index) => (
-            <Link key={index} className={styles.card}>
+            <Link
+              key={index}
+              className={styles.card}
+              to={`/category?${items.categoryName}=${items.categoryId}&${items.type}`}
+            >
               <img
                 src={items.image}
                 className={` ${styles.kitchen_image}`}

@@ -1,62 +1,75 @@
 [
     {
+        "categoryId": 707,
         "categoryName": "Highlighter",
         "type": "Blusher",
         "image": "https://i.ibb.co/pnn2n0F/h-4.webp",
         "rating": 4.5
     },{
+        "categoryId": 707,
         "categoryName": "Highlighter",
         "type": "Nailpaint",
         "image": "https://i.ibb.co/CWqW6Mj/h-6.webp",
         "rating": 5
     },{
+        "categoryId": 303,
         "categoryName": "Bracelet",
         "type": "Rings",
         "image": "https://i.ibb.co/NV967Xt/br-7.webp",
         "rating": 4.5
     },{
+
+        "categoryId": 303,
         "categoryName": "Bracelet",
         "type": "Bangles",
         "image": "https://i.ibb.co/d6LD87L/br-4.webp",
         "rating": 4
     },{
+        "categoryId": 303,
         "categoryName": "Bracelet",
         "type": "Earring",
         "image": "https://i.ibb.co/10hcGJp/br-3.webp",
         "rating": 4
     },{
+        "categoryId": 707,
         "categoryName": "Highlighter",
         "type": "Mascara",
         "image": "https://i.ibb.co/kGb1htV/h-1.webp",
         "rating": 4
     },{
+        "categoryId": 202,
         "categoryName": "Footwears",
         "type": "Slide",
         "image": "https://i.ibb.co/ThNL8fZ/sd-2.webp",
         "rating": 4
     },{
+        "categoryId": 101,
         "categoryName": "Others",
         "type": "Sunglasses",
         "image": "https://i.ibb.co/H4gCQB2/sn-1.webp",
         "rating": 4
     },{
+        "categoryId": 606,
         "categoryName": "Wallets",
         "type": "Wallets",
         "image": "https://i.ibb.co/dMtZjmr/ww-2.webp",
         "rating": 4
     },{
+        "categoryId": 202,
         "categoryName": "Footwears",
         "type": "Slipper",
         "image": "https://i.ibb.co/6FbcghV/sl-2.webp",
         "rating": 4
     },
     {
+        "categoryId": 303,
         "categoryName": "Bracelet",
         "type": "Nose Rings",
         "image": "https://i.ibb.co/XzLJGZL/br-6.webp",
         "rating": 4
     }
     ,{
+        "categoryId": 101,
         "categoryName": "Others",
         "type": "Belts",
         "image": "https://i.ibb.co/cyQty6S/b-2.webp",

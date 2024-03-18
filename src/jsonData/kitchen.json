@@ -1,22 +1,27 @@
 [
     {
+        "categoryId": 404,
         "categoryName": "Kitchen",
+        "type": "Plate",
         "image": "https://i.ibb.co/2h8Kq8Z/k-4.webp",
         "rating": 4
     },
     {
+        "categoryId": 404,
         "categoryName": "Kitchen",
-        "type": "",
+        "type": "Spoon",
         "image": "https://i.ibb.co/Bnt8Zp0/k-2.webp",
         "rating": 4.5
     },{
+        "categoryId": 404,
         "categoryName": "Kitchen",
-        "type": "",
+        "type": "knife",
         "image": "https://i.ibb.co/CPfS6Ch/k-3.webp",
         "rating": 4.5
     },{
+        "categoryId": 404,
         "categoryName": "Kitchen",
-        "type": "",
+        "type": "Spatula",
         "image": "https://i.ibb.co/NyJD5TM/k-1.webp",
         "rating": 3.5
     }
