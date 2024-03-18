@@ -6,6 +6,9 @@ import styles from "./Details.module.css";
 import WhatsApp from "./WhatsApp";
 import Loading from "../../components/layout/Loading";
 import Tabs from "./Tabs";
+import Rating from "@mui/material/Rating";
+import StarIcon from "@mui/icons-material/Star";
+import Delivery from "./Delivery";
 
 function Details() {
   const [items, setItems] = useState([]);
@@ -63,8 +66,32 @@ function Details() {
                 />
               )}
               <div className="p-4">
-                <span className=" ">{data.productName}</span>
-                <h1 className="">{data.type}</h1>
+                <span className="">{data.productName}</span>
+                <h4 className="pt-2 fw-bolder">{data.type}</h4>
+                <Rating
+                  style={{ fontSize: "14px" }}
+                  name="text-feedback"
+                  readOnly
+                  precision={0.5}
+                  value={data.rating}
+                  emptyIcon={
+                    <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+                  }
+                />
+                <div className="pt-3">
+                  <span className="fw-bold">&#8377;{data.cost}</span>
+                  <del className="p-3 text-secondary">
+                    &#8377;{data.cost + 200}
+                  </del>
+                  <span className=" p-2 text-danger fw-bold">
+                    {data.offer} off
+                  </span>
+                </div>
+                <button className="btn text-bg-danger m-2 fw-bold">
+                  Add to Cart
+                </button>
+                <WhatsApp />
+                <Delivery />
               </div>
             </div>
           ))
@@ -73,14 +100,6 @@ function Details() {
             <Loading />
           </center>
         )}
-        <div className="container">
-          <button className="btn text-bg-danger m-2 fw-bold">
-            Add to Cart
-          </button>
-          <button className="btn text-bg-warning fw-bold">Buy Now</button>
-          <WhatsApp />
-        </div>
-
         <div className="container p-2">
           <Tabs item={items} />
         </div>

@@ -24,9 +24,7 @@ export default function Tabs({ item }) {
         {item
           ? item.map((data, index) => (
               <div key={index}>
-                <TabPanel className="w-75" value="1">
-                  {data.description}
-                </TabPanel>
+                <TabPanel value="1">{data.description}</TabPanel>
                 <TabPanel value="2">{data.details}</TabPanel>
               </div>
             ))
