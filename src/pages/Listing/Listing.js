@@ -24,7 +24,7 @@ function Listing() {
       } catch (err) {}
     }
     fetchData();
-  }, [value]);
+  }, [value, url]);
   return (
     <Layout title={`${value} DeP.com`}>
       <div className={` ${styles.listing}`}>

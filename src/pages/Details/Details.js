@@ -9,6 +9,7 @@ import Tabs from "./Tabs";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import Delivery from "./Delivery";
+import AddCart from "../cart/Button";
 
 function Details() {
   const [items, setItems] = useState([]);
@@ -87,9 +88,7 @@ function Details() {
                     {data.offer} off
                   </span>
                 </div>
-                <button className="btn text-bg-danger m-2 fw-bold">
-                  Add to Cart
-                </button>
+                <AddCart item={data} />
                 <WhatsApp />
                 <Delivery />
               </div>

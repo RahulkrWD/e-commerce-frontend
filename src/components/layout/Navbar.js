@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Cart from "./Cart";
+import CartIcon from "./CartIcon";
 import Admin from "./Admin";
 
 import styles from "./Navbar.module.css";
@@ -57,7 +57,7 @@ function Navbar() {
           )}
           <li className="nav-item">
             <Link to={"/cart"} aria-current="page">
-              <Cart />
+              <CartIcon />
             </Link>
           </li>
         </ul>

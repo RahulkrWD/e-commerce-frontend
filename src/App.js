@@ -13,6 +13,7 @@ import Listing from "./pages/Listing/Listing";
 import Loading from "./components/layout/Loading";
 import Details from "./pages/Details/Details";
 import PopUp from "./pages/PopUp";
+import AddCart from "./pages/cart/AddCart";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -41,6 +42,7 @@ function App() {
         <Route path="/category" element={<Listing />}></Route>
         <Route path="/loading" element={<Loading />} />
         <Route path="/details/:product" element={<Details />} />
+        <Route path="/cart" element={<AddCart />} />
       </Routes>
       <ScrollToTop />
     </>
