@@ -3,7 +3,7 @@ import Carousel from "react-bootstrap/Carousel";
 import styles from "./HomePage.module.css";
 import { Link } from "react-router-dom";
 
-function AutomaticImageCarousel() {
+function Coupons() {
   const [index, setIndex] = useState(0);
 
   const images = [
@@ -23,7 +23,7 @@ function AutomaticImageCarousel() {
   }, [images.length]);
 
   return (
-    <Carousel activeIndex={index}>
+    <Carousel activeIndex={index} style={{ zIndex: "-1" }}>
       {images.map((imageUrl, idx) => (
         <Carousel.Item key={idx}>
           <Link to={"/offers"}>
@@ -39,4 +39,4 @@ function AutomaticImageCarousel() {
   );
 }
 
-export default AutomaticImageCarousel;
+export default Coupons;

@@ -21,7 +21,9 @@ function Listing() {
       try {
         const response = await axios.get(url);
         setProducts(response.data);
-      } catch (err) {}
+      } catch (err) {
+        console.log("Error fetching data", err);
+      }
     }
     fetchData();
   }, [value, url]);

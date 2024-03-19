@@ -6,6 +6,7 @@ import styles from "./Deals.module.css";
 import womenDeals from "../../jsonData/womenDeals.json";
 import Kitchen from "../../jsonData/kitchen.json";
 import { Link } from "react-router-dom";
+import Coupons from "./Coupons";
 function Deal99() {
   return (
     <div>
@@ -61,7 +62,7 @@ function Deal99() {
         ))}
       </div>
       <div className={styles.coupons}>
-        <div className="col d-flex flex-wrap">
+        <div className="d-flex flex-wrap">
           {Kitchen.map((items, index) => (
             <Link
               key={index}
@@ -73,27 +74,11 @@ function Deal99() {
                 className={` ${styles.kitchen_image}`}
                 alt=""
               />
-              <div className="details">
-                <Rating
-                  style={{ fontSize: "14px" }}
-                  name="text-feedback"
-                  readOnly
-                  precision={0.5}
-                  value={items.rating}
-                  emptyIcon={
-                    <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-                  }
-                />
-              </div>
             </Link>
           ))}
         </div>
-        <div className="coupons col w-25">
-          <img
-            style={{ width: "300px", height: "400px" }}
-            src="https://i.ibb.co/pPcW0d8/100rs-off.jpg"
-            alt=""
-          />
+        <div className="coupons w-50">
+          <Coupons />
         </div>
       </div>
     </div>

@@ -1,0 +1,10 @@
+.cart_container {
+  display: flex;
+  max-width: 1400px;
+  width: 45vw;
+}
+.cart_image {
+  padding: 10px;
+  width: 150px;
+  height: 150px;
+}
