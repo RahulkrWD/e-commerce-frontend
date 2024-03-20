@@ -26,7 +26,7 @@ function AutomaticImageCarousel() {
     <Carousel activeIndex={index}>
       {images.map((imageUrl, idx) => (
         <Carousel.Item key={idx}>
-          <Link to={"/offers"}>
+          <Link>
             <img
               className={`${styles.carouselImage} d-block w-100`}
               src={imageUrl}
