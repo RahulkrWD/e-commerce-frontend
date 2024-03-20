@@ -10,6 +10,7 @@ import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import Delivery from "./Delivery";
 import AddCart from "../cart/Button";
+import Offers from "./Offers";
 
 function Details() {
   const [items, setItems] = useState([]);
@@ -37,11 +38,11 @@ function Details() {
 
   return (
     <Layout title={"details DeP.com"}>
-      <div className=" p-4 ">
+      <div className="p-4 ">
         {items ? (
           items.map((data, index) => (
             <div key={index} className={styles.details_container}>
-              <div className="product details m-2">
+              <div className={`m-2 ${styles.gallery_container}`}>
                 {data.gallery.map((image, idx) => (
                   <div key={idx}>
                     <img
@@ -91,6 +92,7 @@ function Details() {
                 <AddCart item={data} />
                 <WhatsApp />
                 <Delivery />
+                <Offers />
               </div>
             </div>
           ))

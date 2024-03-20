@@ -10,6 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import styles from "./AddCart.module.css";
 import PriceDetails from "./PriceDetails";
+import Stepper from "./Stepper";
 
 export default function AddCart() {
   const dispatch = useDispatch();
@@ -81,6 +82,7 @@ export default function AddCart() {
         </div>
         {cartItems.length > 0 ? <PriceDetails price={cartItems} /> : ""}
       </div>
+      {cartItems.length > 0 ? <Stepper /> : ""}
     </Layout>
   );
 }
