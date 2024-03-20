@@ -1,0 +1,12 @@
+.price_details {
+  width: 300px;
+  height: fit-content;
+  border: 1px solid gainsboro;
+  box-shadow: inset 20px 20px 60px #00000006, inset -20px -20px 60px #6968682f;
+  padding: 10px;
+}
+.price_heading {
+  padding: 5px;
+  border-bottom: 3px solid green;
+  color: blueviolet;
+}

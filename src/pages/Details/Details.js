@@ -36,7 +36,7 @@ function Details() {
   });
 
   return (
-    <Layout>
+    <Layout title={"details DeP.com"}>
       <div className=" p-4 ">
         {items ? (
           items.map((data, index) => (

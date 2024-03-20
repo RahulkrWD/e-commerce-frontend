@@ -28,7 +28,7 @@ function Listing() {
     fetchData();
   }, [value, url]);
   return (
-    <Layout title={`${value} DeP.com`}>
+    <Layout title={"listing DeP.com"}>
       <div className={` ${styles.listing}`}>
         <div className={styles.filter_area}>
           <FilterItems filter={setProducts} />

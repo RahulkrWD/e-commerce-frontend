@@ -3,7 +3,7 @@ import { GoogleLogin as ReactGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 function GoogleLogin() {
   const navigate = useNavigate();

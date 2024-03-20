@@ -9,6 +9,7 @@ import {
 } from "../../store/cartSlice";
 import { Link } from "react-router-dom";
 import styles from "./AddCart.module.css";
+import PriceDetails from "./PriceDetails";
 
 export default function AddCart() {
   const dispatch = useDispatch();
@@ -27,51 +28,59 @@ export default function AddCart() {
   }
 
   return (
-    <Layout>
-      {cartItems.length > 0 ? (
-        cartItems.map((items) => (
-          <div key={items.id} className={styles.cart_container}>
-            <div className="cart image">
-              <img className={styles.cart_image} src={items.image} alt="" />
-            </div>
-            <div className="cart details">
-              <p>{items.productName}</p>
+    <Layout title={"cart Dep.com"}>
+      <div
+        className="d-flex justify-content-evenly p-3"
+        style={{ flexWrap: "wrap" }}
+      >
+        <div className="">
+          {cartItems.length > 0 ? (
+            cartItems.map((items, index) => (
+              <div key={index} className={styles.cart_container}>
+                <div className="cart image">
+                  <img className={styles.cart_image} src={items.image} alt="" />
+                </div>
+                <div className="cart details">
+                  <p>{items.productName}</p>
 
-              <h6>price: &#8377;{items.totalPrice}</h6>
-              <button
-                className="btn text-bg-success m-2"
-                onClick={() => handleIncrease(items)}
-              >
-                +
-              </button>
-              <span>{items.quantity}</span>
-              <button
-                className="btn text-bg-danger m-2"
-                onClick={() => handleDecrease(items)}
-              >
-                -
-              </button>
+                  <h6>price: &#8377;{items.totalPrice}</h6>
+                  <button
+                    className="btn text-bg-success m-2"
+                    onClick={() => handleIncrease(items)}
+                  >
+                    +
+                  </button>
+                  <span>{items.quantity}</span>
+                  <button
+                    className="btn text-bg-danger m-2"
+                    onClick={() => handleDecrease(items)}
+                  >
+                    -
+                  </button>
 
-              <button
-                className="btn text-bg-info"
-                onClick={() => handleRemove(items)}
-              >
-                Remove
-              </button>
+                  <button
+                    className="btn text-bg-info"
+                    onClick={() => handleRemove(items)}
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="bg-info container mt-4 p-4">
+              <center>
+                <img src="/image/no-cart.png" alt="" />
+                <br />
+                <Link to="/home" className="btn text-bg-dark fw-bold">
+                  Shop Now
+                </Link>
+              </center>
             </div>
-          </div>
-        ))
-      ) : (
-        <div className="bg-info container mt-4 p-4">
-          <center>
-            <img src="/image/no-cart.png" alt="" />
-            <br />
-            <Link to="/home" className="btn text-bg-dark fw-bold">
-              Shop Now
-            </Link>
-          </center>
+          )}
         </div>
-      )}
+        {cartItems.length > 0 ? <PriceDetails price={cartItems} /> : ""}
+      </div>
     </Layout>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../../components/layout/Layout";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
