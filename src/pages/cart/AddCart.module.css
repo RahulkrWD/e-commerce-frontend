@@ -1,7 +1,12 @@
+.add_cart_container {
+  box-shadow: inset 5px 5px 10px #c4bfbf2b, inset -5px -5px 10px #c4bfbf2b;
+}
 .cart_container {
   display: flex;
   max-width: 1400px;
   width: 45vw;
+  border-bottom: 2px solid rgba(128, 128, 128, 0.53);
+  padding: 7px;
 }
 .cart_image {
   padding: 10px;

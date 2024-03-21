@@ -34,7 +34,7 @@ export default function AddCart() {
         className="d-flex justify-content-evenly p-3"
         style={{ flexWrap: "wrap" }}
       >
-        <div className="">
+        <div className={styles.add_cart_container}>
           {cartItems.length > 0 ? (
             cartItems.map((items, index) => (
               <div key={index} className={styles.cart_container}>
@@ -71,7 +71,7 @@ export default function AddCart() {
           ) : (
             <div className="bg-info container mt-4 p-4">
               <center>
-                <img src="/image/no-cart.png" alt="" />
+                <img className="w-100" src="/image/no-cart.png" alt="" />
                 <br />
                 <Link to="/home" className="btn text-bg-dark fw-bold">
                   Shop Now
