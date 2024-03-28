@@ -46,29 +46,32 @@ export default function AddCart() {
                   <img className={styles.cart_image} src={items.image} alt="" />
                 </div>
                 <div className="cart details">
-                  <p>{items.productName}</p>
+                  <p className={styles.product_name}>{items.productName}</p>
 
-                  <h6>price: &#8377;{items.totalPrice}</h6>
-                  <button
-                    className="btn text-bg-success m-2"
+                  <p className="fw-bold">price: &#8377;{items.totalPrice}</p>
+                  <span
+                    className=" fw-bold fs-2"
+                    style={{ cursor: "pointer" }}
                     onClick={() => handleIncrease(items)}
                   >
                     +
-                  </button>
-                  <span>{items.quantity}</span>
-                  <button
-                    className="btn text-bg-danger m-2"
+                  </span>
+                  <span className="m-3 fw-bold">{items.quantity}</span>
+                  <span
+                    className="fw-bold fs-2"
+                    style={{ cursor: "pointer" }}
                     onClick={() => handleDecrease(items)}
                   >
                     -
-                  </button>
+                  </span>
 
-                  <button
-                    className="btn text-bg-info"
+                  <span
+                    className="btn fw-bold fs-9"
+                    style={{ cursor: "pointer" }}
                     onClick={() => handleRemove(items)}
                   >
                     Remove
-                  </button>
+                  </span>
                 </div>
               </div>
             ))
