@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Layout from "../components/layout/Layout";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
+import { Link } from "react-router-dom";
 
 function Profile() {
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
   const auth = localStorage.getItem("auth");
+  const role = localStorage.getItem("role");
 
   useEffect(() => {
     const authCheck = async () => {
@@ -45,20 +45,13 @@ function Profile() {
   return (
     <Layout title={"my-profile e-commerce"}>
       <p>Welcome, {userData?.username || auth}!</p>
-      <Outlet />
-      <Tabs>
-        <TabList>
-          <Tab>Title 1</Tab>
-          <Tab>Title 2</Tab>
-        </TabList>
-
-        <TabPanel>
-          <h2>Any content 1</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>Any content 2</h2>
-        </TabPanel>
-      </Tabs>
+      {role === "1" ? (
+        <Link to={`http://localhost:3001`} target="_blanks">
+          GO TO DASHBOARD
+        </Link>
+      ) : (
+        ""
+      )}
     </Layout>
   );
 }
