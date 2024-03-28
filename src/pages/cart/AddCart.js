@@ -7,12 +7,12 @@ import {
   decreaseQuantity,
   removeItem,
 } from "../../store/cartSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./AddCart.module.css";
 import PriceDetails from "./PriceDetails";
-import Stepper from "./Stepper";
 
 export default function AddCart() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
 
@@ -26,6 +26,10 @@ export default function AddCart() {
 
   function handleRemove(items) {
     dispatch(removeItem(items));
+  }
+
+  function placeOrder() {
+    localStorage.getItem("token") ? navigate("/stepper") : navigate("/login");
   }
 
   return (
@@ -80,9 +84,24 @@ export default function AddCart() {
             </div>
           )}
         </div>
-        {cartItems.length > 0 ? <PriceDetails price={cartItems} /> : ""}
+        <div>
+          {cartItems.length > 0 ? (
+            <>
+              <PriceDetails price={cartItems} />
+              <center className="p-3">
+                <button
+                  className="btn text-bg-success fw-bold"
+                  onClick={placeOrder}
+                >
+                  Buy Now
+                </button>
+              </center>
+            </>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
-      {cartItems.length > 0 ? <Stepper /> : ""}
     </Layout>
   );
 }

@@ -23,7 +23,6 @@ function GoogleLogin() {
         toast.success(response.data.message);
         const user = response.data.user;
         localStorage.setItem("auth", user.name);
-        localStorage.setItem("role", user.role);
         const token = response.data.token;
         localStorage.setItem("token", token);
         navigate("/home");

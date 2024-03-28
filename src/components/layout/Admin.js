@@ -39,8 +39,11 @@ export default function BasicMenu() {
           "aria-labelledby": "basic-button",
         }}
       >
-        <Link to={"/order"} className="nav-link text-center text-dark fw-bold">
-          Order
+        <Link
+          to={"/my-order"}
+          className="nav-link text-center text-dark fw-bold"
+        >
+          My Order
         </Link>
         <Link
           to={"/profile"}

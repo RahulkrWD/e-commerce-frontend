@@ -25,7 +25,6 @@ function Login() {
         toast.success(res.data.message);
         const user = res.data.user;
         localStorage.setItem("auth", user.name);
-        localStorage.setItem("role", user.role);
         const token = res.data.token;
         localStorage.setItem("token", token);
 

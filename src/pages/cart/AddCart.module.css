@@ -1,6 +1,3 @@
-.add_cart_container {
-  box-shadow: inset 5px 5px 10px #c4bfbf2b, inset -5px -5px 10px #c4bfbf2b;
-}
 .cart_container {
   display: flex;
   max-width: 1400px;
@@ -12,4 +9,5 @@
   padding: 10px;
   width: 150px;
   height: 150px;
+  border-radius: 30px;
 }
