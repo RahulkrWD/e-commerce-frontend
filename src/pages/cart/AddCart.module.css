@@ -1,7 +1,7 @@
 .cart_container {
   display: flex;
   max-width: 1400px;
-  width: 600px;
+  width: 550px;
   border-bottom: 2px solid rgba(128, 128, 128, 0.53);
   padding: 7px;
   margin: 20px;
@@ -12,14 +12,26 @@
   height: 150px;
   border-radius: 20px;
 }
+.product_name {
+  width: 400px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 @media (max-width: 670px) {
   .cart_container {
     width: 450px;
   }
+  .product_name {
+    width: 300px;
+  }
 }
-@media (max-width: 500px) {
+@media (max-width: 520px) {
   .cart_container {
     width: 350px;
+  }
+  .product_name {
+    width: 200px;
   }
   .cart_image {
     padding: 5px;
@@ -36,5 +48,8 @@
 @media (max-width: 420px) {
   .cart_container {
     width: 250px;
+  }
+  .product_name {
+    width: 160px;
   }
 }

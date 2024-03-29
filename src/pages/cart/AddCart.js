@@ -49,29 +49,31 @@ export default function AddCart() {
                   <p className={styles.product_name}>{items.productName}</p>
 
                   <p className="fw-bold">price: &#8377;{items.totalPrice}</p>
-                  <span
-                    className=" fw-bold fs-2"
-                    style={{ cursor: "pointer" }}
-                    onClick={() => handleIncrease(items)}
-                  >
-                    +
-                  </span>
-                  <span className="m-3 fw-bold">{items.quantity}</span>
-                  <span
-                    className="fw-bold fs-2"
-                    style={{ cursor: "pointer" }}
-                    onClick={() => handleDecrease(items)}
-                  >
-                    -
-                  </span>
+                  <div className="d-flex justify-content-evenly">
+                    <span
+                      className="fs-5"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => handleIncrease(items)}
+                    >
+                      +
+                    </span>
+                    <span className="fs-5">{items.quantity}</span>
+                    <span
+                      className="fs-5"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => handleDecrease(items)}
+                    >
+                      -
+                    </span>
 
-                  <span
-                    className="btn fw-bold fs-9"
-                    style={{ cursor: "pointer" }}
-                    onClick={() => handleRemove(items)}
-                  >
-                    Remove
-                  </span>
+                    <span
+                      className=""
+                      style={{ cursor: "pointer" }}
+                      onClick={() => handleRemove(items)}
+                    >
+                      Remove
+                    </span>
+                  </div>
                 </div>
               </div>
             ))
