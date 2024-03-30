@@ -14,7 +14,7 @@ function AddCart({ item }) {
     <Link
       to={"/cart"}
       onClick={handleAddToCart}
-      className="btn text-bg-danger m-2 fw-bold"
+      className="btn text-bg-warning m-2 fw-bold"
     >
       Add to Cart
     </Link>

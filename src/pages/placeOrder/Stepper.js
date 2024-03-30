@@ -6,6 +6,7 @@ import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Layout from "../../components/layout/Layout";
+import { useNavigate } from "react-router-dom";
 
 const steps = [
   "Select campaign settings",
@@ -14,6 +15,14 @@ const steps = [
 ];
 
 export default function HorizontalLinearStepper() {
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      return navigate("/login");
+    }
+  });
+
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
 
