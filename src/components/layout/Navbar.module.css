@@ -2,6 +2,9 @@
 .navbarFix {
   width: 100%;
   box-shadow: 2px 2px 4px gray;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 .brandName {
   font-size: 12px;
