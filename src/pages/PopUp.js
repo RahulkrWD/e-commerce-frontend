@@ -18,12 +18,20 @@ function PopUp() {
       className=" text-bg-dark w-100 d-flex justify-content-center align-items-center"
       style={{ height: "100vh" }}
     >
-      <h1 className={styles.R}>R</h1>
+      {/* <h1 className={styles.R}>R</h1>
       <h1 className={`p-1 ${styles.A}`}>a</h1>
       <h1 className={styles.H}>h</h1>
       <h1 className={`p-1 ${styles.U}`}>u</h1>
       <h1 className={styles.L}>l</h1>
-      <i className={` p-2 fs-3 fa-solid fa-camera ${styles.icons}`}></i>
+      <i className={` p-2 fs-3 fa-solid fa-camera ${styles.icons}`}></i> */}
+      <div>
+        <div>
+          <h3 className={` ${styles.Dep}`}>Dep.com</h3>
+        </div>
+        <div>
+          <div className={styles.custom_loader}></div>
+        </div>
+      </div>
     </div>
   );
 }

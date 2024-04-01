@@ -4,9 +4,9 @@ import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import styles from "./Deals.module.css";
 import womenDeals from "../../jsonData/womenDeals.json";
-import Kitchen from "../../jsonData/kitchen.json";
+//import Kitchen from "../../jsonData/kitchen.json";
 import { Link } from "react-router-dom";
-import Coupons from "./Coupons";
+//import Coupons from "./Coupons";
 function Deal99() {
   return (
     <div>
@@ -61,7 +61,7 @@ function Deal99() {
           </Link>
         ))}
       </div>
-      <div className={styles.coupons}>
+      {/* <div className={styles.coupons}>
         <div className="d-flex flex-wrap">
           {Kitchen.map((items, index) => (
             <Link
@@ -76,11 +76,11 @@ function Deal99() {
               />
             </Link>
           ))}
-        </div>
-        <div className="coupons w-50">
+        </div> */}
+      {/* <div className="coupons w-50">
           <Coupons />
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
     </div>
   );
 }
