@@ -6,6 +6,11 @@ import { ImCross } from "react-icons/im";
 
 function Darwer() {
   const user = localStorage.getItem("auth");
+  const token = localStorage.getItem("token");
+  function handleLogout() {
+    localStorage.removeItem("auth");
+    localStorage.removeItem("token");
+  }
   return (
     <>
       <span
@@ -109,12 +114,17 @@ function Darwer() {
             >
               <i className="fa-solid fa-gear"></i> Settings
             </Link>
-            <Link
-              to={"/logout"}
-              className="p-2 text-danger-emphasis text-decoration-none fs-5 d-block"
-            >
-              <i className="fa-solid fa-right-from-bracket"></i> Log Out
-            </Link>
+            {token ? (
+              <Link
+                to={"/login"}
+                onClick={handleLogout}
+                className="p-2 text-danger-emphasis text-decoration-none fs-5 d-block"
+              >
+                <i className="fa-solid fa-right-from-bracket"></i> Log Out
+              </Link>
+            ) : (
+              ""
+            )}
           </ul>
         </div>
       </div>
