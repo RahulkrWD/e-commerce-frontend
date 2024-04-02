@@ -2,7 +2,7 @@ import React from "react";
 
 function Address() {
   return (
-    <div className="w-100" style={{ minHeight: "40vh" }}>
+    <div className="w-100 p-2 container" style={{ minHeight: "40vh" }}>
       <input type="text" placeholder="Name" />
       <input type="Email" placeholder="Email" />
       <input type="text" placeholder="Phone" />

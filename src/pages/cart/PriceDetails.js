@@ -26,6 +26,7 @@ function PriceDetails({ price }) {
 
   let delivery = totalPrice > 400 ? 0 : 35;
   let finalPrice = totalPrice + delivery - discount;
+  localStorage.setItem("totalprice", finalPrice);
 
   const coupons = [
     { card: "100DEP", price: 100, message: "Discount 100" },
