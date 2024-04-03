@@ -41,8 +41,8 @@ function Details() {
       <div className="p-4 ">
         {items ? (
           items.map((data, index) => (
-            <>
-              <div key={index} className={styles.details_container}>
+            <div key={index}>
+              <div className={styles.details_container}>
                 <div className={`m-2 ${styles.gallery_container}`}>
                   {data.gallery.map((image, idx) => (
                     <div key={idx}>
@@ -101,7 +101,7 @@ function Details() {
               <div className="container p-2">
                 <Tabs item={items} />
               </div>
-            </>
+            </div>
           ))
         ) : (
           <center className="p-5">

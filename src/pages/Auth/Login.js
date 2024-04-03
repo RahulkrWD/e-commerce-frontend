@@ -27,6 +27,7 @@ function Login() {
         localStorage.setItem("auth", user.name);
         const token = res.data.token;
         localStorage.setItem("token", token);
+        localStorage.setItem("uniqueId", user.uniqueId);
 
         navigate("/home");
       } else {

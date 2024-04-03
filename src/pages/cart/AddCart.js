@@ -29,7 +29,9 @@ export default function AddCart() {
   }
 
   function placeOrder() {
-    localStorage.getItem("token") ? navigate("/stepper") : navigate("/login");
+    localStorage.getItem("token")
+      ? navigate("/placeOrder")
+      : navigate("/login");
   }
 
   return (

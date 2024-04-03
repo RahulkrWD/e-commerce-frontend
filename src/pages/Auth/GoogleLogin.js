@@ -25,6 +25,7 @@ function GoogleLogin() {
         localStorage.setItem("auth", user.name);
         const token = response.data.token;
         localStorage.setItem("token", token);
+        localStorage.setItem("uniqueId", user.uniqueId);
         navigate("/home");
       } else {
         toast.error(response.data.message);
