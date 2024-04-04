@@ -7,7 +7,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import PageNotFound from "./pages/PageNotFound";
 import Register from "./pages/Auth/Register";
 import Login from "./pages/Auth/Login";
-import Profile from "./pages/Profile";
+import Profile from "./pages/profile/Profile";
 import ForgetPassword from "./pages/Auth/ForgetPassword";
 import Listing from "./pages/Listing/Listing";
 import Loading from "./components/layout/Loading";

@@ -17,6 +17,7 @@
   color: chocolate;
   transition: all 0s ease-in-out;
 }
+
 .titleName:hover,
 .titleName:active {
   transform: scale(1.1, 1.1);
