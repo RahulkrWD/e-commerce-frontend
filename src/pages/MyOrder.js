@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "../components/layout/Layout";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Loading from "../components/layout/Loading";
 
 function MyOrder() {
   const [order, setOrder] = useState([]);
@@ -40,8 +41,11 @@ function MyOrder() {
           </div>
         ))
       ) : (
-        <div>
-          <h1>No orders found</h1>
+        <div
+          className="d-flex justify-content-center align-items-center w-100"
+          style={{ minHeight: "50vh" }}
+        >
+          <Loading />
         </div>
       )}
     </Layout>

@@ -61,6 +61,7 @@ function PlaceOrder() {
       });
       toast.success("successfull payment");
       navigate("/my-order");
+      localStorage.removeItem("cartItems");
     } catch (err) {
       console.log("Error during payment", err);
     }
