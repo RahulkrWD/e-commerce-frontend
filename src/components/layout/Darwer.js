@@ -10,6 +10,7 @@ function Darwer() {
   function handleLogout() {
     localStorage.removeItem("auth");
     localStorage.removeItem("token");
+    localStorage.removeItem("uniqueId");
   }
   return (
     <>
