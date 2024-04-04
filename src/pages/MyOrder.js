@@ -22,7 +22,7 @@ function MyOrder() {
           `${process.env.REACT_APP_API}/product/order?id=${uniqueId}`
         );
         if (response.data.success) {
-          setOrder(response.data.order);
+          setOrder(response.data.order.reverse());
         }
       } catch (err) {
         console.log("server error, Please try again", err);
