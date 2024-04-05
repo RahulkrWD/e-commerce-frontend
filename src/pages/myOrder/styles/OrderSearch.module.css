@@ -1,0 +1,14 @@
+.order_search {
+  position: sticky;
+  top: 80px;
+}
+.input_search {
+  width: 50%;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  border: transparent;
+  letter-spacing: 1px;
+  box-shadow: 6px 6px 5px gray, 5px 5px 15px gray;
+  margin: 5px;
+}

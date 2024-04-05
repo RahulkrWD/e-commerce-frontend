@@ -1,5 +1,7 @@
 .filterContainer {
   padding: 10px;
+  position: sticky;
+  top: 80px;
 }
 .starIcons {
   font-size: 10px;
@@ -9,6 +11,10 @@
   padding: 1px;
 }
 .responsiveFilterContainer {
+  position: fixed;
+  top: 75px;
+  z-index: 1;
+
   display: none;
   margin-top: 10px;
 }

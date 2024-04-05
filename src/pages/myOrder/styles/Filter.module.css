@@ -1,0 +1,17 @@
+.filter_container {
+  width: 200px;
+  padding: 20px;
+  border-radius: 10px;
+  height: min-content;
+  box-shadow: 10px 10px 5px gray, -5px -5px 5px gainsboro;
+  position: sticky;
+  top: 80px;
+}
+.filter_heading {
+  border-bottom: 3px solid blueviolet;
+  text-align: center;
+  padding: 5px;
+}
+.check_box {
+  transform: scale(1.4);
+}
