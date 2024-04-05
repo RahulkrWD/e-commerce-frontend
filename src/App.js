@@ -15,7 +15,7 @@ import Details from "./pages/Details/Details";
 import PopUp from "./pages/PopUp";
 import AddCart from "./pages/cart/AddCart";
 // import Stepper from "./pages/placeOrder/Stepper";
-import MyOrder from "./pages/MyOrder";
+import MyOrder from "./pages/myOrder/MyOrder";
 import PlaceOrder from "./pages/placeOrder/PlaceOrder";
 
 function ScrollToTop() {

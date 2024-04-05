@@ -1,0 +1,20 @@
+.order_container {
+  max-width: 1500px;
+  display: flex;
+  justify-content: space-around;
+  margin: 15px;
+  flex-wrap: wrap-reverse;
+}
+.input_container {
+  margin-top: 10px;
+  padding: 25px;
+  width: 440px;
+  box-shadow: inset 10px 10px 20px gainsboro, inset -10px -10px 20px gainsboro;
+}
+.input_fields {
+  outline: none;
+  border-width: 0;
+  border-bottom: 1px solid black;
+  margin: 15px 25px 15px 0;
+  width: 100%;
+}

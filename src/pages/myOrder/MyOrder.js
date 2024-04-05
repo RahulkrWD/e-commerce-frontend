@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../components/layout/Layout";
+import Layout from "../../components/layout/Layout";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Loading from "../components/layout/Loading";
+import Loading from "../../components/layout/Loading";
 
 function MyOrder() {
   const [order, setOrder] = useState([]);
@@ -15,7 +15,6 @@ function MyOrder() {
       return navigate("/login");
     }
   }, [navigate]);
-
   useEffect(() => {
     async function handleOrder() {
       try {

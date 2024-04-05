@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import { selectCartItems } from "../../store/cartSlice";
 import axios from "axios";
 import toast from "react-hot-toast";
+import OrderItems from "./OrderItems";
+import styles from "./style/PlaceOrder.module.css";
 
 function PlaceOrder() {
   const [orderPlaced, setOrderPlaced] = useState(false);
@@ -67,83 +69,107 @@ function PlaceOrder() {
     }
   }
   return (
-    <Layout>
-      <h1>placeorder</h1>
-      <form onSubmit={createOrder}>
-        <input
-          type="text"
-          placeholder="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type="email"
-          placeholder="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="phone"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="pincode"
-          value={pincode}
-          onChange={(e) => setPincode(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="city"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="state"
-          value={state}
-          onChange={(e) => setState(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          required
-        />
-        {!orderPlaced && <button>PlaceOrder</button>}
-      </form>
+    <Layout title={"order DeP.com"}>
+      <div className={styles.order_container}>
+        <div className={styles.input_container}>
+          <form onSubmit={createOrder}>
+            <input
+              className={styles.input_fields}
+              type="text"
+              placeholder="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+            <input
+              className={styles.input_fields}
+              type="email"
+              placeholder="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input
+              className={styles.input_fields}
+              type="text"
+              placeholder="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              required
+            />
+            <input
+              className={styles.input_fields}
+              type="text"
+              placeholder="pincode"
+              value={pincode}
+              onChange={(e) => setPincode(e.target.value)}
+              required
+            />
+            <input
+              className={styles.input_fields}
+              type="text"
+              placeholder="state"
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+              required
+            />
+            <input
+              className={styles.input_fields}
+              type="text"
+              placeholder="city"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              required
+            />
 
-      {orderId && (
-        <div>
-          <button
-            onClick={() => {
-              const options = {
-                key: `${process.env.REACT_APP_KEY}`,
-                amount: totalPrice * 100,
-                currency: "INR",
-                name: "DeP.com",
-                order_id: orderId,
-                handler: function (response) {
-                  handlePaymentSuccess(response.razorpay_payment_id);
-                },
-              };
-              const rzp1 = new window.Razorpay(options);
-              rzp1.open();
-            }}
-          >
-            Pay Now
-          </button>
+            <input
+              className={styles.input_fields}
+              type="text"
+              placeholder="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              required
+            />
+            <br />
+
+            {!orderPlaced && (
+              <center>
+                <button className="btn text-bg-primary fw-bold">
+                  PlaceOrder
+                </button>
+              </center>
+            )}
+          </form>
+
+          {orderId && (
+            <div>
+              <center>
+                <button
+                  className="btn text-bg-danger fw-bold"
+                  onClick={() => {
+                    const options = {
+                      key: `${process.env.REACT_APP_KEY}`,
+                      amount: totalPrice * 100,
+                      currency: "INR",
+                      name: "DeP.com",
+                      order_id: orderId,
+                      handler: function (response) {
+                        handlePaymentSuccess(response.razorpay_payment_id);
+                      },
+                    };
+                    const rzp1 = new window.Razorpay(options);
+                    rzp1.open();
+                  }}
+                >
+                  Pay Now
+                </button>
+              </center>
+            </div>
+          )}
         </div>
-      )}
+
+        <OrderItems />
+      </div>
     </Layout>
   );
 }
