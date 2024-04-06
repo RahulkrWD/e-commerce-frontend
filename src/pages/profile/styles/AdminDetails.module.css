@@ -1,0 +1,9 @@
+.profile_details {
+  border-bottom: 2px solid gray;
+  padding: 3px;
+}
+.input_fields {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid black;
+}

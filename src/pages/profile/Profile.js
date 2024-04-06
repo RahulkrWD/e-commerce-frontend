@@ -3,6 +3,9 @@ import Layout from "../../components/layout/Layout";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loading from "../../components/layout/Loading";
+import AdminPic from "./AdminPic";
+import AdminDetails from "./AdminDetails";
+import MyCoupon from "./MyCoupon";
 
 function Profile() {
   const [profile, setProfile] = useState("");
@@ -25,20 +28,26 @@ function Profile() {
   }, [uniqueId]);
   return (
     <Layout title={"my-profile e-commerce"}>
-      {profile ? (
-        profile.map((item, index) => (
-          <div key={index}>
-            <h5>{item.name}</h5>
+      <div>
+        {profile ? (
+          profile.map((item, index) => (
+            <div key={index} className="d-flex justify-content-around">
+              <div>
+                <AdminPic profile={item} />
+                <MyCoupon />
+              </div>
+              <AdminDetails profile={item} />
+            </div>
+          ))
+        ) : (
+          <div
+            className="d-flex justify-content-center align-items-center w-100"
+            style={{ minHeight: "50vh" }}
+          >
+            <Loading />
           </div>
-        ))
-      ) : (
-        <div
-          className="d-flex justify-content-center align-items-center w-100"
-          style={{ minHeight: "50vh" }}
-        >
-          <Loading />
-        </div>
-      )}
+        )}
+      </div>
     </Layout>
   );
 }

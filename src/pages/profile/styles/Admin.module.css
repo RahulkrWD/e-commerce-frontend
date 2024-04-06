@@ -1,0 +1,13 @@
+.admin_container {
+  display: flex;
+  width: fit-content;
+  box-shadow: 7px 7px 7px purple, -2px -2px 5px purple;
+  padding: 15px;
+  margin: 10px;
+}
+.profile_pic {
+  background-color: gray;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
