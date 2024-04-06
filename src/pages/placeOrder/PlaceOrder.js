@@ -21,6 +21,8 @@ function PlaceOrder() {
   const [address, setAddress] = useState("");
   const uniqueId = localStorage.getItem("uniqueId");
   const totalPrice = localStorage.getItem("totalprice");
+  const storedPricesJson = localStorage.getItem("price");
+  const price = JSON.parse(storedPricesJson);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   useEffect(() => {
@@ -45,6 +47,7 @@ function PlaceOrder() {
           uniqueId,
           totalPrice,
           products,
+          price,
         }
       );
       const { orderId } = response.data;

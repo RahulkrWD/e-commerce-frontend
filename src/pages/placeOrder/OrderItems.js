@@ -6,8 +6,8 @@ function OrderItems() {
   const product = useSelector(selectCartItems);
   return (
     <div className="m-2">
-      {product.map((item) => (
-        <div className={styles.items_container}>
+      {product.map((item, index) => (
+        <div key={index} className={styles.items_container}>
           <div className="order image">
             <img className={styles.main_image} src={item.image} alt="" />
           </div>

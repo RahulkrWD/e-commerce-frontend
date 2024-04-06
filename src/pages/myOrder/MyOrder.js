@@ -10,7 +10,7 @@ function MyOrder() {
     <Layout title={"order DeP.com"}>
       <div className={`container ${styles.order_container}`}>
         <Filter />
-        <div>
+        <div className="p-3 w-100">
           <OrderSearch />
           <OrderItems />
         </div>

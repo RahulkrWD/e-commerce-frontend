@@ -1,0 +1,27 @@
+.items_container {
+  padding: 20px;
+}
+.order_items {
+  box-shadow: 20px 20px 10px gray, -5px -5px 10px gray;
+  padding: 7px;
+  border-radius: 5px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.order_image {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px gray;
+  margin: 10px;
+}
+.order_image:hover {
+  box-shadow: 10px 10px 5px gray;
+}
+.product_name {
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -26,6 +26,17 @@ function PriceDetails({ price }) {
 
   let delivery = totalPrice > 400 ? 0 : 35;
   let finalPrice = totalPrice + delivery - discount;
+  const prices = [
+    {
+      price: totalPrice,
+      discount: discount,
+      delivery: delivery,
+      finalPrice: finalPrice,
+    },
+  ];
+
+  const storePrices = JSON.stringify(prices);
+  localStorage.setItem("price", storePrices);
   localStorage.setItem("totalprice", finalPrice);
 
   const coupons = [
