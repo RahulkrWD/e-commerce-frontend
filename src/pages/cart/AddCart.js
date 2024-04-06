@@ -8,7 +8,7 @@ import {
   removeItem,
 } from "../../store/cartSlice";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "./AddCart.module.css";
+import styles from "./styles/AddCart.module.css";
 import PriceDetails from "./PriceDetails";
 
 export default function AddCart() {

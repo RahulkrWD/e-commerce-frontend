@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./PriceDetails.module.css";
+import styles from "./styles/PriceDetails.module.css";
 import TextField from "@mui/material/TextField";
 
 function PriceDetails({ price }) {

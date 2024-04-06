@@ -81,9 +81,9 @@ function OrderItems() {
           </div>
         ))
       ) : (
-        <div className="" style={{ minHeight: "50vh" }}>
-          <Loading />
-        </div>
+        <center>
+          <h4>No Data found</h4>
+        </center>
       )}
     </div>
   );
