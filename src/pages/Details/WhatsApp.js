@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styles from "./Contact.module.css";
 
 const WhatsApp = () => {
   const phoneNumber = "7320810579";
@@ -8,10 +9,13 @@ const WhatsApp = () => {
   return (
     <Link
       to={whatsappLink}
-      className="text-decoration-none btn m-2 text-bg-success fw-bold"
       target="_blank"
+      className={`m-2 text-decoration-none ${styles.contactButton}`}
     >
-      Contact Me on WhatsApp
+      Contact
+      <div className={styles.iconButton}>
+        <i className="fs-5 fa-brands fa-whatsapp"></i>
+      </div>
     </Link>
   );
 };

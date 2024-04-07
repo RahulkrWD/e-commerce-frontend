@@ -92,12 +92,16 @@ function Details() {
                       {data.offer} off
                     </span>
                   </div>
-                  <AddCart item={data} />
-                  <WhatsApp />
+
                   <Delivery />
                   <Offers />
                 </div>
               </div>
+              <div className="d-flex">
+                <AddCart item={data} />
+                <WhatsApp />
+              </div>
+
               <div className="container p-2">
                 <Tabs item={items} />
               </div>

@@ -1,6 +1,8 @@
-.profile_details {
-  border-bottom: 2px solid gray;
-  padding: 3px;
+.Admin_details_container {
+  box-shadow: 10px 10px 5px gray, inset -10px -10px 20px gray;
+  height: fit-content;
+  padding: 15px;
+  margin: 15px;
 }
 .input_fields {
   border: none;

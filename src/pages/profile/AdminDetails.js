@@ -6,43 +6,45 @@ function AdminDetails({ profile }) {
   const [phone, setPhone] = useState(profile.phone);
   const [email, setEmail] = useState(profile.email);
   return (
-    <div>
+    <div className={styles.Admin_details_container}>
       <h5
         className="p-2 "
         style={{ width: "fit-content", borderBottom: "2px solid red" }}
       >
         Personal Information
       </h5>
-      <label>Name: </label>
+      <label htmlFor="name">Name: </label>
       <input
-        className={`p-1 ${styles.input_fields}`}
+        id="name"
+        className={`p-2 m-3 ${styles.input_fields}`}
         type="text"
         placeholder="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <span className="p-2 text-primary fw-bold">Edit</span>
-      <br />
-      <label>Phone: </label>
+
+      <label htmlFor="phone">Phone: </label>
       <input
-        className={`p-1 ${styles.input_fields}`}
+        id="phone"
+        className={`p-2 m-3 ${styles.input_fields}`}
         type="text"
         placeholder="Phone"
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
       />
-      <span className="p-2 text-primary fw-bold">Edit</span>
       <br />
-      <label>Email: </label>
+      <label htmlFor="email">Email: </label>
       <input
-        className={`p-1 ${styles.input_fields}`}
+        id="email"
+        className={`p-2 m-3 w-75 ${styles.input_fields}`}
         type="text"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-
-      <br />
+      <center>
+        <button className="btn text-bg-primary">Update Profile</button>
+      </center>
     </div>
   );
 }
