@@ -35,7 +35,7 @@ function Navbar() {
             </>
           ) : (
             <>
-              <li className="nav-item mt-2">
+              <li className="d-flex m-2">
                 <Link
                   to={"/login"}
                   className="nav-link fw-bold text-dark"
@@ -43,11 +43,10 @@ function Navbar() {
                 >
                   Login
                 </Link>
-              </li>
-              <li className="nav-item mt-2">
+                <span className="fw-bold">/</span>
                 <Link
                   to={"/register"}
-                  className={`nav-link fw-bold text-dark ${styles.register}`}
+                  className="nav-link fw-bold text-dark"
                   aria-current="page"
                 >
                   Register

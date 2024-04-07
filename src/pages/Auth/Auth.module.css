@@ -2,8 +2,12 @@
 .registerPage,
 .loginPage,
 .forgetpassword {
+  background-image: url("/public/image/image.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0px;
   width: 100%;
-  min-height: 70vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,4 +22,66 @@
   border-bottom: 2px solid rebeccapurple;
   padding-bottom: 3px;
   width: fit-content;
+}
+.input_type {
+  outline: none;
+  padding: 7px;
+  border: none;
+  border-bottom: 2px solid gray;
+  background-color: transparent;
+}
+.send_otp {
+  --color: #00a97f;
+  padding: 0.8em 1.7em;
+  background-color: transparent;
+  border-radius: 0.3em;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.5s;
+  font-weight: bold;
+  font-size: 17px;
+  border: 1px solid;
+  font-family: inherit;
+  text-transform: uppercase;
+  color: var(--color);
+  z-index: 1;
+}
+
+.send_otp::before,
+.send_otp::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  background-color: var(--color);
+  transition: 1s ease;
+}
+
+.send_otp::before {
+  top: -1em;
+  left: -1em;
+}
+
+.send_otp::after {
+  left: calc(100% + 1em);
+  top: calc(100% + 1em);
+}
+
+.send_otp:hover::before,
+.send_otp:hover::after {
+  height: 410px;
+  width: 410px;
+}
+
+.send_otp:hover {
+  color: rgb(10, 25, 30);
+}
+
+.send_otp:active {
+  filter: brightness(0.8);
 }

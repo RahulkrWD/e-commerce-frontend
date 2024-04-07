@@ -42,7 +42,6 @@
   }
 }
 @media (max-width: 350px) {
-  .register,
   .offers {
     display: none;
   }

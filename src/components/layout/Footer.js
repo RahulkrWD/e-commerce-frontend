@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <div
-      className="bg-dark text-light p-5 mt-5 text-center"
+      className="bg-dark text-light p-5 text-center"
       style={{ height: "300px" }}
     >
       <h3 className="text-center m-5">
