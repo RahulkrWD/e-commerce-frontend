@@ -69,7 +69,12 @@ function Login() {
               <Link to={"/forget-password"} className=" w-100 ">
                 Forget Password
               </Link>
-              <hr />
+
+              <div className="m-3">
+                <GoogleOAuthProvider clientId={process.env.REACT_APP_Clint_id}>
+                  <GoogleLogin />
+                </GoogleOAuthProvider>
+              </div>
               <Link
                 to={"/register"}
                 className="text-decoration-none text-dark m-3"
@@ -79,11 +84,6 @@ function Login() {
             </div>
           </form>
         </center>
-        <div className="m-3">
-          <GoogleOAuthProvider clientId={process.env.REACT_APP_Clint_id}>
-            <GoogleLogin />
-          </GoogleOAuthProvider>
-        </div>
       </div>
     </Layout>
   );

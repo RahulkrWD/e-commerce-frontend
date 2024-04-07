@@ -144,17 +144,17 @@ function Register() {
             <Link to={"/forget-password"} className="w-100">
               forget Password
             </Link>
-            <hr />
+            <div className="m-3">
+              <GoogleOAuthProvider clientId={process.env.REACT_APP_Clint_id}>
+                <GoogleRegister />
+              </GoogleOAuthProvider>
+            </div>
+
             <Link to={"/login"} className="text-decoration-none text-dark">
               Already have an account <strong>Login</strong>
             </Link>
           </div>
         </center>
-        <div className="m-3">
-          <GoogleOAuthProvider clientId={process.env.REACT_APP_Clint_id}>
-            <GoogleRegister />
-          </GoogleOAuthProvider>
-        </div>
       </div>
     </Layout>
   );
