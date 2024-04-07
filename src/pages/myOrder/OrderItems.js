@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Loading from "../../components/layout/Loading";
 import styles from "./styles/OrderItems.module.css";
 //import { Link } from "react-router-dom";
 

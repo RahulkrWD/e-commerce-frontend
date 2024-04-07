@@ -99,7 +99,7 @@ function ForgetPassword() {
                   <input
                     className={`w-100  mt-3 ${styles.input_type}`}
                     placeholder="Enter OTP"
-                    type="text"
+                    type="password"
                     value={otp}
                     onChange={(e) => setOtp(e.target.value)}
                   />
