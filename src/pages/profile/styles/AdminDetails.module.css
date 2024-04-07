@@ -2,10 +2,25 @@
   box-shadow: 10px 10px 5px gray, inset -10px -10px 20px gray;
   height: fit-content;
   padding: 15px;
-  margin: 15px;
+  margin: 20px;
 }
-.input_fields {
+.input_fields,
+.input_field {
   border: none;
   outline: none;
   border-bottom: 2px solid black;
+}
+.input_field {
+  width: 75%;
+}
+.break {
+  display: none;
+}
+@media (max-width: 630px) {
+  .break {
+    display: block;
+  }
+  .input_field {
+    width: fit-content;
+  }
 }

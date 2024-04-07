@@ -13,6 +13,7 @@ function AdminDetails({ profile }) {
       >
         Personal Information
       </h5>
+
       <label htmlFor="name">Name: </label>
       <input
         id="name"
@@ -22,7 +23,7 @@ function AdminDetails({ profile }) {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-
+      <br className={styles.break} />
       <label htmlFor="phone">Phone: </label>
       <input
         id="phone"
@@ -36,7 +37,7 @@ function AdminDetails({ profile }) {
       <label htmlFor="email">Email: </label>
       <input
         id="email"
-        className={`p-2 m-3 w-75 ${styles.input_fields}`}
+        className={`p-2 m-3 ${styles.input_field}`}
         type="text"
         placeholder="Email"
         value={email}

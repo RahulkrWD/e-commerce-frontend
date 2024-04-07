@@ -45,7 +45,7 @@
   font-family: inherit;
   text-transform: uppercase;
   color: var(--color);
-  z-index: 1;
+  z-index: 0;
 }
 
 .send_otp::before,

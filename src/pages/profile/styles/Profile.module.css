@@ -1,0 +1,14 @@
+.profile_container {
+  flex-wrap: wrap;
+}
+@media (max-width: 920px) {
+  .admin_details {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+@media (max-width: 630px) {
+  .admin_details {
+    flex-wrap: wrap;
+  }
+}

@@ -1,11 +1,13 @@
 /* Navbar.js */
 .navbarFix {
   width: 100%;
+  flex-wrap: wrap-reverse;
   box-shadow: 2px 2px 4px gray;
   position: sticky;
   top: 0;
   z-index: 1;
 }
+
 .brandName {
   font-size: 12px;
   color: blueviolet;
@@ -17,15 +19,11 @@
   color: chocolate;
   transition: all 0s ease-in-out;
 }
-
-.titleName:hover,
-.titleName:active {
-  transform: scale(1.1, 1.1);
-}
 .drowerBtn {
   border-radius: 7px;
   cursor: pointer;
 }
+
 .listItems {
   position: relative;
   top: 10px;
@@ -33,6 +31,7 @@
   display: flex;
   gap: 25px;
 }
+
 @media (max-width: 400px) {
   .brandName {
     font-size: 10px;

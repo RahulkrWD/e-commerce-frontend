@@ -38,7 +38,7 @@ function Details() {
 
   return (
     <Layout title={"details DeP.com"}>
-      <div className="p-4 ">
+      <div className="p-2">
         {items ? (
           items.map((data, index) => (
             <div key={index}>
@@ -68,7 +68,7 @@ function Details() {
                     alt=""
                   />
                 )}
-                <div className="p-4">
+                <div className="p-2">
                   <span className="">{data.productName}</span>
                   <h4 className="pt-2 fw-bolder">{data.type}</h4>
                   <p className={styles.stock}>In Stock</p>
@@ -92,14 +92,14 @@ function Details() {
                       {data.offer} off
                     </span>
                   </div>
+                  <div className="d-flex">
+                    <AddCart item={data} />
+                    <WhatsApp />
+                  </div>
 
                   <Delivery />
                   <Offers />
                 </div>
-              </div>
-              <div className="d-flex">
-                <AddCart item={data} />
-                <WhatsApp />
               </div>
 
               <div className="container p-2">

@@ -1,0 +1,21 @@
+.search_product {
+  width: 150%;
+  padding: 7px;
+  outline: none;
+  border: transparent;
+  border-radius: 20px;
+}
+@media (max-width: 780px) {
+  .search_product {
+    width: 100%;
+  }
+}
+
+@media (max-width: 610px) {
+  .search_container {
+    width: 100%;
+  }
+  .search_product {
+    margin-top: 7px;
+  }
+}

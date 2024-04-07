@@ -5,7 +5,7 @@ import axios from "axios";
 import Loading from "../../components/layout/Loading";
 import AdminPic from "./AdminPic";
 import AdminDetails from "./AdminDetails";
-import MyCoupon from "./MyCoupon";
+import styles from "./styles/Profile.module.css";
 
 function Profile() {
   const [profile, setProfile] = useState("");
@@ -31,11 +31,12 @@ function Profile() {
       <div>
         {profile ? (
           profile.map((item, index) => (
-            <div key={index} className="d-flex justify-content-around">
-              <div>
-                <AdminPic profile={item} />
-                <MyCoupon />
-              </div>
+            <div
+              key={index}
+              className={`d-flex justify-content-evenly ${styles.profile_container}`}
+            >
+              <AdminPic profile={item} />
+
               <AdminDetails profile={item} />
             </div>
           ))
