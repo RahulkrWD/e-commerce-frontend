@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./styles/OrderItems.module.css";
+import PriceDetails from "./PriceDetails";
 //import { Link } from "react-router-dom";
 
 function OrderItems() {
@@ -32,7 +33,7 @@ function OrderItems() {
   }, [uniqueId]);
 
   return (
-    <div className={styles.items_container}>
+    <div>
       {order.length > 0 ? (
         order.map((item, index) => (
           <div key={index} className={styles.order_items}>
@@ -58,7 +59,7 @@ function OrderItems() {
                 Order Id: <strong>{item.orderId}</strong>
               </span>
               <h6>
-                Name:
+                Name:{" "}
                 <strong>
                   {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
                 </strong>
@@ -70,6 +71,9 @@ function OrderItems() {
               <h6>
                 Total Price: <strong>{item.totalPrice}</strong>
               </h6>
+              {item.price.map((data, index) => (
+                <PriceDetails key={index} details={data} />
+              ))}
               <span
                 className="text-bg-success fw-bold p-1"
                 style={{ borderRadius: "5px" }}

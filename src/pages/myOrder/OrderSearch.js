@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles/OrderSearch.module.css";
+import Filter from "./Filter";
 
 function OrderSearch() {
   return (
@@ -9,7 +10,7 @@ function OrderSearch() {
         className={styles.input_search}
         placeholder="Search here..."
       />
-      <button className="btn text-bg-primary m-3 fs-5">Search</button>
+      <Filter />
     </div>
   );
 }

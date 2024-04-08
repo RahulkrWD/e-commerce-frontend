@@ -1,6 +1,7 @@
 .order_search {
   position: sticky;
   top: 80px;
+  display: flex;
 }
 .input_search {
   width: 50%;
@@ -11,4 +12,9 @@
   letter-spacing: 1px;
   box-shadow: 6px 6px 5px gray, 5px 5px 15px gray;
   margin: 5px;
+}
+@media (max-width: 610px) {
+  .order_search {
+    top: 140px;
+  }
 }

@@ -12,7 +12,7 @@
 }
 .responsiveFilterContainer {
   position: fixed;
-  top: 75px;
+  top: 90px;
   z-index: 1;
 
   display: none;
@@ -32,6 +32,12 @@
 @media (max-width: 630px) {
   .responsiveFilterContainer {
     width: 350px;
+  }
+}
+
+@media (max-width: 610px) {
+  .responsiveFilterContainer {
+    top: 140px;
   }
 }
 

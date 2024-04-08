@@ -1,13 +1,13 @@
-.items_container {
-  padding: 20px;
-}
 .order_items {
+  max-width: 1500px;
+  width: 100%;
   box-shadow: 20px 20px 10px gray, -5px -5px 10px gray;
   padding: 7px;
   border-radius: 5px;
-  margin-bottom: 40px;
+  margin: 40px 0;
   display: flex;
   justify-content: space-between;
+  transition: all 0.5s ease;
 }
 .order_image {
   width: 100px;
@@ -24,4 +24,23 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media (max-width: 1000px) {
+  .product_name {
+    width: 200px;
+  }
+}
+
+@media (max-width: 770px) {
+  .order_items {
+    flex-wrap: wrap-reverse;
+  }
+}
+
+@media (max-width: 420px) {
+  .order_image {
+    width: 80px;
+    height: 80px;
+  }
 }

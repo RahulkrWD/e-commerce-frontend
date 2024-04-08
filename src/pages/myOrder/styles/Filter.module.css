@@ -1,11 +1,14 @@
+.dropdown {
+  margin: 10px 30px;
+  letter-spacing: 1px;
+}
 .filter_container {
+  margin: 10px;
   width: 200px;
   padding: 20px;
   border-radius: 10px;
   height: min-content;
   box-shadow: 10px 10px 5px gray, -5px -5px 5px gainsboro;
-  position: sticky;
-  top: 80px;
 }
 .filter_heading {
   border-bottom: 3px solid blueviolet;
@@ -14,4 +17,11 @@
 }
 .check_box {
   transform: scale(1.4);
+}
+
+@media (max-width: 500px) {
+  .dropdown {
+    letter-spacing: normal;
+    margin: 10px;
+  }
 }
