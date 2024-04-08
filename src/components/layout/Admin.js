@@ -1,10 +1,13 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Menu from "@mui/material/Menu";
 import { Link } from "react-router-dom";
 
 export default function BasicMenu() {
   const user = localStorage.getItem("auth");
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const name = user.split(" ")[0];
+  const finalName = name.charAt(0).toUpperCase() + name.slice(1);
+
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -12,7 +15,7 @@ export default function BasicMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  // logout function
+  //logout function
   function handleLogout() {
     localStorage.removeItem("auth");
     localStorage.removeItem("token");
@@ -28,8 +31,8 @@ export default function BasicMenu() {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        <strong className="text-danger">Hi</strong>
-        <strong> {user.split(" ")[0]}</strong>
+        <strong className="text-danger">Hi </strong>
+        <strong>{finalName}</strong>
       </Link>
       <Menu
         id="basic-menu"

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Layout from "../../components/layout/Layout";
 import styles from "./Details.module.css";
@@ -14,17 +14,16 @@ import Offers from "./Offers";
 
 function Details() {
   const [items, setItems] = useState([]);
-  const { product } = useParams();
-  const { search } = useLocation();
-  const categoryId = product.split("=")[1];
-  const id = search.split("=")[1];
+  const { categoryId } = useParams();
+  const { productId } = useParams();
+
   const [selectImage, setSelectImage] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/product/product?category=${categoryId}&id=${id}`
+          `${process.env.REACT_APP_API}/product/product/${categoryId}?product=${productId}`
         );
         setItems(response.data);
       } catch (err) {
@@ -34,7 +33,7 @@ function Details() {
     };
 
     fetchData();
-  });
+  }, [categoryId, productId]);
 
   return (
     <Layout title={"details DeP.com"}>

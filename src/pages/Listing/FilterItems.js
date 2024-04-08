@@ -1,19 +1,22 @@
 import React from "react";
 import styles from "./stylesheet/Filter.module.css";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 function FilterItems({ filter }) {
-  const { search } = useLocation();
-  let value = search.split("=")[1];
-  const type = search.split("&")[1];
+  const { id } = useParams();
+  console.log(id);
+  const value = id.split("&")[0];
+  const type = id.split("&")[1];
 
   async function filterData(event) {
     let sort = event.target.value;
-    const url = `${
-      process.env.REACT_APP_API
-    }/product/product?category=${value}${
-      type ? `&type=${type}` : ""
-    }&sort=${sort}`;
+    let url;
+    if (type === undefined) {
+      url = `${process.env.REACT_APP_API}/product/product/${id}?sort=${sort}`;
+    } else {
+      url = `${process.env.REACT_APP_API}/product/product/${value}?type=${type}&sort=${sort}`;
+    }
+
     try {
       const response = await axios.get(url);
       filter(response.data);

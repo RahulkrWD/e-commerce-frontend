@@ -42,9 +42,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/forget-password" element={<ForgetPassword />} />
-        <Route path="/category" element={<Listing />}></Route>
+        <Route path="/product/:id" element={<Listing />}></Route>
         <Route path="/loading" element={<Loading />} />
-        <Route path="/details/:product" element={<Details />} />
+        <Route path="/details/:categoryId/:productId" element={<Details />} />
         <Route path="/cart" element={<AddCart />} />
         {/* <Route path="/stepper" element={<Stepper />} /> */}
         <Route path="/my-order" element={<MyOrder />} />

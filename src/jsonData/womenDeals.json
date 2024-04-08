@@ -51,7 +51,7 @@
     },{
         "categoryId": 606,
         "categoryName": "Wallets",
-        "type": "Wallets",
+        "type": "Wallet",
         "image": "https://i.ibb.co/dMtZjmr/ww-2.webp",
         "rating": 4
     },{
@@ -71,7 +71,7 @@
     ,{
         "categoryId": 101,
         "categoryName": "Others",
-        "type": "Belts",
+        "type": "Belt",
         "image": "https://i.ibb.co/cyQty6S/b-2.webp",
         "rating": 4
     }

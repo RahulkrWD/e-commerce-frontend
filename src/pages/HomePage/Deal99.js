@@ -17,7 +17,7 @@ function Deal99() {
           <Link
             key={index}
             className={styles.card}
-            to={`/category?${items.categoryName}=${items.categoryId}&${items.type}`}
+            to={`/product/${items.categoryId}&${items.type}`}
           >
             <img src={items.image} className={` ${styles.image}`} alt="" />
             <div className="details">
@@ -42,7 +42,7 @@ function Deal99() {
           <Link
             key={index}
             className={styles.card}
-            to={`/category?${items.categoryName}=${items.categoryId}&${items.type}`}
+            to={`/product/${items.categoryId}&${items.type}`}
           >
             <img src={items.image} className={` ${styles.image}`} alt="" />
             <div className="details">

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/layout/Layout";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import FilterItems from "./FilterItems";
 import axios from "axios";
 import Products from "./Products";
@@ -8,14 +8,15 @@ import styles from "./stylesheet/Listing.module.css";
 
 function Listing() {
   const [products, setProducts] = useState();
-  const { search } = useLocation();
-  const value = search.split("=")[1];
-  const type = search.split("&")[1];
-
-  const url = `${process.env.REACT_APP_API}/product/product?category=${value}${
-    type ? `&type=${type}` : ""
-  }`;
-
+  const { id } = useParams();
+  const type = id.split("&")[1];
+  const value = id.split("&")[0];
+  let url;
+  if (type === undefined) {
+    url = `${process.env.REACT_APP_API}/product/product/${id}`;
+  } else {
+    url = `${process.env.REACT_APP_API}/product/product/${value}?type=${type}`;
+  }
   useEffect(() => {
     async function fetchData() {
       try {
@@ -26,7 +27,7 @@ function Listing() {
       }
     }
     fetchData();
-  }, [value, url]);
+  }, [url]);
   return (
     <Layout title={"listing DeP.com"}>
       <div className={` ${styles.listing}`}>
