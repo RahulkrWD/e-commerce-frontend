@@ -4,7 +4,6 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 function FilterItems({ filter }) {
   const { id } = useParams();
-  console.log(id);
   const value = id.split("&")[0];
   const type = id.split("&")[1];
 
