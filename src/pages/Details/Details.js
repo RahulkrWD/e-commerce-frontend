@@ -11,11 +11,13 @@ import StarIcon from "@mui/icons-material/Star";
 import Delivery from "./Delivery";
 import AddCart from "../cart/Button";
 import Offers from "./Offers";
+import RelatedProduct from "./RelatedProduct";
 
 function Details() {
   const [items, setItems] = useState([]);
   const { categoryId } = useParams();
   const { productId } = useParams();
+  const product = productId.split("&")[0];
 
   const [selectImage, setSelectImage] = useState(null);
 
@@ -23,7 +25,7 @@ function Details() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/product/product/${categoryId}?product=${productId}`
+          `${process.env.REACT_APP_API}/product/product/${categoryId}?product=${product}`
         );
         setItems(response.data);
       } catch (err) {
@@ -33,7 +35,7 @@ function Details() {
     };
 
     fetchData();
-  }, [categoryId, productId]);
+  }, [categoryId, product]);
 
   return (
     <Layout title={"details DeP.com"}>
@@ -112,6 +114,7 @@ function Details() {
           </center>
         )}
       </div>
+      <RelatedProduct />
     </Layout>
   );
 }

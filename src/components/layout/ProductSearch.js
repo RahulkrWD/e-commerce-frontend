@@ -17,16 +17,18 @@ function ProductSearch() {
   });
 
   return (
-    <div className={styles.search_container}>
+    <div className={`d-flex ${styles.search_container}`}>
       <input
         className={`form-control ${styles.search_product}`}
         list="datalistOptions"
         id="exampleDataList"
-        placeholder="Type to search..."
+        placeholder="Search here..."
       />
       <datalist id="datalistOptions">
         {product
-          ? product.map((item) => <option value={item.type}></option>)
+          ? product.map((item, index) => (
+              <option key={index} value={item.type}></option>
+            ))
           : ""}
       </datalist>
     </div>

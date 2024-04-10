@@ -11,6 +11,7 @@ function Listing() {
   const { id } = useParams();
   const type = id.split("&")[1];
   const value = id.split("&")[0];
+
   let url;
   if (type === undefined) {
     url = `${process.env.REACT_APP_API}/product/product/${id}`;

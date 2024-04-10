@@ -11,7 +11,7 @@ function Others({ product }) {
       {product ? (
         product.map((data, index) => (
           <Link
-            to={`/details/${data.categoryId}/${data.productId}`}
+            to={`/details/${data.categoryId}/${data.productId}&${data.type}`}
             key={index}
             className={`text-decoration-none text-dark ${styles.card}`}
           >

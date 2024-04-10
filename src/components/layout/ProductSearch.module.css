@@ -12,6 +12,9 @@
   color: blueviolet;
   transition: all 0.5s ease;
 }
+.search_btn {
+  margin-left: 15px;
+}
 @media (max-width: 930px) {
   .search_product {
     width: 100%;

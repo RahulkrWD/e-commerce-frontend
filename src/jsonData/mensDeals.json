@@ -21,7 +21,7 @@
     }, {
         "categoryId": 303,
         "categoryName": "Bracelet",
-        "type": "Ring",
+        "type": "Rings",
         "image": "https://i.ibb.co/NV967Xt/br-7.webp",
         "rating": 3.5
     }, {
@@ -42,11 +42,5 @@
         "type": "Wallet",
         "image": "https://i.ibb.co/nDqJDBV/w-1.webp",
         "rating": 4.4
-    }, {
-        "categoryId": 202,
-        "categoryName": "Footwears",
-        "type": "Socks",
-        "image": "https://i.ibb.co/pxBKwZ5/shokes-mens.webp",
-        "rating": 4.3
     }
 ]

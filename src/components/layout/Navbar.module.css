@@ -1,7 +1,7 @@
 /* Navbar.js */
 .navbarFix {
-  width: 100%;
   flex-wrap: wrap-reverse;
+  width: 100%;
   box-shadow: 2px 2px 4px gray;
   position: sticky;
   top: 0;
