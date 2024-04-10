@@ -39,16 +39,16 @@ function PriceDetails({ details }) {
           </h5>
           <div className="mt-4">
             <h6>
-              Items Price: <strong>{details.price}</strong>
+              Items Price: <strong>&#8377; {details.price}</strong>
             </h6>
             <h6>
-              Delivery Charges: <strong>{details.delivery}</strong>
+              Delivery Charges: <strong>&#8377; {details.delivery}</strong>
             </h6>
             <h6>
-              Discount Price: <strong>{details.discount}</strong>
+              Discount Price: <strong>&#8377; {details.discount}</strong>
             </h6>
             <h6>
-              Final Price: <strong>{details.finalPrice}</strong>
+              Final Price: <strong> &#8377;{details.finalPrice}</strong>
             </h6>
           </div>
         </Box>

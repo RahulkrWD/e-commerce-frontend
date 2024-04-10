@@ -42,7 +42,7 @@ function PriceDetails({ price }) {
   const coupons = [
     { card: "100DEP", price: 100, message: "Discount 100" },
     { card: "50DEP", price: 50, message: "Discount 50" },
-    { card: "FIRSTDEP", price: 100, message: "Discount 100" },
+    { card: "FIRSTDEP", price: 200, message: "Discount 100" },
   ];
 
   return (

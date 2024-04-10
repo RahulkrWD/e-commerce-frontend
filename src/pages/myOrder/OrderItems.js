@@ -48,7 +48,7 @@ function OrderItems() {
                       quantity: <strong>{data.quantity}</strong>
                     </span>
                     <span className="p-2">
-                      cost: <strong>{data.cost}</strong>
+                      cost: <strong>&#8377; {data.cost}</strong>
                     </span>
                   </div>
                 </div>
@@ -69,7 +69,7 @@ function OrderItems() {
               </h6>
 
               <h6>
-                Total Price: <strong>{item.totalPrice}</strong>
+                Total Price: <strong>&#8377; {item.totalPrice}</strong>
               </h6>
               {item.price.map((data, index) => (
                 <PriceDetails key={index} details={data} />
