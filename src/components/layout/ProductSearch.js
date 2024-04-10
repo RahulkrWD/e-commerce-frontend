@@ -1,36 +1,69 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ProductSearch.module.css";
+import Select from "react-select";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function ProductSearch() {
-  const [product, setProduct] = useState();
+  const [products, setProducts] = useState([]);
+  const [filteredOptions, setFilteredOptions] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    async function handleProduct() {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API}/product/allproduct`
-      );
-      setProduct(response.data);
+    async function fetchProducts() {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API}/product/allproduct`
+        );
+        setProducts(response.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
     }
 
-    handleProduct();
-  });
+    fetchProducts();
+  }, []);
+
+  const handleInputChange = (inputValue) => {
+    if (!inputValue) {
+      setFilteredOptions([]);
+      return;
+    }
+
+    const filteredTypes = products
+      .filter((product) =>
+        product.type.toLowerCase().includes(inputValue.toLowerCase())
+      )
+      .map((product) => ({
+        value: product.type,
+        label: product.type,
+        id: product.categoryId,
+      }));
+
+    const uniqueFilteredTypes = Array.from(
+      new Set(filteredTypes.map((type) => type.label))
+    )
+      .map((label) => filteredTypes.find((type) => type.label === label))
+      .filter((type) => type !== undefined);
+
+    setFilteredOptions(uniqueFilteredTypes);
+  };
+  const handleSelectChange = (selectedOption) => {
+    if (selectedOption) {
+      navigate(`/product/${selectedOption.id}&${selectedOption.label}`);
+    }
+  };
 
   return (
-    <div className={`d-flex ${styles.search_container}`}>
-      <input
-        className={`form-control ${styles.search_product}`}
-        list="datalistOptions"
-        id="exampleDataList"
+    <div>
+      <Select
+        className={styles.select_option}
+        options={filteredOptions}
+        onInputChange={handleInputChange}
+        onChange={handleSelectChange}
+        isClearable={true}
         placeholder="Search here..."
       />
-      <datalist id="datalistOptions">
-        {product
-          ? product.map((item, index) => (
-              <option key={index} value={item.type}></option>
-            ))
-          : ""}
-      </datalist>
     </div>
   );
 }

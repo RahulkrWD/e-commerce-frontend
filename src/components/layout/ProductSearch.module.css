@@ -1,31 +1,3 @@
-.search_product {
-  width: 150%;
-  padding: 7px 35px;
-  border: transparent;
-  border-radius: 20px;
-  background-image: url("/public/image/search.svg");
-  background-repeat: no-repeat;
-  background-size: 18px;
-  background-position: 10px;
-  letter-spacing: 1px;
-  font-size: 20px;
-  color: blueviolet;
-  transition: all 0.5s ease;
-}
-.search_btn {
-  margin-left: 15px;
-}
-@media (max-width: 930px) {
-  .search_product {
-    width: 100%;
-  }
-}
-
-@media (max-width: 610px) {
-  .search_container {
-    width: 100%;
-  }
-  .search_product {
-    margin-top: 7px;
-  }
+.select_option {
+  width: 300px;
 }
