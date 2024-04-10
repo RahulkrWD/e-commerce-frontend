@@ -20,22 +20,18 @@ function ProductSearch() {
         console.error("Error fetching products:", error);
       }
     }
-
     fetchProducts();
   }, []);
-
   const handleInputChange = (inputValue) => {
     if (!inputValue) {
       setFilteredOptions([]);
       return;
     }
-
     const filteredTypes = products
       .filter((product) =>
         product.type.toLowerCase().includes(inputValue.toLowerCase())
       )
       .map((product) => ({
-        value: product.type,
         label: product.type,
         id: product.categoryId,
       }));
@@ -55,7 +51,7 @@ function ProductSearch() {
   };
 
   return (
-    <div>
+    <div className={`p-2 ${styles.search_container}`}>
       <Select
         className={styles.select_option}
         options={filteredOptions}

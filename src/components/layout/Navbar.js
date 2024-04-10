@@ -11,7 +11,7 @@ function Navbar() {
   const user = localStorage.getItem("auth");
 
   return (
-    <nav className={`navbar p-3 bg-primary-subtle p-2 ${styles.navbarFix}`}>
+    <nav className={`navbar bg-primary-subtle ${styles.navbarFix}`}>
       {/* <Darwer /> */}
       <ProductSearch />
       <Link to={"/home"} className={`${styles.titleName}`}>
@@ -20,16 +20,6 @@ function Navbar() {
       <ul className={`${styles.listItems}`}>
         {user ? (
           <>
-            {/* <li className="nav-item mt-2">
-                <Link
-                  to={"/offers"}
-                  className={`nav-link fw-bold text-dark ${styles.offers}`}
-                  aria-current="page"
-                >
-                  Offers
-                </Link>
-              </li> */}
-
             <Admin />
           </>
         ) : (

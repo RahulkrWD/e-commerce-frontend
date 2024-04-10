@@ -1,3 +1,19 @@
 .select_option {
-  width: 300px;
+  width: 400px;
+  transition: all 0.5s ease;
+}
+@media (max-width: 1000px) {
+  .select_option {
+    width: 300px;
+  }
+}
+@media (max-width: 720px) {
+  .search_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .select_option {
+    width: 500px;
+  }
 }

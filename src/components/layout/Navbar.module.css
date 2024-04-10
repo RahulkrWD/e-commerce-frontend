@@ -1,5 +1,6 @@
 /* Navbar.js */
 .navbarFix {
+  padding: 5px 100px;
   flex-wrap: wrap-reverse;
   width: 100%;
   box-shadow: 2px 2px 4px gray;
@@ -32,12 +33,20 @@
   gap: 25px;
 }
 
+@media (max-width: 850px) {
+  .navbarFix {
+    padding: 5px 40px;
+  }
+}
 @media (max-width: 400px) {
   .brandName {
     font-size: 10px;
   }
   .listItems {
     gap: 10px;
+  }
+  .navbarFix {
+    padding: 5px 20px;
   }
 }
 @media (max-width: 350px) {
