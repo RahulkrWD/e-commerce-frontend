@@ -6,9 +6,8 @@
   margin-top: 20px;
   height: fit-content;
 }
-.profile_pic {
-  background-color: gray;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+
+.profile {
+  width: 140px;
+  height: 140px;
 }

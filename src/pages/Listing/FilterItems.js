@@ -29,13 +29,33 @@ function FilterItems({ filter }) {
         <h4 className="fw-bold ">filter</h4>
         <div className="sort filter mt-3">
           <h6>Sort Price</h6>
-          <select onChange={filterData}>
-            <option>- Sort -</option>
-            <option value="asc">Low to hight</option>
-            <option value="desc">High to Low</option>
-          </select>
+          <input
+            style={{ transform: "scale(1.3)" }}
+            className="m-1"
+            type="radio"
+            value="asc"
+            id="asc"
+            name="sort"
+            onClick={filterData}
+          />
+          <label className="fw-bold text-success" htmlFor="asc">
+            Low to hight
+          </label>
+          <br />
+          <input
+            style={{ transform: "scale(1.3)" }}
+            className="m-1"
+            type="radio"
+            id="desc"
+            value="desc"
+            name="sort"
+            onClick={filterData}
+          />
+          <label className="fw-bold text-primary" htmlFor="desc">
+            High to Low
+          </label>
         </div>
-        <div className="rating mt-5">
+        {/* <div className="rating mt-5">
           <h6>Customer ratings</h6>
           <input type="checkbox" id="4" />
           <label htmlFor="4" className="p-1 fw-bold">
@@ -81,7 +101,7 @@ function FilterItems({ filter }) {
         </div>
         <div className="mt-5">
           <h6>Range Filter</h6>
-        </div>
+        </div> */}
       </div>
 
       <button
@@ -114,13 +134,33 @@ function FilterItems({ filter }) {
             <h4 className="fw-bold ">filter</h4>
             <div className="sort filter mt-3">
               <h6>Sort Price</h6>
-              <select onChange={filterData}>
-                <option>- Sort -</option>
-                <option value="asc">Low to hight</option>
-                <option value="desc">High to Low</option>
-              </select>
+              <input
+                style={{ transform: "scale(1.3)" }}
+                className="m-1"
+                type="radio"
+                value="asc"
+                id="res_asc"
+                name="sort"
+                onClick={filterData}
+              />
+              <label className="fw-bold text-success" htmlFor="res_asc">
+                Low to hight
+              </label>
+              <br />
+              <input
+                style={{ transform: "scale(1.3)" }}
+                className="m-1"
+                type="radio"
+                id="res_desc"
+                value="desc"
+                name="sort"
+                onClick={filterData}
+              />
+              <label className="fw-bold text-primary" htmlFor="res_desc">
+                High to Low
+              </label>
             </div>
-            <div className="rating mt-5">
+            {/* <div className="rating mt-5">
               <h6>Customer ratings</h6>
               <input type="checkbox" id="4" />
               <label htmlFor="4" className="p-1 fw-bold">
@@ -145,8 +185,8 @@ function FilterItems({ filter }) {
                 1<i className={`fa-solid fa-star ${styles.starIcons}`}></i> &
                 above
               </label>
-            </div>
-            <div className="rating mt-5">
+            </div> */}
+            {/* <div className="rating mt-5">
               <h6>Dicount Price</h6>
               <input type="checkbox" id="80" />
               <label htmlFor="80" className="p-1 fw-bold">
@@ -170,7 +210,7 @@ function FilterItems({ filter }) {
             </div>
             <div className="mt-5">
               <h6>Range Filter</h6>
-            </div>
+            </div> */}
           </div>
         </div>
         <button

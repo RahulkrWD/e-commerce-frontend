@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Products from "../Listing/Products";
+import styles from "../Listing/stylesheet/Listing.module.css";
 
 function RelatedProduct() {
   const [products, setProducts] = useState();
@@ -20,7 +21,7 @@ function RelatedProduct() {
     handleRelated();
   });
   return (
-    <div>
+    <div className={`w-75 ${styles.product_area}`}>
       <Products product={products} />
     </div>
   );

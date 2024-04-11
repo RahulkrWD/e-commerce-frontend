@@ -44,7 +44,7 @@ function AdminDetails({ profile }) {
         onChange={(e) => setEmail(e.target.value)}
       />
       <center>
-        <button className="btn text-bg-primary">Update Profile</button>
+        {/* <button className="btn text-bg-primary">Update Profile</button> */}
       </center>
     </div>
   );
