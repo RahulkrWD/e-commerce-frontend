@@ -8,7 +8,7 @@ import Loading from "../../components/layout/Loading";
 import Tabs from "./Tabs";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
-import Delivery from "./Delivery";
+// import Delivery from "./Delivery";
 import AddCart from "../cart/Button";
 import Offers from "./Offers";
 import RelatedProduct from "./RelatedProduct";
@@ -98,7 +98,7 @@ function Details() {
                     <WhatsApp />
                   </div>
 
-                  <Delivery />
+                  {/* <Delivery /> */}
                   <Offers />
                 </div>
               </div>

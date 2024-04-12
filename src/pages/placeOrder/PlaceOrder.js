@@ -7,6 +7,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import OrderItems from "./OrderItems";
 import styles from "./style/PlaceOrder.module.css";
+import TextField from "@mui/material/TextField";
 
 function PlaceOrder() {
   const [orderPlaced, setOrderPlaced] = useState(false);
@@ -75,64 +76,73 @@ function PlaceOrder() {
     <Layout title={"order DeP.com"}>
       <div className={styles.order_container}>
         <div className={styles.input_container}>
+          <h5 className={styles.title}>Fill your Details</h5>
           <form onSubmit={createOrder}>
-            <input
-              className={styles.input_fields}
-              type="text"
-              placeholder="name"
+            <TextField
+              className={styles.input_field}
+              id="standard-basic"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
+              label="Name"
+              variant="standard"
             />
-            <input
-              className={styles.input_fields}
-              type="email"
-              placeholder="email"
+            <TextField
+              className={styles.input_field}
+              id="standard-basic"
+              label="Email"
+              variant="standard"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <input
-              className={styles.input_fields}
-              type="text"
-              placeholder="phone"
+            <TextField
+              className={styles.input_field}
+              id="standard-basic"
+              label="Phone"
+              variant="standard"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               required
             />
-            <input
-              className={styles.input_fields}
-              type="text"
-              placeholder="pincode"
+            <TextField
+              className={styles.input_field}
+              id="standard-basic"
+              label="Pincode"
+              variant="standard"
               value={pincode}
               onChange={(e) => setPincode(e.target.value)}
               required
             />
-            <input
-              className={styles.input_fields}
-              type="text"
-              placeholder="state"
+            <TextField
+              className={styles.input_field}
+              id="standard-basic"
+              label="State"
+              variant="standard"
               value={state}
               onChange={(e) => setState(e.target.value)}
               required
             />
-            <input
-              className={styles.input_fields}
-              type="text"
-              placeholder="city"
+
+            <TextField
+              className={styles.input_field}
+              id="standard-basic"
+              label="City"
+              variant="standard"
               value={city}
               onChange={(e) => setCity(e.target.value)}
               required
             />
-
-            <input
-              className={styles.input_fields}
-              type="text"
-              placeholder="address"
+            <TextField
+              className={styles.input_field}
+              id="standard-basic"
+              label="Address"
+              variant="standard"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               required
             />
+
             <br />
 
             {!orderPlaced && (

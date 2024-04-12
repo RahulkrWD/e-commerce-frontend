@@ -3,18 +3,22 @@
   display: flex;
   justify-content: space-around;
   margin: 15px;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
 }
 .input_container {
-  margin-top: 10px;
+  margin-top: 50px;
   padding: 25px;
-  width: 440px;
-  box-shadow: inset 10px 10px 20px gainsboro, inset -10px -10px 20px gainsboro;
+  width: 600px;
+  height: fit-content;
+  box-shadow: 10px 10px 20px gray, -10px -10px 10px #8080803e;
+  border-radius: 10px;
 }
-.input_fields {
-  outline: none;
-  border-width: 0;
-  border-bottom: 1px solid black;
-  margin: 15px 25px 15px 0;
-  width: 100%;
+.title {
+  border-bottom: 2px solid blueviolet;
+  width: fit-content;
+  padding-bottom: 5px;
+}
+.input_field {
+  margin: 10px 20px;
+  box-shadow: 10px 10px 20px gray;
 }

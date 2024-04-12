@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 function Deal99() {
   return (
     <div>
-      <h5 className={`fw-bold p-1 ${styles.heading}`}> Deals 99</h5>
+      <h5 className={`fw-bold p-1 ${styles.heading}`}>Today Deals</h5>
       <h6>Mens Deals</h6>
       <div className={styles.mens_deals}>
         {mensDeals.map((items, index) => (

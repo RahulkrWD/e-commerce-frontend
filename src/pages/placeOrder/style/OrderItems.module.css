@@ -1,8 +1,14 @@
+.order_container {
+  box-shadow: 5px 5px 5px #80808076, -2px -2px 5px #80808080;
+  border-radius: 7px;
+  padding: 7px;
+  margin-top: 50px;
+}
 .items_container {
   display: flex;
   gap: 20px;
   height: fit-content;
-  box-shadow: inset 10px 10px 100px pink, inset -10px -10px 100px pink;
+  box-shadow: 10px 10px 20px #80808062;
   padding: 15px;
   margin: 15px;
   border-radius: 25px;
@@ -13,7 +19,7 @@
   border-radius: 25px;
 }
 .order_details {
-  width: 200px;
+  width: 300px;
   padding: 7px;
 }
 
@@ -21,4 +27,24 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+@media (max-width: 550px) {
+  .order_details {
+    width: 200px;
+  }
+}
+@media (max-width: 450px) {
+  .main_image {
+    width: 80px;
+    height: 80px;
+  }
+  .product_name,
+  .price,
+  .quantity {
+    font-size: 14px;
+  }
+  .items_container {
+    margin: 5px;
+    padding: 5px;
+  }
 }

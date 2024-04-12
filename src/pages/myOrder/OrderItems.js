@@ -74,11 +74,14 @@ function OrderItems() {
               {item.price.map((data, index) => (
                 <PriceDetails key={index} details={data} />
               ))}
-              <span
-                className="text-bg-success fw-bold p-1"
-                style={{ borderRadius: "5px" }}
-              >
-                {item.status}
+              <span>
+                Order Status:{" "}
+                <strong
+                  className="text-bg-success fw-bold p-1"
+                  style={{ borderRadius: "5px" }}
+                >
+                  {item.status}
+                </strong>
               </span>
             </div>
           </div>
