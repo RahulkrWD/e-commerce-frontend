@@ -79,7 +79,7 @@ function PlaceOrder() {
           <h5 className={styles.title}>Fill your Details</h5>
           <form onSubmit={createOrder}>
             <TextField
-              style={{ margin: "10px" }}
+              style={{ margin: "15px " }}
               className={styles.input_field}
               id="standard-basic"
               value={name}
@@ -89,7 +89,7 @@ function PlaceOrder() {
               variant="standard"
             />
             <TextField
-              style={{ margin: "10px" }}
+              style={{ margin: "15px" }}
               className={styles.input_field}
               id="standard-basic"
               label="Email"
@@ -99,7 +99,7 @@ function PlaceOrder() {
               required
             />
             <TextField
-              style={{ margin: "10px" }}
+              style={{ margin: "15px" }}
               className={styles.input_field}
               id="standard-basic"
               label="Phone"
@@ -109,7 +109,7 @@ function PlaceOrder() {
               required
             />
             <TextField
-              style={{ margin: "10px" }}
+              style={{ margin: "15px" }}
               className={styles.input_field}
               id="standard-basic"
               label="Pincode"
@@ -119,7 +119,7 @@ function PlaceOrder() {
               required
             />
             <TextField
-              style={{ margin: "10px" }}
+              style={{ margin: "15px" }}
               className={styles.input_field}
               id="standard-basic"
               label="State"
@@ -130,7 +130,7 @@ function PlaceOrder() {
             />
 
             <TextField
-              style={{ margin: "10px" }}
+              style={{ margin: "15px" }}
               className={styles.input_field}
               id="standard-basic"
               label="City"
@@ -140,7 +140,7 @@ function PlaceOrder() {
               required
             />
             <TextField
-              style={{ margin: "10px" }}
+              style={{ margin: "15px" }}
               className={styles.input_field}
               id="standard-basic"
               label="Address"
