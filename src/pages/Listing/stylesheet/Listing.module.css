@@ -6,6 +6,12 @@
   display: flex;
 }
 
+.related_heading {
+  border-bottom: 2px solid blueviolet;
+  padding-bottom: 4px;
+  width: fit-content;
+}
+
 @media (max-width: 860px) {
   .listing {
     display: block;

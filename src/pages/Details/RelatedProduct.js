@@ -22,6 +22,8 @@ function RelatedProduct() {
   });
   return (
     <div className={`w-75 ${styles.product_area}`}>
+      <hr />
+      <h5 className={styles.related_heading}>Similar Products</h5>
       <Products product={products} />
     </div>
   );

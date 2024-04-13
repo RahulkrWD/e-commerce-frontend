@@ -18,12 +18,6 @@
 
     },
     {
-        "categoryId": 404,
-        "categoryName": "Kitchen",
-        "image": "https://i.ibb.co/NNVbjM7/kitchen.webp"
-
-    },
-    {
         "categoryId": 505,
         "categoryName": "Shampoo",
         "image": "https://i.ibb.co/WvdSvBP/skin.webp"
@@ -39,12 +33,6 @@
         "categoryId": 707,
         "categoryName": "Highlighter",
         "image": "https://i.ibb.co/zst35tz/women-makeup-product.webp"
-
-    },
-    {
-        "categoryId": 808,
-        "categoryName": "Kids",
-        "image": "https://i.ibb.co/hfWwg6j/kids.webp"
 
     },
     {
