@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import styles from "./HomePage.module.css";
-import { Link } from "react-router-dom";
 
-function AutomaticImageCarousel() {
+function ImageCarousel() {
   const [index, setIndex] = useState(0);
 
   const images = [
@@ -23,20 +22,18 @@ function AutomaticImageCarousel() {
   }, [images.length]);
 
   return (
-    <Carousel activeIndex={index}>
-      {images.map((imageUrl, idx) => (
-        <Carousel.Item key={idx}>
-          <Link>
-            <img
-              className={`${styles.carouselImage} d-block w-100`}
-              src={imageUrl}
-              alt={`Slide ${idx + 1}`}
-            />
-          </Link>
+    <Carousel activeIndex={index} controls={false}>
+      {images.map((imageUrl, index) => (
+        <Carousel.Item key={index}>
+          <img
+            className={`${styles.carouselImage} d-block w-100`}
+            src={imageUrl}
+            alt={`Slide ${index + 1}`}
+          />
         </Carousel.Item>
       ))}
     </Carousel>
   );
 }
 
-export default AutomaticImageCarousel;
+export default ImageCarousel;

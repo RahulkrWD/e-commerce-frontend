@@ -213,13 +213,6 @@ function FilterItems({ filter }) {
             </div> */}
           </div>
         </div>
-        <button
-          className="p-2 m-3 btn text-bg-success fw-bold"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        >
-          Apply
-        </button>
       </div>
     </>
   );
