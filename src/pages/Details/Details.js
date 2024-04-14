@@ -114,6 +114,7 @@ function Details() {
           </center>
         )}
       </div>
+
       <RelatedProduct />
     </Layout>
   );
