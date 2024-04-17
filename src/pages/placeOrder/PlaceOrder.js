@@ -10,9 +10,6 @@ import styles from "./style/PlaceOrder.module.css";
 import TextField from "@mui/material/TextField";
 
 function PlaceOrder() {
-  const [orderPlaced, setOrderPlaced] = useState(false);
-  const products = useSelector(selectCartItems);
-  const [orderId, setOrderId] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -20,20 +17,22 @@ function PlaceOrder() {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [address, setAddress] = useState("");
-  const uniqueId = localStorage.getItem("uniqueId");
+  const [orderId, setOrderId] = useState("");
+  const [orderPlaced, setOrderPlaced] = useState(false);
+
+  const products = useSelector(selectCartItems);
   const totalPrice = localStorage.getItem("totalprice");
-  const storedPricesJson = localStorage.getItem("price");
-  const price = JSON.parse(storedPricesJson);
-  const navigate = useNavigate();
+  const uniqueId = localStorage.getItem("uniqueId");
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (!token) {
-      return navigate("/login");
+      navigate("/login");
     }
-  });
-  // create order
-  async function createOrder(e) {
-    e.preventDefault();
+  }, [navigate, token]);
+
+  async function createOrder() {
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_API}/product/placeOrder`,
@@ -48,50 +47,69 @@ function PlaceOrder() {
           uniqueId,
           totalPrice,
           products,
-          price,
         }
       );
       const { orderId } = response.data;
       setOrderId(orderId);
       setOrderPlaced(true);
     } catch (err) {
-      console.log("error during placeorder");
+      console.log("Error during place order", err);
     }
   }
-  // handle payment
+
   async function handlePaymentSuccess(paymentId) {
     try {
       await axios.post(`${process.env.REACT_APP_API}/product/payment/success`, {
         order_id: orderId,
         payment_id: paymentId,
       });
-      toast.success("successfull payment");
+      toast.success("Payment successful");
+      createOrder();
       navigate("/my-order");
       localStorage.removeItem("cartItems");
     } catch (err) {
       console.log("Error during payment", err);
     }
   }
+
+  function handlePayment() {
+    const options = {
+      key: process.env.REACT_APP_KEY,
+      amount: totalPrice * 100,
+      currency: "INR",
+      name: "DeP.com",
+      order_id: orderId,
+      handler: (response) => {
+        handlePaymentSuccess(response.razorpay_payment_id);
+      },
+    };
+    const rzp1 = new window.Razorpay(options);
+    rzp1.open();
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    handlePayment();
+  }
+
   return (
-    <Layout title={"order DeP.com"}>
+    <Layout title="Place Order">
       <div className={styles.order_container}>
         <div className={styles.input_container}>
           <h5 className={styles.title}>Fill your Details</h5>
-          <form onSubmit={createOrder}>
-            <TextField
-              style={{ margin: "15px " }}
-              className={styles.input_field}
-              id="standard-basic"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              label="Name"
-              variant="standard"
-            />
+          <form onSubmit={handleSubmit}>
             <TextField
               style={{ margin: "15px" }}
               className={styles.input_field}
-              id="standard-basic"
+              label="Name"
+              variant="standard"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+            <TextField
+              className={styles.input_field}
+              style={{ margin: "15px" }}
               label="Email"
               variant="standard"
               value={email}
@@ -99,9 +117,8 @@ function PlaceOrder() {
               required
             />
             <TextField
-              style={{ margin: "15px" }}
               className={styles.input_field}
-              id="standard-basic"
+              style={{ margin: "15px" }}
               label="Phone"
               variant="standard"
               value={phone}
@@ -109,9 +126,8 @@ function PlaceOrder() {
               required
             />
             <TextField
-              style={{ margin: "15px" }}
               className={styles.input_field}
-              id="standard-basic"
+              style={{ margin: "15px" }}
               label="Pincode"
               variant="standard"
               value={pincode}
@@ -119,20 +135,17 @@ function PlaceOrder() {
               required
             />
             <TextField
-              style={{ margin: "15px" }}
               className={styles.input_field}
-              id="standard-basic"
+              style={{ margin: "15px" }}
               label="State"
               variant="standard"
               value={state}
               onChange={(e) => setState(e.target.value)}
               required
             />
-
             <TextField
               style={{ margin: "15px" }}
               className={styles.input_field}
-              id="standard-basic"
               label="City"
               variant="standard"
               value={city}
@@ -142,52 +155,19 @@ function PlaceOrder() {
             <TextField
               style={{ margin: "15px" }}
               className={styles.input_field}
-              id="standard-basic"
               label="Address"
               variant="standard"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               required
             />
-
-            <br />
-
-            {!orderPlaced && (
-              <center>
-                <button className="btn text-bg-primary fw-bold">
-                  PlaceOrder
-                </button>
-              </center>
-            )}
+            <center>
+              <button className="btn text-bg-danger fw-bold" type="submit">
+                Pay Now
+              </button>
+            </center>
           </form>
-
-          {orderId && (
-            <div>
-              <center>
-                <button
-                  className="btn text-bg-danger fw-bold"
-                  onClick={() => {
-                    const options = {
-                      key: `${process.env.REACT_APP_KEY}`,
-                      amount: totalPrice * 100,
-                      currency: "INR",
-                      name: "DeP.com",
-                      order_id: orderId,
-                      handler: function (response) {
-                        handlePaymentSuccess(response.razorpay_payment_id);
-                      },
-                    };
-                    const rzp1 = new window.Razorpay(options);
-                    rzp1.open();
-                  }}
-                >
-                  Pay Now
-                </button>
-              </center>
-            </div>
-          )}
         </div>
-
         <OrderItems />
       </div>
     </Layout>
