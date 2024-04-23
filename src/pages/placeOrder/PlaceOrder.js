@@ -24,8 +24,9 @@ function PlaceOrder() {
   const totalPrice = localStorage.getItem("totalprice");
   const uniqueId = localStorage.getItem("uniqueId");
   const token = localStorage.getItem("token");
-  const price = localStorage.getItem("price");
+  const priceDetails = localStorage.getItem("price");
   const navigate = useNavigate();
+  const price = JSON.parse(priceDetails);
 
   useEffect(() => {
     if (!token) {
