@@ -2,14 +2,24 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CartIcon from "./CartIcon";
 import Admin from "./Admin";
-
 import styles from "./Navbar.module.css";
 import ProductSearch from "./ProductSearch";
 // import Darwer from "./Darwer";
+import cryptoJs from "crypto-js";
 
 function Navbar() {
-  const user = localStorage.getItem("auth");
-
+  const userDataString = localStorage.getItem("userData");
+  let dataDecrypted;
+  if (userDataString) {
+    const bytes = cryptoJs.AES.decrypt(
+      userDataString,
+      process.env.REACT_APP_SECRETKEY
+    );
+    dataDecrypted = JSON.parse(bytes.toString(cryptoJs.enc.Utf8));
+  }
+  function handleLogout() {
+    localStorage.removeItem("userData");
+  }
   return (
     <nav className={`navbar bg-primary-subtle ${styles.navbarFix}`}>
       {/* <Darwer /> */}
@@ -18,9 +28,9 @@ function Navbar() {
         DeP<span className={styles.brandName}>.com</span>
       </Link>
       <ul className={`${styles.listItems}`}>
-        {user ? (
+        {dataDecrypted ? (
           <>
-            <Admin />
+            <Admin logOut={handleLogout} userName={dataDecrypted.userName} />
           </>
         ) : (
           <>

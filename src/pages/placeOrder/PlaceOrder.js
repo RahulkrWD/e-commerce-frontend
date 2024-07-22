@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import OrderItems from "./OrderItems";
 import styles from "./style/PlaceOrder.module.css";
 import TextField from "@mui/material/TextField";
+import cryptoJs from "crypto-js";
 
 function PlaceOrder() {
   const [name, setName] = useState("");
@@ -19,20 +20,32 @@ function PlaceOrder() {
   const [address, setAddress] = useState("");
   const [orderId, setOrderId] = useState("");
   const [orderPlaced, setOrderPlaced] = useState(false);
-
   const products = useSelector(selectCartItems);
-  const totalPrice = localStorage.getItem("totalprice");
-  const uniqueId = localStorage.getItem("uniqueId");
-  const token = localStorage.getItem("token");
-  const priceDetails = localStorage.getItem("price");
   const navigate = useNavigate();
-  const price = JSON.parse(priceDetails);
 
+  const decryptData = (encryptedData, key) =>
+    JSON.parse(
+      cryptoJs.AES.decrypt(encryptedData, key).toString(cryptoJs.enc.Utf8)
+    );
+  const userDataString = localStorage.getItem("userData");
+  const priceDetails = localStorage.getItem("price");
+  let userDataDecrypted, priceDecrypted;
+  if (userDataString) {
+    userDataDecrypted = decryptData(
+      userDataString,
+      process.env.REACT_APP_SECRETKEY
+    );
+  }
+
+  if (priceDetails) {
+    priceDecrypted = decryptData(priceDetails, process.env.REACT_APP_SECRETKEY);
+  }
+  const userID = userDataDecrypted.id;
   useEffect(() => {
-    if (!token) {
+    if (!userDataDecrypted.token) {
       navigate("/login");
     }
-  }, [navigate, token]);
+  }, [navigate, userDataDecrypted.token]);
 
   async function createOrder() {
     try {
@@ -46,10 +59,10 @@ function PlaceOrder() {
           city,
           state,
           address,
-          uniqueId,
-          totalPrice,
+          userID,
+          totalPrice: priceDecrypted.finalPrice,
           products,
-          price,
+          price: priceDecrypted,
         }
       );
       const { orderId } = response.data;
@@ -78,7 +91,7 @@ function PlaceOrder() {
   function handlePayment() {
     const options = {
       key: process.env.REACT_APP_KEY,
-      amount: totalPrice * 100,
+      amount: priceDecrypted.finalPrice * 100,
       currency: "INR",
       name: "DeP.com",
       order_id: orderId,
@@ -176,5 +189,4 @@ function PlaceOrder() {
     </Layout>
   );
 }
-
 export default PlaceOrder;

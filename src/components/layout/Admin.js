@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import Menu from "@mui/material/Menu";
 import { Link } from "react-router-dom";
 
-export default function BasicMenu() {
-  const user = localStorage.getItem("auth");
-  const name = user.split(" ")[0];
-  const finalName = name.charAt(0).toUpperCase() + name.slice(1);
-
+export default function BasicMenu({ logOut, userName }) {
+  const firstName = userName.split(" ")[0];
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -15,13 +12,6 @@ export default function BasicMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  //logout function
-  function handleLogout() {
-    localStorage.removeItem("auth");
-    localStorage.removeItem("token");
-    localStorage.removeItem("uniqueId");
-  }
-
   return (
     <div>
       <Link
@@ -32,7 +22,7 @@ export default function BasicMenu() {
         onClick={handleClick}
       >
         <strong className="text-danger">Hi </strong>
-        <strong>{finalName}</strong>
+        <strong>{firstName}</strong>
       </Link>
       <Menu
         id="basic-menu"
@@ -58,7 +48,7 @@ export default function BasicMenu() {
         <Link
           className="nav-link text-center text-dark fw-bold"
           to={"/login"}
-          onClick={handleLogout}
+          onClick={logOut}
         >
           Logout
         </Link>

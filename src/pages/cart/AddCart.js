@@ -10,12 +10,22 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles/AddCart.module.css";
 import PriceDetails from "./PriceDetails";
+import cryptoJs from "crypto-js";
 
 export default function AddCart() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
-  const isAuthenticated = !!localStorage.getItem("token");
+  const userDataString = localStorage.getItem("userData");
+  let dataDecrypted;
+  if (userDataString) {
+    const bytes = cryptoJs.AES.decrypt(
+      userDataString,
+      process.env.REACT_APP_SECRETKEY
+    );
+    dataDecrypted = JSON.parse(bytes.toString(cryptoJs.enc.Utf8));
+  }
+  const isAuthenticated = !!dataDecrypted.token;
 
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
 

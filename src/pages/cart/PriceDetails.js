@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./styles/PriceDetails.module.css";
 import TextField from "@mui/material/TextField";
+import CryptoJS from "crypto-js";
 
 function PriceDetails({ price }) {
   const [coupon, setCoupon] = useState("");
@@ -26,18 +27,18 @@ function PriceDetails({ price }) {
 
   let delivery = totalPrice > 400 ? 0 : 35;
   let finalPrice = totalPrice + delivery - discount;
-  const prices = [
-    {
-      price: totalPrice,
-      discount: discount,
-      delivery: delivery,
-      finalPrice: finalPrice,
-    },
-  ];
+  const prices = {
+    price: totalPrice,
+    discount: discount,
+    delivery: delivery,
+    finalPrice: finalPrice,
+  };
 
-  const storePrices = JSON.stringify(prices);
-  localStorage.setItem("price", storePrices);
-  localStorage.setItem("totalprice", finalPrice);
+  const priceDataString = CryptoJS.AES.encrypt(
+    JSON.stringify(prices),
+    process.env.REACT_APP_SECRETKEY
+  ).toString();
+  localStorage.setItem("price", priceDataString);
 
   const coupons = [
     { card: "100DEP", price: 100, message: "Discount 100" },

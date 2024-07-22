@@ -3,24 +3,31 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./styles/OrderItems.module.css";
 import PriceDetails from "./PriceDetails";
-//import { Link } from "react-router-dom";
+import cryptoJs from "crypto-js";
 
 function OrderItems() {
   const [order, setOrder] = useState([]);
   const navigate = useNavigate();
-  const uniqueId = localStorage.getItem("uniqueId");
+  const userDataString = localStorage.getItem("userData");
+  let dataDecrypted;
+  if (userDataString) {
+    const bytes = cryptoJs.AES.decrypt(
+      userDataString,
+      process.env.REACT_APP_SECRETKEY
+    );
+    dataDecrypted = JSON.parse(bytes.toString(cryptoJs.enc.Utf8));
+  }
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
+    if (!dataDecrypted.token) {
       return navigate("/login");
     }
-  }, [navigate]);
+  }, [navigate, dataDecrypted.token]);
   useEffect(() => {
     async function handleOrder() {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/product/order?id=${uniqueId}`
+          `${process.env.REACT_APP_API}/product/order?id=${dataDecrypted.id}`
         );
         if (response.data.success) {
           setOrder(response.data.order.reverse());
@@ -30,7 +37,7 @@ function OrderItems() {
       }
     }
     handleOrder();
-  }, [uniqueId]);
+  });
 
   return (
     <div>

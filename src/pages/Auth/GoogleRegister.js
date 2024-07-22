@@ -7,7 +7,6 @@ import { toast } from "react-hot-toast";
 
 function GoogleAuth() {
   const navigate = useNavigate();
-  const uniqueId = Math.ceil(Math.random() * 999999);
 
   const handleGoogleSignup = async (credentialResponse) => {
     try {
@@ -19,7 +18,6 @@ function GoogleAuth() {
         {
           name,
           email,
-          uniqueId,
         }
       );
       if (response.data.success) {

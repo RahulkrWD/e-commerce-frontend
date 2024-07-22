@@ -34,9 +34,6 @@ function Register() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  // generate uniqueId
-  const uniqueId = Math.floor(Math.random() * 70000 + 100000);
-
   const navigate = useNavigate();
   // form function
   async function handleSubmit(e) {
@@ -65,7 +62,7 @@ function Register() {
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_API}/auth/verify-user`,
-        { name, password, uniqueId, email, otp }
+        { name, password, email, otp }
       );
       if (response.data.success) {
         toast.success(response.data.message);

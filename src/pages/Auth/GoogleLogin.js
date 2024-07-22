@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
-
+import CryptoJS from "crypto-js";
 function GoogleLogin() {
   const navigate = useNavigate();
 
@@ -21,11 +21,18 @@ function GoogleLogin() {
       );
       if (response.data.success) {
         toast.success(response.data.message);
-        const user = response.data.user;
-        localStorage.setItem("auth", user.name);
-        const token = response.data.token;
-        localStorage.setItem("token", token);
-        localStorage.setItem("uniqueId", user.uniqueId);
+        const user = response.data;
+        const userData = {
+          token: user.token,
+          id: user.user._id,
+          userName: user.user.name,
+        };
+        const userDataString = CryptoJS.AES.encrypt(
+          JSON.stringify(userData),
+          process.env.REACT_APP_SECRETKEY
+        ).toString();
+        localStorage.setItem("userData", userDataString);
+
         navigate("/home");
       } else {
         toast.error(response.data.message);

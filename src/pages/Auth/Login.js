@@ -6,6 +6,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import GoogleLogin from "../Auth/GoogleLogin";
 import styles from "./Auth.module.css";
+import CryptoJS from "crypto-js";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -22,12 +23,18 @@ function Login() {
       });
       if (res.data.success) {
         toast.success(res.data.message);
-        const user = res.data.user;
-        localStorage.setItem("auth", user.name);
-        const token = res.data.token;
-        localStorage.setItem("token", token);
-        localStorage.setItem("uniqueId", user.uniqueId);
+        const user = res.data;
+        const userData = {
+          token: user.token,
+          id: user.user._id,
+          userName: user.user.name,
+        };
 
+        const userDataString = CryptoJS.AES.encrypt(
+          JSON.stringify(userData),
+          process.env.REACT_APP_SECRETKEY
+        ).toString();
+        localStorage.setItem("userData", userDataString);
         navigate("/home");
       } else {
         toast.error(res.data.message);

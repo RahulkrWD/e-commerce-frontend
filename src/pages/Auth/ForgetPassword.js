@@ -22,7 +22,6 @@ const style = {
 
 function ForgetPassword() {
   const [open, setOpen] = useState(false);
-
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [newPassword, setNewPassword] = useState("");

@@ -3,29 +3,40 @@ import Layout from "../../components/layout/Layout";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loading from "../../components/layout/Loading";
-import AdminPic from "./AdminPic";
+// import AdminPic from "./AdminPic";
 import AdminDetails from "./AdminDetails";
 import styles from "./styles/Profile.module.css";
+import cryptoJs from "crypto-js";
 
 function Profile() {
   const [profile, setProfile] = useState("");
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
-  const uniqueId = localStorage.getItem("uniqueId");
+  const userDataString = localStorage.getItem("userData");
+  let dataDecrypted;
+  if (userDataString) {
+    const bytes = cryptoJs.AES.decrypt(
+      userDataString,
+      process.env.REACT_APP_SECRETKEY
+    );
+    dataDecrypted = JSON.parse(bytes.toString(cryptoJs.enc.Utf8));
+  }
+
+  console.log(dataDecrypted);
   useEffect(() => {
-    if (!token) {
+    if (!dataDecrypted.token) {
       return navigate("/login");
     }
   });
   useEffect(() => {
     async function handleProfile() {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/auth/profile?id=${uniqueId}`
+        `${process.env.REACT_APP_API}/auth/profile?id=${dataDecrypted.id}`
       );
       setProfile(response.data);
     }
+
     handleProfile();
-  }, [uniqueId]);
+  }, [dataDecrypted._id]);
   return (
     <Layout title={"my-profile e-commerce"}>
       <div>
@@ -35,7 +46,7 @@ function Profile() {
               key={index}
               className={`d-flex justify-content-evenly ${styles.profile_container}`}
             >
-              <AdminPic profile={item} />
+              {/* <AdminPic /> */}
 
               <AdminDetails profile={item} />
             </div>
