@@ -3,10 +3,10 @@ import Layout from "../../components/layout/Layout";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loading from "../../components/layout/Loading";
-// import AdminPic from "./AdminPic";
 import AdminDetails from "./AdminDetails";
 import styles from "./styles/Profile.module.css";
 import cryptoJs from "crypto-js";
+import Photo from "./Photo";
 
 function Profile() {
   const [profile, setProfile] = useState("");
@@ -20,8 +20,6 @@ function Profile() {
     );
     dataDecrypted = JSON.parse(bytes.toString(cryptoJs.enc.Utf8));
   }
-
-  console.log(dataDecrypted);
   useEffect(() => {
     if (!dataDecrypted.token) {
       return navigate("/login");
@@ -36,7 +34,7 @@ function Profile() {
     }
 
     handleProfile();
-  }, [dataDecrypted._id]);
+  }, [dataDecrypted.id]);
   return (
     <Layout title={"my-profile e-commerce"}>
       <div>
@@ -46,8 +44,7 @@ function Profile() {
               key={index}
               className={`d-flex justify-content-evenly ${styles.profile_container}`}
             >
-              {/* <AdminPic /> */}
-
+              <Photo />
               <AdminDetails profile={item} />
             </div>
           ))

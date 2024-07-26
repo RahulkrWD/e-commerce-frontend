@@ -2,12 +2,21 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import AdminPic from "./AdminPic";
-import styles from "./Profile.module.css";
+import styles from "./styles/Admin.module.css";
+import cryptoJs from "crypto-js";
 
 function Photo() {
   const [file, setFile] = useState(null);
   const [photos, setPhotos] = useState([]);
-  const id = localStorage.getItem("uniqueId");
+  const userDataString = localStorage.getItem("userData");
+  let dataDecrypted;
+  if (userDataString) {
+    const bytes = cryptoJs.AES.decrypt(
+      userDataString,
+      process.env.REACT_APP_SECRETKEY
+    );
+    dataDecrypted = JSON.parse(bytes.toString(cryptoJs.enc.Utf8));
+  }
 
   useEffect(() => {
     fetchData();
@@ -15,10 +24,10 @@ function Photo() {
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/profile/get-photo/${id}`
+      const response = await axios.get(
+        `${process.env.REACT_APP_API}/auth/get-photo/${dataDecrypted.id}`
       );
-      setPhotos(data);
+      setPhotos(response.data);
     } catch (error) {
       console.error("Failed to fetch profile photos:", error);
     }
@@ -35,7 +44,7 @@ function Photo() {
 
     try {
       const response = await axios.put(
-        `${process.env.REACT_APP_API}/profile/upload/photo/${id}`,
+        `${process.env.REACT_APP_API}/auth/upload/photo/${dataDecrypted.id}`,
         formData,
         {
           headers: {
@@ -44,6 +53,7 @@ function Photo() {
         }
       );
       toast.success(response.data.success);
+      fetchData();
     } catch (error) {
       console.error("Failed to upload file:", error);
     }
@@ -51,19 +61,25 @@ function Photo() {
 
   return (
     <div>
-      {photos.length > 0 && (
-        <>
-          {photos.map((photo, index) => (
+      {photos.length > 0
+        ? photos.map((photo, index) => (
             <div key={index}>
-              <img
-                className={styles.profile_image}
-                src={`data:${photo.type};base64,${photo.data}`}
-                alt="Profile"
-              />
+              {photo.data ? (
+                <img
+                  className={styles.profile_placeholder}
+                  src={`data:${photo.type};base64,${photo.data}`}
+                  alt="Profile"
+                />
+              ) : (
+                <img
+                  className={styles.profile_placeholder}
+                  src="/image/default_profile_photo.webp"
+                  alt=""
+                />
+              )}
             </div>
-          ))}
-        </>
-      )}
+          ))
+        : ""}
       <AdminPic onFormSubmit={onFormSubmit} onChangeHandler={onChangeHandler} />
     </div>
   );
