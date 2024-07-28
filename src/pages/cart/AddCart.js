@@ -16,6 +16,7 @@ export default function AddCart() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
+
   const userDataString = localStorage.getItem("userData");
   let dataDecrypted;
   if (userDataString) {
@@ -25,7 +26,7 @@ export default function AddCart() {
     );
     dataDecrypted = JSON.parse(bytes.toString(cryptoJs.enc.Utf8));
   }
-  const isAuthenticated = !!dataDecrypted.token;
+  const isAuthenticated = !!dataDecrypted?.token;
 
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
 
@@ -40,7 +41,6 @@ export default function AddCart() {
   function handleRemove(items) {
     dispatch(removeItem(items));
   }
-
   function handlePlaceOrder() {
     if (isAuthenticated) {
       navigate("/placeOrder");
