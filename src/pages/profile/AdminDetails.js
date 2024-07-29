@@ -5,6 +5,7 @@ function AdminDetails({ profile }) {
   const [name, setName] = useState(profile.name);
   const [phone, setPhone] = useState(profile.phone);
   const [email, setEmail] = useState(profile.email);
+
   return (
     <div className={styles.Admin_details_container}>
       <h5

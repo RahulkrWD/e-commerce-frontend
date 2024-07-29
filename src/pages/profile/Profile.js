@@ -7,9 +7,12 @@ import AdminDetails from "./AdminDetails";
 import styles from "./styles/Profile.module.css";
 import cryptoJs from "crypto-js";
 import Photo from "./Photo";
+import { toast } from "react-hot-toast";
 
 function Profile() {
   const [profile, setProfile] = useState("");
+  const [file, setFile] = useState(null);
+  const [photos, setPhotos] = useState([]);
   const navigate = useNavigate();
   const userDataString = localStorage.getItem("userData");
   let dataDecrypted;
@@ -20,6 +23,47 @@ function Profile() {
     );
     dataDecrypted = JSON.parse(bytes.toString(cryptoJs.enc.Utf8));
   }
+  useEffect(() => {
+    fetchData();
+  });
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API}/auth/get-photo/${dataDecrypted.id}`
+      );
+      setPhotos(response.data);
+    } catch (error) {
+      console.error("Failed to fetch profile photos:", error);
+    }
+  };
+
+  const onChangeHandler = (event) => {
+    setFile(event.target.files[0]);
+  };
+
+  const onFormSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await axios.put(
+        `${process.env.REACT_APP_API}/auth/upload/photo/${dataDecrypted.id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      toast.success(response.data.success);
+      fetchData();
+    } catch (error) {
+      console.error("Failed to upload file:", error);
+    }
+  };
+
   useEffect(() => {
     if (!dataDecrypted.token) {
       return navigate("/login");
@@ -38,13 +82,17 @@ function Profile() {
   return (
     <Layout title={"my-profile e-commerce"}>
       <div>
+        <Photo
+          photos={photos}
+          onFormSubmit={onFormSubmit}
+          onChangeHandler={onChangeHandler}
+        />
         {profile ? (
           profile.map((item, index) => (
             <div
               key={index}
               className={`d-flex justify-content-evenly ${styles.profile_container}`}
             >
-              <Photo />
               <AdminDetails profile={item} />
             </div>
           ))

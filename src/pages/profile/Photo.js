@@ -1,62 +1,30 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { toast } from "react-hot-toast";
-import AdminPic from "./AdminPic";
+import React, { useState } from "react";
 import styles from "./styles/Admin.module.css";
-import cryptoJs from "crypto-js";
+import Backdrop from "@mui/material/Backdrop";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import Fade from "@mui/material/Fade";
 
-function Photo() {
-  const [file, setFile] = useState(null);
-  const [photos, setPhotos] = useState([]);
-  const userDataString = localStorage.getItem("userData");
-  let dataDecrypted;
-  if (userDataString) {
-    const bytes = cryptoJs.AES.decrypt(
-      userDataString,
-      process.env.REACT_APP_SECRETKEY
-    );
-    dataDecrypted = JSON.parse(bytes.toString(cryptoJs.enc.Utf8));
-  }
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  p: 4,
+  borderRadius: 2,
+};
 
-  useEffect(() => {
-    fetchData();
-  });
+function Photo({ photos, onFormSubmit, onChangeHandler }) {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API}/auth/get-photo/${dataDecrypted.id}`
-      );
-      setPhotos(response.data);
-    } catch (error) {
-      console.error("Failed to fetch profile photos:", error);
-    }
-  };
-
-  const onChangeHandler = (event) => {
-    setFile(event.target.files[0]);
-  };
-
-  const onFormSubmit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData();
-    formData.append("file", file);
-
-    try {
-      const response = await axios.put(
-        `${process.env.REACT_APP_API}/auth/upload/photo/${dataDecrypted.id}`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      toast.success(response.data.success);
-      fetchData();
-    } catch (error) {
-      console.error("Failed to upload file:", error);
-    }
+  const handleFormSubmit = (event) => {
+    onFormSubmit(event);
+    handleClose();
   };
 
   return (
@@ -80,7 +48,41 @@ function Photo() {
             </div>
           ))
         : ""}
-      <AdminPic onFormSubmit={onFormSubmit} onChangeHandler={onChangeHandler} />
+
+      <center className="p-1">
+        <span style={{ cursor: "pointer" }} onClick={handleOpen}>
+          Edit Profile
+        </span>
+      </center>
+
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        slots={{ backdrop: Backdrop }}
+        slotProps={{
+          backdrop: {
+            timeout: 500,
+          },
+        }}
+      >
+        <Fade in={open}>
+          <Box sx={style}>
+            <div>
+              <h5 className="p-2">Edit Profile</h5>
+            </div>
+
+            <div style={{ marginTop: "15px" }}>
+              <form onSubmit={handleFormSubmit}>
+                <input type="file" name="file" onChange={onChangeHandler} />
+                <button type="submit">Upload</button>
+              </form>
+            </div>
+          </Box>
+        </Fade>
+      </Modal>
     </div>
   );
 }
