@@ -18,11 +18,6 @@
   padding: 20px;
   margin: 7px;
 }
-.title {
-  border-bottom: 2px solid rebeccapurple;
-  padding-bottom: 3px;
-  width: fit-content;
-}
 .input_type {
   outline: none;
   padding: 7px;

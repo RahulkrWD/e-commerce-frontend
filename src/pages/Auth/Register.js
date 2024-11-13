@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import Layout from "../../components/layout/Layout";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import GoogleRegister from "./GoogleRegister";
@@ -23,7 +21,7 @@ const style = {
   borderRadius: "10px",
 };
 
-function Register() {
+function Register({pass}) {
   const [open, setOpen] = useState(false);
 
   const [name, setName] = useState("");
@@ -33,8 +31,6 @@ function Register() {
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const navigate = useNavigate();
   // form function
   async function handleSubmit(e) {
     e.preventDefault();
@@ -66,7 +62,8 @@ function Register() {
       );
       if (response.data.success) {
         toast.success(response.data.message);
-        navigate("/login");
+        handleClose(); // Close the OTP modal
+        pass("login");
       } else {
         toast.error(response.data.message);
       }
@@ -76,10 +73,7 @@ function Register() {
   }
 
   return (
-    <Layout title={"register e-commerce"}>
-      <div className={`${styles.registerPage}`}>
-        <center>
-          <div className={styles.textField}>
+          <div>
             <h3 className={styles.title}>Register</h3>
             <input
               className={`w-100  mt-3 ${styles.input_type}`}
@@ -138,7 +132,7 @@ function Register() {
               </Box>
             </Modal>
             <br />
-            <Link to={"/forget-password"} className="w-100">
+            <Link onClick={() => pass("forgotPassword")} className="w-100">
               forget Password
             </Link>
             <div className="m-3">
@@ -147,13 +141,12 @@ function Register() {
               </GoogleOAuthProvider>
             </div>
 
-            <Link to={"/login"} className="text-decoration-none text-dark">
+            <Link onClick={() => pass("login")} className="text-decoration-none text-dark">
               Already have an account <strong>Login</strong>
             </Link>
           </div>
-        </center>
-      </div>
-    </Layout>
+       
+   
   );
 }
 

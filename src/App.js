@@ -38,10 +38,10 @@ function App() {
         <Route path="/policy" element={<Policy />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<PageNotFound />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/register" element={<Register />} /> */}
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/profile" element={<Profile />}></Route>
-        <Route path="/forget-password" element={<ForgetPassword />} />
+        {/* <Route path="/forget-password" element={<ForgetPassword />} /> */}
         <Route path="/product/:id" element={<Listing />}></Route>
         <Route path="/loading" element={<Loading />} />
         <Route path="/details/:categoryId/:productId" element={<Details />} />

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Layout from "../../components/layout/Layout";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
@@ -8,7 +7,7 @@ import GoogleLogin from "../Auth/GoogleLogin";
 import styles from "./Auth.module.css";
 import CryptoJS from "crypto-js";
 
-function Login() {
+function Login({pass}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -45,12 +44,8 @@ function Login() {
     }
   }
   return (
-    <Layout title={"login e-commerce"}>
-      <div className={`${styles.loginPage}`}>
-        <center>
           <form onSubmit={handlelogin}>
-            <div className={styles.textField}>
-              <h3 className={styles.title}>Login</h3>
+              <h4 className={styles.title}>Login</h4>
               <input
                 className={`w-100  mt-3 ${styles.input_type}`}
                 placeholder="Email"
@@ -73,7 +68,7 @@ function Login() {
               >
                 Login
               </button>
-              <Link to={"/forget-password"} className=" w-100 ">
+              <Link  onClick={() => pass("forgotPassword")}  className=" w-100 ">
                 Forget Password
               </Link>
 
@@ -83,16 +78,13 @@ function Login() {
                 </GoogleOAuthProvider>
               </div>
               <Link
-                to={"/register"}
+                onClick={() => pass("signup")}
                 className="text-decoration-none text-dark m-3"
               >
                 Don't have an Account <strong>Register</strong>
               </Link>
-            </div>
           </form>
-        </center>
-      </div>
-    </Layout>
+   
   );
 }
 
