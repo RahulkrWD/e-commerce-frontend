@@ -7,7 +7,7 @@ import GoogleLogin from "../Auth/GoogleLogin";
 import styles from "./Auth.module.css";
 import CryptoJS from "crypto-js";
 
-function Login({pass}) {
+function Login({pass, close}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -34,6 +34,7 @@ function Login({pass}) {
           process.env.REACT_APP_SECRETKEY
         ).toString();
         localStorage.setItem("userData", userDataString);
+        close();
         navigate("/home");
       } else {
         toast.error(res.data.message);
@@ -74,7 +75,7 @@ function Login({pass}) {
 
               <div className="m-3">
                 <GoogleOAuthProvider clientId={process.env.REACT_APP_Clint_id}>
-                  <GoogleLogin />
+                  <GoogleLogin close={close} />
                 </GoogleOAuthProvider>
               </div>
               <Link

@@ -16,7 +16,7 @@ const AuthModal = ({ open, handleClose }) => {
     <Dialog open={open} onClose={handleClose} maxWidth="xs" fullWidth>
       <DialogContent>
         {view === "login" && (
-         <Login pass={setView}/>
+         <Login close={handleClose}  pass={setView}/>
         )}
         {view === "signup" && (
           <Register pass={setView}/>

@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import CryptoJS from "crypto-js";
-function GoogleLogin() {
+function GoogleLogin({close}) {
   const navigate = useNavigate();
 
   const handleGoogleLogin = async (credentialResponse) => {
@@ -32,7 +32,7 @@ function GoogleLogin() {
           process.env.REACT_APP_SECRETKEY
         ).toString();
         localStorage.setItem("userData", userDataString);
-
+        close();
         navigate("/home");
       } else {
         toast.error(response.data.message);
