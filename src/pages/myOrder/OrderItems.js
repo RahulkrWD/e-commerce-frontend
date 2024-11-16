@@ -7,37 +7,47 @@ import cryptoJs from "crypto-js";
 
 function OrderItems() {
   const [order, setOrder] = useState([]);
-  const navigate = useNavigate();
-  const userDataString = localStorage.getItem("userData");
-  let dataDecrypted;
-  if (userDataString) {
-    const bytes = cryptoJs.AES.decrypt(
-      userDataString,
-      process.env.REACT_APP_SECRETKEY
-    );
-    dataDecrypted = JSON.parse(bytes.toString(cryptoJs.enc.Utf8));
-  }
+  const navigate = useNavigate()
 
-  useEffect(() => {
-    if (!dataDecrypted.token) {
-      return navigate("/login");
+  const userDataString = localStorage.getItem("userData");
+  let dataDecrypted = null;
+
+  if (userDataString) {
+    try {
+      const bytes = cryptoJs.AES.decrypt(
+        userDataString,
+        process.env.REACT_APP_SECRETKEY
+      );
+      dataDecrypted = JSON.parse(bytes.toString(cryptoJs.enc.Utf8));
+    } catch (error) {
+      console.error("Failed to decrypt user data:", error);
     }
-  }, [navigate, dataDecrypted.token]);
+  }
   useEffect(() => {
-    async function handleOrder() {
+    if (!dataDecrypted?.token) {
+      navigate("/home")
+    }
+  }, [dataDecrypted, navigate]);
+  useEffect(() => {
+    const handleOrder = async () => {
       try {
         const response = await axios.get(
           `${process.env.REACT_APP_API}/product/order?id=${dataDecrypted.id}`
         );
         if (response.data.success) {
           setOrder(response.data.order.reverse());
+        } else {
+          console.warn("No orders found");
         }
       } catch (err) {
-        console.log("server error, Please try again", err);
+        console.error("Server error, please try again", err);
       }
+    };
+
+    if (dataDecrypted?.id) {
+      handleOrder();
     }
-    handleOrder();
-  });
+  }, [dataDecrypted?.id]);
 
   return (
     <div>
@@ -52,10 +62,10 @@ function OrderItems() {
                     <h6 className={styles.product_name}>{data.productName}</h6>
                     <h6>{data.type}</h6>
                     <span className="p-2">
-                      quantity: <strong>{data.quantity}</strong>
+                      Quantity: <strong>{data.quantity}</strong>
                     </span>
                     <span className="p-2">
-                      cost: <strong>&#8377; {data.cost}</strong>
+                      Cost: <strong>&#8377; {data.cost}</strong>
                     </span>
                   </div>
                 </div>
@@ -95,9 +105,11 @@ function OrderItems() {
         ))
       ) : (
         <center>
-          <h4>No Data found</h4>
+          <h4>No Data Found</h4>
         </center>
       )}
+
+     
     </div>
   );
 }

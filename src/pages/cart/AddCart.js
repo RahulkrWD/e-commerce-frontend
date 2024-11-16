@@ -11,11 +11,19 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles/AddCart.module.css";
 import PriceDetails from "./PriceDetails";
 import cryptoJs from "crypto-js";
+import AuthModal from "../../components/layout/AdminModal";
 
 export default function AddCart() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
+
+  const [open, setOpen] = useState(false);
+  const handleClose = () => setOpen(false);
+  function handleOpen(){
+    setOpen(true);
+    setShowLoginPrompt(false);
+  }
 
   const userDataString = localStorage.getItem("userData");
   let dataDecrypted;
@@ -145,7 +153,7 @@ export default function AddCart() {
                 <button
                   type="button"
                   className="btn btn-primary"
-                  onClick={() => navigate("/login")}
+                  onClick={handleOpen}
                 >
                   Log In
                 </button>
@@ -161,6 +169,7 @@ export default function AddCart() {
           </div>
         </div>
       )}
+      <AuthModal open={open} handleClose={handleClose} />
     </Layout>
   );
 }

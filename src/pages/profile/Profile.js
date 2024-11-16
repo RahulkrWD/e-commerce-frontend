@@ -10,33 +10,65 @@ import Photo from "./Photo";
 import { toast } from "react-hot-toast";
 
 function Profile() {
-  const [profile, setProfile] = useState("");
+  const [profile, setProfile] = useState([]);
   const [file, setFile] = useState(null);
   const [photos, setPhotos] = useState([]);
   const navigate = useNavigate();
+
   const userDataString = localStorage.getItem("userData");
-  let dataDecrypted;
+  let dataDecrypted = null;
   if (userDataString) {
-    const bytes = cryptoJs.AES.decrypt(
-      userDataString,
-      process.env.REACT_APP_SECRETKEY
-    );
-    dataDecrypted = JSON.parse(bytes.toString(cryptoJs.enc.Utf8));
+    try {
+      const bytes = cryptoJs.AES.decrypt(
+        userDataString,
+        process.env.REACT_APP_SECRETKEY
+      );
+      dataDecrypted = JSON.parse(bytes.toString(cryptoJs.enc.Utf8));
+    } catch (error) {
+      console.error("Failed to decrypt user data:", error);
+    }
   }
   useEffect(() => {
-    fetchData();
-  });
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API}/auth/get-photo/${dataDecrypted.id}`
-      );
-      setPhotos(response.data);
-    } catch (error) {
-      console.error("Failed to fetch profile photos:", error);
+    if (!dataDecrypted?.token) {
+      navigate("/home"); 
     }
-  };
+  }, [dataDecrypted, navigate]);
+
+  useEffect(() => {
+    const fetchPhotos = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API}/auth/get-photo/${dataDecrypted.id}`
+        );
+        setPhotos(response.data);
+      } catch (error) {
+        console.error("Failed to fetch profile photos:", error);
+        toast.error("Error fetching photos.");
+      }
+    };
+
+    if (dataDecrypted?.id) {
+      fetchPhotos();
+    }
+  }, [dataDecrypted?.id]);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API}/auth/profile?id=${dataDecrypted.id}`
+        );
+        setProfile(response.data);
+      } catch (error) {
+        console.error("Failed to fetch profile:", error);
+        toast.error("Error fetching profile.");
+      }
+    };
+
+    if (dataDecrypted?.id) {
+      fetchProfile();
+    }
+  }, [dataDecrypted?.id]);
 
   const onChangeHandler = (event) => {
     setFile(event.target.files[0]);
@@ -57,37 +89,25 @@ function Profile() {
           },
         }
       );
-      toast.success(response.data.success);
-      fetchData();
+      toast.success(response.data.success || "Photo uploaded successfully!");
+      setFile(null);
+      setPhotos((prev) => [...prev, response.data.photo]);
     } catch (error) {
-      console.error("Failed to upload file:", error);
+      console.error("Failed to upload photo:", error);
+      toast.error("Error uploading photo.");
     }
   };
 
-  useEffect(() => {
-    if (!dataDecrypted.token) {
-      return navigate("/login");
-    }
-  });
-  useEffect(() => {
-    async function handleProfile() {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API}/auth/profile?id=${dataDecrypted.id}`
-      );
-      setProfile(response.data);
-    }
-
-    handleProfile();
-  }, [dataDecrypted.id]);
   return (
-    <Layout title={"my-profile e-commerce"}>
+    <Layout title={"My Profile - E-Commerce"}>
       <div>
+        
         <Photo
           photos={photos}
           onFormSubmit={onFormSubmit}
           onChangeHandler={onChangeHandler}
         />
-        {profile ? (
+        {profile.length > 0 ? (
           profile.map((item, index) => (
             <div
               key={index}
