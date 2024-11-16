@@ -8,10 +8,8 @@ import {
 import Login from "../../pages/Auth/Login";
 import Register from "../../pages/Auth/Register";
 import ForgetPassword from "../../pages/Auth/ForgetPassword"
-
 const AuthModal = ({ open, handleClose }) => {
   const [view, setView] = useState("login");
-
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="xs" fullWidth>
       <DialogContent>

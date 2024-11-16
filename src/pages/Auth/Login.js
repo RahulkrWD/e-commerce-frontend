@@ -12,9 +12,7 @@ function Login({pass, close}) {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  async function handlelogin(e) {
-    e.preventDefault();
-
+  async function handlelogin() {
     try {
       const res = await axios.post(`${process.env.REACT_APP_API}/auth/login`, {
         email,
@@ -45,7 +43,7 @@ function Login({pass, close}) {
     }
   }
   return (
-          <form onSubmit={handlelogin}>
+          <div>
               <h4 className={styles.title}>Login</h4>
               <input
                 className={`w-100  mt-3 ${styles.input_type}`}
@@ -64,7 +62,7 @@ function Login({pass, close}) {
               />
               <br />
               <button
-                type="submit"
+              onClick={handlelogin}
                 className="btn btn-primary w-100 p-2 mt-3 mb-2 fw-bold"
               >
                 Login
@@ -84,7 +82,7 @@ function Login({pass, close}) {
               >
                 Don't have an Account <strong>Register</strong>
               </Link>
-          </form>
+          </div>
    
   );
 }
