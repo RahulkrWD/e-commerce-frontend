@@ -6,6 +6,7 @@ import styles from "./Auth.module.css";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
+import Loading from "../../components/layout/Loading";
 const style = {
   position: "absolute",
   top: "50%",
@@ -24,9 +25,10 @@ function ForgetPassword({pass}) {
   const [newPassword, setNewPassword] = useState("");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  const [loading, setLoading] = useState(false);
   async function handleSubmitEmail(e) {
     e.preventDefault();
+    setLoading(true);
     try {
       const res = await axios.post(
         `${process.env.REACT_APP_API}/auth/forget-password`,
@@ -41,6 +43,8 @@ function ForgetPassword({pass}) {
     } catch (err) {
       console.log(err);
       toast.error("Something went wrong");
+    }finally{
+      setLoading(false);
     }
   }
   async function handleSubmitPassword(e) {
@@ -62,6 +66,8 @@ function ForgetPassword({pass}) {
     }
   }
   return (
+    <>
+    {loading && <Loading />}
           <div>
             <h5>Forget password</h5>
             <hr/>
@@ -74,6 +80,7 @@ function ForgetPassword({pass}) {
             />
             <button
               onClick={handleSubmitEmail}
+            disabled={loading}
               className={`m-2 ${styles.send_otp}`}
             >
               Send OTP
@@ -122,7 +129,7 @@ function ForgetPassword({pass}) {
             <br />
             <Link onClick={() => pass("login")}>back to Login</Link>
           </div>
-        
+          </>
   );
 }
 

@@ -8,6 +8,7 @@ import styles from "./Auth.module.css";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
+import Loading from "../../components/layout/Loading";
 
 const style = {
   position: "absolute",
@@ -23,7 +24,7 @@ const style = {
 
 function Register({pass}) {
   const [open, setOpen] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,6 +34,7 @@ function Register({pass}) {
   const handleClose = () => setOpen(false);
   // form function
   async function handleSubmit(e) {
+    setLoading(true);
     e.preventDefault();
     try {
       const res = await axios.post(
@@ -50,6 +52,8 @@ function Register({pass}) {
     } catch (err) {
       console.log(err);
       toast.error("Something went wrong");
+    }finally {
+      setLoading(false); // Hide the Loading component
     }
   }
 
@@ -73,6 +77,8 @@ function Register({pass}) {
   }
 
   return (
+    <>
+ {loading && <Loading />}
           <div>
             <h3 className={styles.title}>Register</h3>
             <input
@@ -90,7 +96,7 @@ function Register({pass}) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <button onClick={handleSubmit} className={`m-2 ${styles.send_otp}`}>
+            <button disabled={loading} onClick={handleSubmit} className={`m-2 ${styles.send_otp}`}>
               Send OTP
             </button>
             <Modal
@@ -145,7 +151,7 @@ function Register({pass}) {
               Already have an account <strong>Login</strong>
             </Link>
           </div>
-       
+          </>
    
   );
 }
