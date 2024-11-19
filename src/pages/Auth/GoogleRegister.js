@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import Loading from "../../components/layout/Loading"
 
 function GoogleAuth() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleGoogleSignup = async (credentialResponse) => {
+    setLoading(true);
     try {
       const decoded = jwtDecode(credentialResponse?.credential);
       const { name, email } = decoded;
@@ -32,11 +35,14 @@ function GoogleAuth() {
       if (error.response) {
         toast.error("response data", error.response.data);
       }
+    }finally{
+      setLoading(false);
     }
   };
 
   return (
     <>
+    {loading && <Loading/>}
       <GoogleLogin
         onSuccess={handleGoogleSignup}
         onError={() => {
