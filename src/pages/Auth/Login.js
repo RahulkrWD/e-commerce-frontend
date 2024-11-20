@@ -37,7 +37,6 @@ function Login({ pass, close }) {
 
         localStorage.setItem("userData", userDataString);
         close(); // Close the modal
-        navigate("/home"); // Navigate to home page
       } else {
         toast.error(res.data.message);
       }

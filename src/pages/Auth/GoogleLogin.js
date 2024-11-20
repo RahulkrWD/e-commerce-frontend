@@ -41,7 +41,6 @@ function GoogleLogin({ close }) {
 
         localStorage.setItem("userData", userDataString);
         close(); // Close modal if applicable
-        navigate("/home"); // Redirect to home
       } else {
         toast.error(response.data.message);
       }
